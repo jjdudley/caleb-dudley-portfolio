@@ -1,0 +1,44 @@
+// import React from "react"
+// import "../components/styles.css"
+// import styled from "styled-components"
+// import Layout from "../components/layout"
+// import ArchiveGallery from "../components/archive-gallery"
+// import HeroLeft from "../components/hero-left"
+// import MobileNav from "../components/mobile-nav"
+
+// const ArchiveContainer = styled.div`
+//   display: flex;
+//   margin: 0;
+//   width: 100%;
+//   justify-content: center;
+// `
+
+// const ArchiveHeader = styled.div`
+// font-family: orpheuspro, serif;
+// font-weight: 400;
+// font-style: regular;
+// font-size: 4.4rem;
+// text-transform: uppercase;
+//   height: 80px;
+//   display: flex;
+//   align-items: center;
+// `
+
+
+// export default function Archive() {
+//   return (
+//     <Layout>
+//       <ArchiveContainer>
+//       {this.state.mobileView ? (
+//             <MobileNav heading={""} />
+//           ) : (
+//             <HeroLeft style={{ display: this.state.mobileView ? "none" : "" }}>
+//               <DigitalHeader>DIGITAL</DigitalHeader>
+//             </HeroLeft>
+//           )}
+//         <DigitalGallery/>
+
+//       </ArchiveContainer>
+//     </Layout>
+//   )
+// }
