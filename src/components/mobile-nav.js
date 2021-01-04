@@ -4,7 +4,7 @@ import styled from "styled-components"
 
 const MobileNavContainer = styled.div`
   display: flex;
-  position: absolute;
+  position: sticky;
   top: 0;
   flex-direction: column;
   justify-content: space-between;
@@ -14,6 +14,7 @@ const MobileNavContainer = styled.div`
   background-color: rgb(241, 241, 239);
   z-index: 2000;
   background: none;
+  border: 1px solid red;
 `
 
 // const HeroRight = styled.div`

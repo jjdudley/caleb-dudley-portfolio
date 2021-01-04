@@ -74,6 +74,7 @@ export default class Lightbox extends Component {
               {selectedImage.node.frontmatter.caption}
             </div>
             <button
+             className="close-dialog-button"
               type="button"
               onClick={() => this.setState({ showLightbox: false })}
             >

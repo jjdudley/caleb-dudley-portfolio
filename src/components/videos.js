@@ -1,6 +1,8 @@
 import React, { Component } from "react"
 import styled from "styled-components"
-import VideoFrame from "./video-template"
+// import VideoFrame from "./video-template"
+import ResponsePlayer from "./video-template"
+import ReactPlayer from "react-player/lazy";
 
 export default class Videos extends Component {
     constructor(props) {
@@ -24,8 +26,14 @@ export default class Videos extends Component {
         `
         return (
             <VideosContainer>
-                <iframe className="iframe-styles" width="560" height="315" className={this.props.iframeClass} src="https://www.youtube.com/embed/iiL3Q_T3j9I" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <iframe className="iframe-styles" width="560" height="315" className={this.props.iframeClass} src="https://www.youtube.com/embed/hApPmHnWrb8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+                <ReactPlayer className={this.props.playerClass} url="https://www.youtube.com/embed/iiL3Q_T3j9I" />
+
+                <ReactPlayer className={this.props.playerClass} url="https://www.youtube.com/embed/hApPmHnWrb8" />
+                {/* <iframe className="iframe-styles" width="560" height="315" className={this.props.iframeClass} src="https://www.youtube.com/embed/iiL3Q_T3j9I" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
+                <iframe className="iframe-styles" width="560" height="315" className={this.props.iframeClass} src="https://www.youtube.com/embed/hApPmHnWrb8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> */}
             
             </VideosContainer>
         )

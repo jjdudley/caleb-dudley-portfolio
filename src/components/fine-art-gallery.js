@@ -16,9 +16,11 @@ let FineArtGalleryContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 50%;
-  min-height: 100%;
+  overflow: auto;
   background-color: rgb(241, 241, 239);
-  padding-top: 50px;
+  padding-top: 30px;
+  padding-bottom: 90px;
+ 
 `
 
 const FineArtPhotoContainer = styled.div`
@@ -58,7 +60,7 @@ class FineArtGallery extends Component {
   }
   render() {
     return (
-      <FineArtGalleryContainer>
+      <FineArtGalleryContainer className={this.props.name}>
           <FineArtPhotoContainer><FineArtOne/><FineArtCaptionContainer><FineArtTitle>Vanity, Church</FineArtTitle>11" x 9"<br/> Aged Salt Print<br/>2019</FineArtCaptionContainer></FineArtPhotoContainer>
           <FineArtPhotoContainer><FineArtTwo/><FineArtCaptionContainer><FineArtTitle>Vanity, Jim 01</FineArtTitle>14" x 11"<br/> Aged Salt Print<br/>2019</FineArtCaptionContainer></FineArtPhotoContainer>
           <FineArtPhotoContainer><FineArtThree/><FineArtCaptionContainer><FineArtTitle>Vanity, Empty Mirror</FineArtTitle>11" x 8"<br/> Aged Salt Print<br/>2019</FineArtCaptionContainer></FineArtPhotoContainer>

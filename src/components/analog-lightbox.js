@@ -53,6 +53,9 @@ export default class Lightbox extends Component {
               }}
             >
               <Img
+              
+                fadeIn="true"
+                durationFadeIn="3000"
                 fluid={
                   image.node.frontmatter.galleryImage.childImageSharp.fluid
                 }
@@ -64,6 +67,7 @@ export default class Lightbox extends Component {
           <Dialog className="dialog-box-container">
             <div className="dialog-box">
               <Img
+                
                 fluid={
                   selectedImage.node.frontmatter.galleryImage.childImageSharp
                     .fluid
@@ -74,10 +78,11 @@ export default class Lightbox extends Component {
               {selectedImage.node.frontmatter.caption}
             </div>
             <button
+              className="close-dialog-button"
               type="button"
               onClick={() => this.setState({ showLightbox: false })}
             >
-              Close
+              
             </button>
           </Dialog>
         )}

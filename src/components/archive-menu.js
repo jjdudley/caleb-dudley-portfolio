@@ -21,7 +21,7 @@ class ArchiveMenu extends Component {
       height: ${this.props.height};
       background-color: rgb(241, 241, 239);
       background: ${this.props.background};
-      z-index: 4000;
+      z-index: 0;
     `
 
     const ArchiveMenuItem = styled.div`
