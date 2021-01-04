@@ -18,7 +18,7 @@ const HeroContainer = styled.div`
   display: flex;
   margin: 0;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   justify-content: center;
 `;
 const HeroHeader = styled.div`
@@ -46,6 +46,21 @@ const HeroSubcaption = styled.div`
   font-size: 2.5rem;
 `;
 
+const MobileHeroSubcaption = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 170px;
+  
+  height: 22px;
+  font-family: orpheuspro, serif;
+  font-weight: 400;
+  font-style: italic;
+  font-size: 1.5rem;
+  font-size: 16px;
+  
+`;
+
 const OpacityMask = styled.div`
   position: absolute;
   width: 100%;
@@ -61,7 +76,7 @@ const EnterHereContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid black;
+  
   z-index: 7000 !important;
 `;
 
@@ -166,6 +181,93 @@ const OpacityFilter = styled.div`
   z-index: 9000;
 `;
 
+let MobileNavHeaderContainer = styled.div`
+  display: flex;
+  margin: 0;
+  width: 100%;
+  justify-content: space-between;
+  
+  margin-top: 10px;
+  z-index: 9000;
+`;
+
+let MobileNavHeaderLeft = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  
+  z-index: 2000;
+  height: 100%;
+  width: 100px;
+  justify-content: center;
+  margin: 0;
+  margin-left: 10px;
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
+let MobileNavHeaderCenter = styled.div`
+  position: absolute;
+  top: 6px;
+  width: 100vw;
+  max-width: 100vw;
+  display: flex;
+  flex-direction: column;
+  color: rgb(19, 19, 18);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  
+  margin: 0;
+
+`;
+
+let MobileNavHeaderRight = styled.div`
+  display: flex;
+  width: 100px;
+  flex-direction: column;
+  align-items: flex-end;
+  z-index: 2000;
+ margin-right: 10px;
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
+let MobileNavFooterContainer = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+
+  padding: 0 10px;
+  margin-bottom: 10px;
+  z-index: 9000;
+`;
+
+let MobileNavFooterLeft = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100px;
+  align-items: flex-start;
+  background: transparent;
+`;
+
+let MobileNavFooterCenter = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+`;
+
+let MobileNavFooterRight = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100px;
+  align-items: flex-end;
+`;
+
 export default class Home extends Component {
   constructor(props) {
     super(props);
@@ -204,15 +306,17 @@ export default class Home extends Component {
     });
   };
 
-  componentDidMount() {
-    this.handleResize();
-    window.addEventListener("resize", this.handleResize.bind(this));
-    this.enterAnimation();
-
-    this.enterAnimationPhoto();
-    this.enterAnimationAmp();
-    this.enterAnimationVideo();
+  async componentDidMount() {
     console.log("index mounting");
+
+    await this.handleResize();
+    window.addEventListener("resize", this.handleResize.bind(this));
+    if (!this.state.mobileView) {
+      this.enterAnimation();
+ 
+    } else {
+      this.mobileEnterAnimation();
+    }
   }
 
   componentWillUnmount() {
@@ -222,18 +326,30 @@ export default class Home extends Component {
 
   enterAnimation = () => {
     let animationHeader = document.querySelector(".animation-header");
-    // let animationHeaderSubPhoto = document.querySelector("#hero-subcaption-photo")
-    // let animationHeaderSubAmp = document.querySelector("#hero-subcaption-amp")
-    // let animationHeaderSubVideo = document.querySelector("#hero-subcaption-video")
+  
+    let animationHeaderSubPhoto = document.querySelector(
+      "#hero-subcaption-photo"
+    );
 
-    console.log("enter animation");
-    console.log(animationHeader);
+    let animationHeaderSubVideo = document.querySelector(
+      "#hero-subcaption-video"
+    );
+
     animationHeader.innerHTML = animationHeader.textContent.replace(
       /\S/g,
       "<span class='letter'>$&</span>"
     );
-    // animationHeaderSubPhoto.innerHTML = animationHeaderSubPhoto.textContent.replace(/\S/g, "<span class='photo-letter'>$&</span>");
-    // animationHeaderSubVideo.innerHTML = animationHeaderSubVideo.textContent.replace(/\S/g, "<span class='video-letter'>$&</span>");
+
+    animationHeaderSubPhoto.innerHTML = animationHeaderSubPhoto.textContent.replace(
+      /\S/g,
+      "<span class='photo-letter'>$&</span>"
+    );
+
+    animationHeaderSubVideo.innerHTML = animationHeaderSubVideo.textContent.replace(
+      /\S/g,
+      "<span class='video-letter'>$&</span>"
+    );
+ 
     anime.timeline().add({
       targets: ".animation-header .letter",
       translateX: [40, 0],
@@ -243,52 +359,22 @@ export default class Home extends Component {
       duration: 800,
       delay: (el, index) => 30 * index
     });
-  };
-
-  animationLoader = () => {
-    this.enterAnimationPhoto();
-    this.enterAnimationAmp();
-    this.enterAnimationVideo();
-  };
-
-  enterAnimationPhoto = () => {
-    let animationHeaderSubPhoto = document.querySelector(
-      "#hero-subcaption-photo"
-    );
-    animationHeaderSubPhoto.innerHTML = animationHeaderSubPhoto.textContent.replace(
-      /\S/g,
-      "<span class='photo-letter'>$&</span>"
-    );
 
     anime.timeline().add({
       targets: "#hero-subcaption-photo .photo-letter",
-
       opacity: [0, 1],
       easing: "linear",
       duration: 1100,
       delay: 1200
     });
-  };
 
-  enterAnimationAmp = () => {
     anime.timeline().add({
       targets: "#hero-subcaption-amp",
-
       opacity: [0, 1],
       easing: "linear",
       duration: 1100,
       delay: 1200
     });
-  };
-
-  enterAnimationVideo = () => {
-    let animationHeaderSubVideo = document.querySelector(
-      "#hero-subcaption-video"
-    );
-    animationHeaderSubVideo.innerHTML = animationHeaderSubVideo.textContent.replace(
-      /\S/g,
-      "<span class='video-letter'>$&</span>"
-    );
 
     anime.timeline().add({
       targets: "#hero-subcaption-video .video-letter",
@@ -298,6 +384,77 @@ export default class Home extends Component {
       delay: 1200
     });
   };
+
+
+
+
+
+  mobileEnterAnimation = () => {
+    let animationHeader = document.querySelector(".landing-animation-header");
+  
+    let animationHeaderSubPhoto = document.querySelector(
+      "#mobile-hero-subcaption-photo"
+    );
+
+    let animationHeaderSubVideo = document.querySelector(
+      "#mobile-hero-subcaption-video"
+    );
+
+    animationHeader.innerHTML = animationHeader.textContent.replace(
+      /\S/g,
+      "<span class='letter'>$&</span>"
+    );
+
+    
+    animationHeaderSubPhoto.innerHTML = animationHeaderSubPhoto.textContent.replace(
+      /\S/g,
+      "<span class='photo-letter'>$&</span>"
+    );
+
+    animationHeaderSubVideo.innerHTML = animationHeaderSubVideo.textContent.replace(
+      /\S/g,
+      "<span class='video-letter'>$&</span>"
+    );
+
+    anime.timeline().add({
+      targets: ".landing-animation-header .letter",
+      translateX: [40, 0],
+      translatez: 0,
+      opacity: [0, 1],
+      easing: "easeInExpo",
+      duration: 800,
+      delay: (el, index) => 30 * index
+    });
+
+    anime.timeline().add({
+      targets: "#mobile-hero-subcaption-photo .photo-letter",
+
+      opacity: [0, 1],
+      easing: "linear",
+      duration: 1100,
+      delay: 1200
+    });
+
+    anime.timeline().add({
+      targets: "#mobile-hero-subcaption-amp",
+      opacity: [0, 1],
+      easing: "linear",
+      duration: 1100,
+      delay: 1200
+    });
+
+    anime.timeline().add({
+      targets: "#mobile-hero-subcaption-video .video-letter",
+      opacity: [0, 1],
+      easing: "linear",
+      duration: 1100,
+      delay: 1200
+    });
+
+  };
+
+
+
 
   exitAnimation = (exit, selectAnimationHeader) => {
     // this.setState({ animateEnter: false })
@@ -349,14 +506,73 @@ export default class Home extends Component {
     });
   };
 
-  exitHeroGallery = (exit, item) => {
-    return anime.timeline().add({
-      targets: ".opacity-filter",
+  mobileExitAnimation = (exit, selectAnimationHeader) => {
+    // this.setState({ animateEnter: false })
+
+    console.log(selectAnimationHeader);
+    selectAnimationHeader.innerHTML = selectAnimationHeader.textContent.replace(
+      /\S/g,
+      "<span class='letter'>$&</span>"
+    );
+    let testCharacters = document.querySelectorAll(".letter");
+
+    let testImage = document.querySelector(".hero-gallery-container");
+    console.log(testImage);
+
+    anime.timeline().add({
+      targets: ".landing-animation-header .letter",
+      duration: 1600,
+      easing: "easeOutExpo",
+      translateX: [0, -30],
+      opacity: [1, 0],
+      delay: (el, index) => 30 * index
+    });
+
+    anime.timeline().add({
+      targets: "#mobile-hero-subcaption-photo .photo-letter",
+      duration: 1600,
+      easing: "easeOutExpo",
+      translateX: [0, -30],
+      opacity: [1, 0],
+      delay: (el, index) => 30 * index
+    });
+
+    anime.timeline().add({
+      targets: "#mobile-hero-subcaption-amp",
+      duration: 1600,
+      easing: "easeOutExpo",
+      translateX: [0, -30],
+      opacity: [1, 0],
+      delay: (el, index) => 30 * index
+    });
+
+    anime.timeline().add({
+      targets: "#mobile-hero-subcaption-video .video-letter",
+      duration: 1600,
+      easing: "easeOutExpo",
+      translateX: [0, -30],
+      opacity: [1, 0],
+      delay: (el, index) => 30 * index
+    });
+
+    anime.timeline().add({
+      targets: ".hero-opacity-wrapper-mobile",
       duration: 800,
       easing: "linear",
-      opacity: 1,
-      delay: 800
+      opacity: 0,
+      delay: 0,
     });
+  };
+
+
+  exitHeroGallery = (exit, item) => {
+    // return anime.timeline().add({
+    //   targets: ".opacity-filter",
+    //   duration: 800,
+    //   easing: "linear",
+    //   opacity: 1,
+    //   delay: 800
+    // });
   };
 
   render() {
@@ -367,6 +583,9 @@ export default class Home extends Component {
         style={{
           backgroundColor: this.state.splashPage ? "none" : "rgb(241, 241, 239)"
         }}
+        className={
+          this.state.mobileView ? "home-layout-container-mobile" : ""
+        }
       >
         {/* {this.state.splashPage ? (
           <>
@@ -378,9 +597,84 @@ export default class Home extends Component {
             </VideoBg> */}
         {/* </> */}
         {/* ) : ( */}
+
+          <MobileNavHeaderContainer style={{display: this.state.mobileView ? "" : "none"}}>
+            <MobileNavHeaderLeft>
+            <TransitionLink
+                    className="hero-link-mobile"
+                    to="/"
+                    exit={{
+                      length: 2.2,
+                      trigger: ({ exit, node }) => {
+                        let animationHeader = node.querySelector(".landing-animation-header");
+                        this.mobileExitAnimation(exit, animationHeader);
+                      }
+                    }}
+                    entry={{
+                      delay: 2.2,
+                      length: 0
+                    }}
+                  >
+                    Home
+                  </TransitionLink>
+            </MobileNavHeaderLeft>
+            <MobileNavHeaderCenter>
+              <div className="landing-animation-header">CALEB&nbsp;DUDLEY</div>
+            <MobileHeroSubcaption>
+                  <h3 id="mobile-hero-subcaption-photo" className="mobile-hero-subcaption">
+                    Photo
+                  </h3>
+
+                  <h3 id="mobile-hero-subcaption-amp" className="mobile-hero-subcaption">
+                    &
+                  </h3>
+
+                  <h3 id="mobile-hero-subcaption-video" className="mobile-hero-subcaption">
+                    Video
+                  </h3>
+                </MobileHeroSubcaption></MobileNavHeaderCenter>
+            <MobileNavHeaderRight>
+            <TransitionLink
+                    className="hero-link-mobile"
+                    to="/archive"
+                    exit={{
+                      length: 1.8,
+                      trigger: ({ exit, node }) => {
+                        let animationHeader = node.querySelector(".landing-animation-header");
+                        this.mobileExitAnimation(exit, animationHeader);
+                      }
+                    }}
+                    entry={{
+                      delay: 1.8,
+                      length: 0
+                    }}
+                  >
+                    Archive
+                  </TransitionLink>
+                  <TransitionLink
+                    className="hero-link-mobile"
+                    to="/fine-art"
+                    exit={{
+                      length: 1.8,
+                      trigger: ({ exit, node }) => {
+                        let animationHeader = node.querySelector(".landing-animation-header");
+                        this.mobileExitAnimation(exit, animationHeader);
+                      }
+                    }}
+                    entry={{
+                      delay: 1.8,
+                      length: 0
+                    }}
+                  >
+                    Fine Art
+                  </TransitionLink>
+            </MobileNavHeaderRight>
+          </MobileNavHeaderContainer>
+          
         <HeroContainer>
           {this.state.mobileView ? (
-            <MobileNav heading={"Caleb Dudley"} />
+            // <MobileNav heading={"Caleb Dudley"} />
+            ""
           ) : (
             <HeroLeftContainer
               style={{ display: this.state.mobileView ? "none" : "" }}
@@ -536,16 +830,72 @@ export default class Home extends Component {
               </FooterContainer>
             </HeroLeftContainer>
           )}
-
+          <div className={this.state.mobileView ? "hero-opacity-wrapper-mobile" : "hero-opacity-wrapper-desktop"} >
           <HeroGallery
             heroGalleryContainer="hero-gallery-container"
-            width={this.state.mobileView ? "100% !important" : "50% !important"}
+            width={this.state.mobileView ? "100%" : "100%"}
+            height={this.state.mobileView ? "100vh" : "100%"}
             background={this.state.mobileView ? "none" : ""}
           />
-          <OpacityFilter className="opacity-filter" />
+          </div>
+          
+          {/* <OpacityFilter className="opacity-filter" /> */}
         </HeroContainer>
         {/* )} */}
+
+        <MobileNavFooterContainer style={{display: this.state.mobileView ? "" : "none"}}>
+            <MobileNavFooterLeft>
+              {" "}
+              <a
+                href="https://www.instagram.com/caleb_dudley/"
+                target="_blank"
+                className="hero-link-mobile"
+              >
+                Instagram
+              </a>
+              <Link className="hero-link-mobile">Email</Link>
+            </MobileNavFooterLeft>
+            <MobileNavFooterCenter className="hero-link-mobile">Brooklyn, NY</MobileNavFooterCenter>
+            <MobileNavFooterRight>
+            <TransitionLink
+                    className="hero-link-mobile"
+                    to="/about"
+                    exit={{
+                      length: 1.8,
+                      trigger: ({ exit, node }) => {
+                        let animationHeader = node.querySelector(".landing-animation-header");
+                        this.mobileExitAnimation(exit, animationHeader);
+                      }
+                    }}
+                    entry={{
+                      delay: 1.8,
+                      length: 0
+                    }}
+                  >
+                    About
+                  </TransitionLink>
+              <Link className="hero-link-mobile">Contact</Link>
+            </MobileNavFooterRight>
+          </MobileNavFooterContainer>
       </LayoutContainer>
     );
   }
 }
+
+
+//////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////

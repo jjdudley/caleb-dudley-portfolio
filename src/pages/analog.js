@@ -182,7 +182,7 @@ let MobileNavHeaderContainer = styled.div`
     `
     let MobileNavFooterContainer = styled.div`
     position: sticky;
-    top: 93.5%;
+    top: 91.2%;
     display: flex;
     width: 100%;
     justify-content: space-between;

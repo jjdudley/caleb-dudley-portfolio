@@ -117,8 +117,7 @@ class HeroGallery extends Component {
       display: flex;
       justify-content: center;
       align-items: center;
-      width: 50%;
-      min-height: 100%;
+      
       background-color: rgb(241, 241, 239);
       background-color: rgb(241, 241, 239);
       width: ${this.props.width};

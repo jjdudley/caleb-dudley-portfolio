@@ -509,7 +509,7 @@ export default class Archive extends Component {
                         let archiveMenuVideo = node.querySelector(
                           "#archive-video-link"
                         );
-                        this.exitAnimation(
+                        this.mobileExitAnimation(
                           exit,
                           animationHeader,
                           archiveMenuDigital,

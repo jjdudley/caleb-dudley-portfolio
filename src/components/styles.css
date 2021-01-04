@@ -45,8 +45,13 @@ body {
   font-style: italic;
   font-size: 1.5rem;
   font-size: 2.5rem;
+}
 
-  
+.mobile-hero-subcaption {
+  font-family: orpheuspro, serif;
+  font-weight: 400;
+  font-style: italic;
+  font-size: 1rem;
 }
 
 .hero-link {
@@ -344,6 +349,14 @@ section {
   display: inline-block;
 }
 
+#mobile-hero-subcaption-photo .photo-letter {
+  display: inline-block;
+}
+
+#mobile-hero-subcaption-video .video-letter {
+  display: inline-block;
+}
+
 .tl-edges {
   overflow: unset !important;
 }
@@ -384,8 +397,21 @@ section {
   z-index: 7000;
 }
 
+.home-layout-container-mobile{
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  max-height: 100vh;
+  z-index: 7000;
+}
+
 .mobile-animation-header {
   z-index: 9000 !important;
+  display: flex;
+  align-items: center;
+  
+  height: 22px;
 }
 
 .mobile-animation-header .letter {
@@ -395,6 +421,20 @@ section {
   font-size: 1.2rem;
   text-transform: uppercase;
   
+}
+
+.landing-animation-header .letter{
+  color: rgb(19, 19, 18);
+  display: inline-block;
+  font-size: 1.6rem;
+  text-transform: uppercase;
+  
+}
+
+.landing-animation-header {
+  
+  font-size: 1.6rem;
+  height: 32px;
 }
 
 /* .archive-menu-link .archive-menu-letter {
@@ -423,3 +463,33 @@ section {
   top: 0;
   left: 0;
 }
+
+.hero-opacity-wrapper-mobile {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(241, 241, 239);
+  background-color: rgb(241, 241, 239);
+  z-index: 1000;
+  width: 100%;
+  height: 100%;
+  
+}
+
+.hero-opacity-wrapper-desktop {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(241, 241, 239);
+  background-color: rgb(241, 241, 239);
+  z-index: 1000;
+  
+  
+
+  width: 50%;
+  height: 100vh;
+  
+}
+
