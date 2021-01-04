@@ -4,14 +4,7 @@ import styled from "styled-components"
 
 import Main1 from "../image-components/main-1"
 
-let HeroImageContainer = styled.div`
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-`
+
 // let KentContainer = styled.div`
 //   position: absolute;
 //   display: flex;
@@ -112,6 +105,15 @@ class HeroGallery extends Component {
   }
 
   render() {
+    let HeroImageContainer = styled.div`
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: ${this.props.imageWidth};
+  height: 100%;
+`
+
     const HeroRight = styled.div`
       position: relative;
       display: flex;
