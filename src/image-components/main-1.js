@@ -5,7 +5,6 @@ import styled from "styled-components";
 
 
 const Image = styled(Img)`
-  width: 400px;
   width: 100%;
   height: auto !important;
   margin-top: 10px;
