@@ -106,28 +106,24 @@ class HeroGallery extends Component {
 
   render() {
     let HeroImageContainer = styled.div`
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: ${this.props.imageWidth};
-  height: 100%;
+  
 `
 
     const HeroRight = styled.div`
-      position: relative;
+      position: ${this.props.position};
+      top: 0;
       display: flex;
       justify-content: center;
       align-items: center;
-      
       background-color: rgb(241, 241, 239);
       background-color: rgb(241, 241, 239);
       width: ${this.props.width};
+      height: ${this.props.height};
       z-index: 1000;
     `
     return (
       <HeroRight onClick={this.addToStack} className={this.props.heroGalleryContainer}>
-        <HeroImageContainer >
+        <HeroImageContainer className={this.props.heroImageContainerClass}>
           <Main1 />
         </HeroImageContainer>
 

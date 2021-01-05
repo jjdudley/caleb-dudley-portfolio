@@ -490,11 +490,26 @@ section {
   background-color: rgb(241, 241, 239);
   background-color: rgb(241, 241, 239);
   z-index: 1000;
-  
-  
-
   width: 50%;
   height: 100vh;
   
 }
 
+.hero-image-mobile {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+
+}
+
+.hero-image-desktop {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 400px;
+  height: 100%;
+}

@@ -832,11 +832,12 @@ export default class Home extends Component {
           )}
           <div className={this.state.mobileView ? "hero-opacity-wrapper-mobile" : "hero-opacity-wrapper-desktop"} >
           <HeroGallery
-            imageWidth={this.state.mobileView ? "300px" : "500px"}
+            position={this.state.mobileView ? "fixed" : "relative"}
+            heroImageContainerClass={this.state.mobileView ? "hero-image-mobile" : "hero-image-desktop"}
             heroGalleryContainer="hero-gallery-container"
             width={this.state.mobileView ? "100%" : "100%"}
             height={this.state.mobileView ? "100vh" : "100%"}
-            background={this.state.mobileView ? "none" : ""}
+           
           />
           </div>
           
