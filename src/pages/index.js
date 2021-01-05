@@ -18,7 +18,7 @@ const HeroContainer = styled.div`
   display: flex;
   margin: 0;
   width: 100%;
-  height: 100%;
+  min-height: 100%;
   justify-content: center;
 `;
 const HeroHeader = styled.div`
@@ -61,38 +61,6 @@ const MobileHeroSubcaption = styled.div`
   
 `;
 
-const OpacityMask = styled.div`
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  z-index: 2000;
-`;
-const EnterHereContainer = styled.div`
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  
-  z-index: 7000 !important;
-`;
-
-const EnterHere = styled.div`
-  display: flex;
-  font-size: 1.5rem;
-  padding: 20px;
-  color: rgb(241, 241, 239);
-  color: black;
-  border: 1px solid black;
-  z-index: 9000;
-  &:hover {
-    cursor: pointer;
-    text-decoration: underline;
-  }
-`;
 
 const HeroCenter = styled.div`
   display: flex;
@@ -111,7 +79,7 @@ const HeroLeftContainer = styled.div`
   justify-content: space-between;
   width: 50%;
   padding: 20px;
-  height: 100vh;
+  height: 100%;
 `;
 
 let HeaderContainer = styled.div`
@@ -167,6 +135,7 @@ const LayoutContainer = styled.div`
   flex-direction: column;
   justify-content: space-between;
   width: 100%;
+  height: 100%;
   z-index: 7000;
 `;
 
@@ -182,6 +151,8 @@ const OpacityFilter = styled.div`
 `;
 
 let MobileNavHeaderContainer = styled.div`
+  position: fixed;
+  top: 0;
   display: flex;
   margin: 0;
   width: 100%;
@@ -237,6 +208,8 @@ let MobileNavHeaderRight = styled.div`
 `;
 
 let MobileNavFooterContainer = styled.div`
+  position: fixed;
+  bottom: 0;
   display: flex;
   width: 100%;
   justify-content: space-between;
@@ -837,7 +810,6 @@ export default class Home extends Component {
             heroGalleryContainer="hero-gallery-container"
             width={this.state.mobileView ? "100%" : "100%"}
             height={this.state.mobileView ? "100vh" : "100%"}
-           
           />
           </div>
           
