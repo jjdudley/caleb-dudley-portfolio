@@ -809,7 +809,7 @@ export default class Home extends Component {
             heroImageContainerClass={this.state.mobileView ? "hero-image-mobile" : "hero-image-desktop"}
             heroGalleryContainer="hero-gallery-container"
             width={this.state.mobileView ? "100%" : "100%"}
-            height={this.state.mobileView ? "100vh" : "100%"}
+            height="100%"
           />
           </div>
           
