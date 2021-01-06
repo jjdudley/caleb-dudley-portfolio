@@ -18,7 +18,7 @@ const HeroContainer = styled.div`
   display: flex;
   margin: 0;
   width: 100%;
-  min-height: 100%;
+  height: 100%;
   justify-content: center;
 `;
 const HeroHeader = styled.div`
