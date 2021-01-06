@@ -180,7 +180,7 @@ let MobileNavHeaderLeft = styled.div`
 
 let MobileNavHeaderCenter = styled.div`
   position: absolute;
-  top: 6px;
+  top: 4px;
   width: 100vw;
   max-width: 100vw;
   display: flex;
