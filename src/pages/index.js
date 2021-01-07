@@ -245,7 +245,7 @@ export default class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      // mobileView: false,
+      mobileView: true,
       splashPage: true,
       animateEnter: true
     };
