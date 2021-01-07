@@ -128,6 +128,9 @@ table {
 }
 
 .hero-link-mobile {
+  font-family: orpheuspro, serif;
+  font-weight: 400;
+  font-style: regular;
   color: rgb(19, 19, 18);
   mix-blend-mode: difference !important;
   text-decoration: none;
@@ -444,6 +447,7 @@ section {
   align-items: center;
   
   height: 22px;
+  
 }
 
 .mobile-animation-header .letter {
@@ -464,9 +468,12 @@ section {
 }
 
 .landing-animation-header {
-  
+  font-family: orpheuspro, serif;
+  font-weight: 400;
+  font-style: regular;
   font-size: 1.6rem;
-  height: 32px;
+  height: 24px;
+  
 }
 
 /* .archive-menu-link .archive-menu-letter {
