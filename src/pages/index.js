@@ -51,16 +51,14 @@ const MobileHeroSubcaption = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 170px;
-  
+
   height: 22px;
   font-family: orpheuspro, serif;
   font-weight: 400;
   font-style: italic;
   font-size: 1.5rem;
   font-size: 16px;
-  
 `;
-
 
 const HeroCenter = styled.div`
   display: flex;
@@ -157,7 +155,7 @@ let MobileNavHeaderContainer = styled.div`
   margin: 0;
   width: 100%;
   justify-content: space-between;
-  
+
   margin-top: 10px;
   z-index: 9000;
 `;
@@ -166,7 +164,7 @@ let MobileNavHeaderLeft = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  
+
   z-index: 2000;
   height: 100%;
   width: 100px;
@@ -190,9 +188,8 @@ let MobileNavHeaderCenter = styled.div`
   justify-content: center;
   align-items: center;
   font-size: 1.2rem;
-  
-  margin: 0;
 
+  margin: 0;
 `;
 
 let MobileNavHeaderRight = styled.div`
@@ -201,7 +198,7 @@ let MobileNavHeaderRight = styled.div`
   flex-direction: column;
   align-items: flex-end;
   z-index: 2000;
- margin-right: 10px;
+  margin-right: 10px;
   &:hover {
     cursor: pointer;
   }
@@ -245,7 +242,7 @@ export default class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      mobileView: true,
+      mobileView: false,
       splashPage: true,
       animateEnter: true
     };
@@ -286,7 +283,6 @@ export default class Home extends Component {
     window.addEventListener("resize", this.handleResize.bind(this));
     if (!this.state.mobileView) {
       this.enterAnimation();
- 
     } else {
       this.mobileEnterAnimation();
     }
@@ -299,7 +295,7 @@ export default class Home extends Component {
 
   enterAnimation = () => {
     let animationHeader = document.querySelector(".animation-header");
-  
+
     let animationHeaderSubPhoto = document.querySelector(
       "#hero-subcaption-photo"
     );
@@ -322,7 +318,7 @@ export default class Home extends Component {
       /\S/g,
       "<span class='video-letter'>$&</span>"
     );
- 
+
     anime.timeline().add({
       targets: ".animation-header .letter",
       translateX: [40, 0],
@@ -358,13 +354,9 @@ export default class Home extends Component {
     });
   };
 
-
-
-
-
   mobileEnterAnimation = () => {
     let animationHeader = document.querySelector(".landing-animation-header");
-  
+
     let animationHeaderSubPhoto = document.querySelector(
       "#mobile-hero-subcaption-photo"
     );
@@ -378,7 +370,6 @@ export default class Home extends Component {
       "<span class='letter'>$&</span>"
     );
 
-    
     animationHeaderSubPhoto.innerHTML = animationHeaderSubPhoto.textContent.replace(
       /\S/g,
       "<span class='photo-letter'>$&</span>"
@@ -423,11 +414,7 @@ export default class Home extends Component {
       duration: 1100,
       delay: 1200
     });
-
   };
-
-
-
 
   exitAnimation = (exit, selectAnimationHeader) => {
     // this.setState({ animateEnter: false })
@@ -533,10 +520,9 @@ export default class Home extends Component {
       duration: 800,
       easing: "linear",
       opacity: 0,
-      delay: 0,
+      delay: 0
     });
   };
-
 
   exitHeroGallery = (exit, item) => {
     // return anime.timeline().add({
@@ -551,307 +537,297 @@ export default class Home extends Component {
   render() {
     console.log("INDEX IS RENDERINGGGGGG");
     return (
-      <LayoutContainer
-        // layoutBackground={this.state.splashPage ? "none" : "rgb(241, 241, 239)"}
-        style={{
-          backgroundColor: this.state.splashPage ? "none" : "rgb(241, 241, 239)"
-        }}
-        className={
-          this.state.mobileView ? "home-layout-container-mobile" : ""
-        }
-      >
-        {/* {this.state.splashPage ? (
-          <>
-            <EnterHereContainer>
-              <EnterHere onClick={this.enterSite}>Enter Here</EnterHere>
-            </EnterHereContainer>
-            {/* <VideoBg className="hero-video-background">
-              <VideoBg.Source src={mp4} type="video/mp4" />
-            </VideoBg> */}
-        {/* </> */}
-        {/* ) : ( */}
-
-          <MobileNavHeaderContainer style={{display: this.state.mobileView ? "" : "none"}}>
-            <MobileNavHeaderLeft>
-            <TransitionLink
-                    className="hero-link-mobile"
-                    to="/"
-                    exit={{
-                      length: 2.2,
-                      trigger: ({ exit, node }) => {
-                        let animationHeader = node.querySelector(".landing-animation-header");
-                        this.mobileExitAnimation(exit, animationHeader);
-                      }
-                    }}
-                    entry={{
-                      delay: 2.2,
-                      length: 0
-                    }}
+      <>
+        {this.state.mobileView ? (
+          <LayoutContainer className="home-layout-container-mobile">
+            <MobileNavHeaderContainer>
+              <MobileNavHeaderLeft>
+                <TransitionLink
+                  className="hero-link-mobile"
+                  to="/"
+                  exit={{
+                    length: 2.2,
+                    trigger: ({ exit, node }) => {
+                      let animationHeader = node.querySelector(
+                        ".landing-animation-header"
+                      );
+                      this.mobileExitAnimation(exit, animationHeader);
+                    }
+                  }}
+                  entry={{
+                    delay: 2.2,
+                    length: 0
+                  }}
+                >
+                  Home
+                </TransitionLink>
+              </MobileNavHeaderLeft>
+              <MobileNavHeaderCenter>
+                <div className="landing-animation-header">
+                  CALEB&nbsp;DUDLEY
+                </div>
+                <MobileHeroSubcaption>
+                  <h3
+                    id="mobile-hero-subcaption-photo"
+                    className="mobile-hero-subcaption"
                   >
-                    Home
-                  </TransitionLink>
-            </MobileNavHeaderLeft>
-            <MobileNavHeaderCenter>
-              <div className="landing-animation-header">CALEB&nbsp;DUDLEY</div>
-            <MobileHeroSubcaption>
-                  <h3 id="mobile-hero-subcaption-photo" className="mobile-hero-subcaption">
                     Photo
                   </h3>
 
-                  <h3 id="mobile-hero-subcaption-amp" className="mobile-hero-subcaption">
+                  <h3
+                    id="mobile-hero-subcaption-amp"
+                    className="mobile-hero-subcaption"
+                  >
                     &
                   </h3>
 
-                  <h3 id="mobile-hero-subcaption-video" className="mobile-hero-subcaption">
+                  <h3
+                    id="mobile-hero-subcaption-video"
+                    className="mobile-hero-subcaption"
+                  >
                     Video
                   </h3>
-                </MobileHeroSubcaption></MobileNavHeaderCenter>
-            <MobileNavHeaderRight>
-            <TransitionLink
-                    className="hero-link-mobile"
-                    to="/archive"
-                    exit={{
-                      length: 1.8,
-                      trigger: ({ exit, node }) => {
-                        let animationHeader = node.querySelector(".landing-animation-header");
-                        this.mobileExitAnimation(exit, animationHeader);
-                      }
-                    }}
-                    entry={{
-                      delay: 1.8,
-                      length: 0
-                    }}
-                  >
-                    Archive
-                  </TransitionLink>
-                  <TransitionLink
-                    className="hero-link-mobile"
-                    to="/fine-art"
-                    exit={{
-                      length: 1.8,
-                      trigger: ({ exit, node }) => {
-                        let animationHeader = node.querySelector(".landing-animation-header");
-                        this.mobileExitAnimation(exit, animationHeader);
-                      }
-                    }}
-                    entry={{
-                      delay: 1.8,
-                      length: 0
-                    }}
-                  >
-                    Fine Art
-                  </TransitionLink>
-            </MobileNavHeaderRight>
-          </MobileNavHeaderContainer>
-          
-        <HeroContainer>
-          {this.state.mobileView ? (
-            // <MobileNav heading={"Caleb Dudley"} />
-            ""
-          ) : (
-            <HeroLeftContainer
-              style={{ display: this.state.mobileView ? "none" : "" }}
-            >
-              <HeaderContainer>
-                <HeaderLeft>
-                  {/* <TransitionLink
-          to="/"
-          exit={{
-            trigger: () => this.props.animateExit,
-            length: 1
-          }}
-          entry={{
-            delay: 0.6
-          }}
-          >Home</TransitionLink> */}
+                </MobileHeroSubcaption>
+              </MobileNavHeaderCenter>
+              <MobileNavHeaderRight>
+                <TransitionLink
+                  className="hero-link-mobile"
+                  to="/archive"
+                  exit={{
+                    length: 1.8,
+                    trigger: ({ exit, node }) => {
+                      let animationHeader = node.querySelector(
+                        ".landing-animation-header"
+                      );
+                      this.mobileExitAnimation(exit, animationHeader);
+                    }
+                  }}
+                  entry={{
+                    delay: 1.8,
+                    length: 0
+                  }}
+                >
+                  Archive
+                </TransitionLink>
+                <TransitionLink
+                  className="hero-link-mobile"
+                  to="/fine-art"
+                  exit={{
+                    length: 1.8,
+                    trigger: ({ exit, node }) => {
+                      let animationHeader = node.querySelector(
+                        ".landing-animation-header"
+                      );
+                      this.mobileExitAnimation(exit, animationHeader);
+                    }
+                  }}
+                  entry={{
+                    delay: 1.8,
+                    length: 0
+                  }}
+                >
+                  Fine Art
+                </TransitionLink>
+              </MobileNavHeaderRight>
+            </MobileNavHeaderContainer>
 
-                  <Link className="hero-link" to="/">
-                    Home
-                  </Link>
-                </HeaderLeft>
-                <HeaderRight>
-                  <TransitionLink
-                    className="hero-link"
-                    to="/archive"
-                    exit={{
-                      length: 1.8,
-                      trigger: ({ exit, node }) => {
-                        console.log("first log below");
-                        let animationHeader = node.querySelector(
-                          ".animation-header"
-                        );
-                        console.log(animationHeader);
-                        // let exitImage = node.querySelector(".hero-image-container")
-                        let exitImage = document.querySelector(
-                          ".hero-gallery-container"
-                        );
+            <HeroContainer>
+              <div className="hero-opacity-wrapper-mobile">
+                <HeroGallery
+                  position="fixed"
+                  heroImageContainerClass="hero-image-mobile"
+                  heroGalleryContainer="hero-gallery-container"
+                  width="100%"
+                  height="100%"
+                />
+              </div>
+            </HeroContainer>
 
-                        this.exitHeroGallery(exit, exitImage);
-                        this.exitAnimation(exit, animationHeader);
-                      }
-                    }}
-                    entry={{
-                      delay: 1.8,
-                      length: 0
-                    }}
-                  >
-                    Archive
-                  </TransitionLink>
-                  {/* <Link className="hero-link" to="/archive">
-                    Archive
-                  </Link> */}
+            <MobileNavFooterContainer>
+              <MobileNavFooterLeft>
+                {" "}
+                <a
+                  href="https://www.instagram.com/caleb_dudley/"
+                  target="_blank"
+                  className="hero-link-mobile"
+                >
+                  Instagram
+                </a>
+                <Link className="hero-link-mobile">Email</Link>
+              </MobileNavFooterLeft>
+              <MobileNavFooterCenter className="hero-link-mobile">
+                Brooklyn, NY
+              </MobileNavFooterCenter>
+              <MobileNavFooterRight>
+                <TransitionLink
+                  className="hero-link-mobile"
+                  to="/about"
+                  exit={{
+                    length: 1.8,
+                    trigger: ({ exit, node }) => {
+                      let animationHeader = node.querySelector(
+                        ".landing-animation-header"
+                      );
+                      this.mobileExitAnimation(exit, animationHeader);
+                    }
+                  }}
+                  entry={{
+                    delay: 1.8,
+                    length: 0
+                  }}
+                >
+                  About
+                </TransitionLink>
+                <Link className="hero-link-mobile">Contact</Link>
+              </MobileNavFooterRight>
+            </MobileNavFooterContainer>
+          </LayoutContainer>
+        ) : (
+          <LayoutContainer>
+            <HeroContainer>
+              <HeroLeftContainer>
+                <HeaderContainer>
+                  <HeaderLeft>
+                    <Link className="hero-link" to="/">
+                      Home
+                    </Link>
+                  </HeaderLeft>
+                  <HeaderRight>
+                    <TransitionLink
+                      className="hero-link"
+                      to="/archive"
+                      exit={{
+                        length: 1.8,
+                        trigger: ({ exit, node }) => {
+                          console.log("first log below");
+                          let animationHeader = node.querySelector(
+                            ".animation-header"
+                          );
+                          console.log(animationHeader);
+                          // let exitImage = node.querySelector(".hero-image-container")
+                          let exitImage = document.querySelector(
+                            ".hero-gallery-container"
+                          );
 
-                  <TransitionLink
-                    className="hero-link"
-                    to="/fine-art"
-                    exit={{
-                      length: 1.8,
-                      trigger: ({ exit, node }) => {
-                        console.log("first log below");
-                        let animationHeader = node.querySelector(
-                          ".animation-header"
-                        );
-                        console.log(animationHeader);
-                        // let exitImage = node.querySelector(".hero-image-container")
-                        let exitImage = document.querySelector(
-                          ".hero-gallery-container"
-                        );
+                          this.exitHeroGallery(exit, exitImage);
+                          this.exitAnimation(exit, animationHeader);
+                        }
+                      }}
+                      entry={{
+                        delay: 1.8,
+                        length: 0
+                      }}
+                    >
+                      Archive
+                    </TransitionLink>
 
-                        this.exitHeroGallery(exit, exitImage);
-                        this.exitAnimation(exit, animationHeader);
-                      }
-                    }}
-                    entry={{
-                      delay: 1.8,
-                      length: 0
-                    }}
-                  >
-                    Fine Art
-                  </TransitionLink>
-                  {/* <Link className="hero-link" to="/fine-art">
-                    Fine Art
-                  </Link> */}
-                </HeaderRight>
-              </HeaderContainer>
+                    <TransitionLink
+                      className="hero-link"
+                      to="/fine-art"
+                      exit={{
+                        length: 1.8,
+                        trigger: ({ exit, node }) => {
+                          console.log("first log below");
+                          let animationHeader = node.querySelector(
+                            ".animation-header"
+                          );
+                          console.log(animationHeader);
+                          // let exitImage = node.querySelector(".hero-image-container")
+                          let exitImage = document.querySelector(
+                            ".hero-gallery-container"
+                          );
 
-              <HeroCenter>
-                {/* <HeroHeader>CALEB DUDLEY</HeroHeader>
-            <HeroSubcaption>
-              <h3 className="hero-subcaption">Photo</h3>
+                          this.exitHeroGallery(exit, exitImage);
+                          this.exitAnimation(exit, animationHeader);
+                        }
+                      }}
+                      entry={{
+                        delay: 1.8,
+                        length: 0
+                      }}
+                    >
+                      Fine Art
+                    </TransitionLink>
+                  </HeaderRight>
+                </HeaderContainer>
 
-              <h3 className="hero-subcaption">&</h3>
+                <HeroCenter>
+                  <HeroHeader>
+                    <div className="animation-header">CALEB DUDLEY</div>
+                  </HeroHeader>
+                  <HeroSubcaption>
+                    <h3 id="hero-subcaption-photo" className="hero-subcaption">
+                      Photo
+                    </h3>
 
-              <h3 className="hero-subcaption">Video</h3>
-            </HeroSubcaption> */}
-                {/* {children} */}
-                <HeroHeader>
-                  <div className="animation-header">CALEB DUDLEY</div>
-                </HeroHeader>
-                <HeroSubcaption>
-                  <h3 id="hero-subcaption-photo" className="hero-subcaption">
-                    Photo
-                  </h3>
+                    <h3 id="hero-subcaption-amp" className="hero-subcaption">
+                      &
+                    </h3>
 
-                  <h3 id="hero-subcaption-amp" className="hero-subcaption">
-                    &
-                  </h3>
+                    <h3 id="hero-subcaption-video" className="hero-subcaption">
+                      Video
+                    </h3>
+                  </HeroSubcaption>
+                </HeroCenter>
+                <FooterContainer>
+                  <FooterLeft>
+                    <a
+                      href="https://www.instagram.com/caleb_dudley/"
+                      target="_blank"
+                      className="hero-link"
+                    >
+                      Instagram
+                    </a>
+                    <Link className="hero-link" to="/">
+                      Email
+                    </Link>
+                  </FooterLeft>
+                  <FooterCenter>Brooklyn, NY</FooterCenter>
+                  <FooterRight>
+                    <TransitionLink
+                      className="hero-link"
+                      to="/about"
+                      exit={{
+                        length: 1.8,
+                        trigger: ({ exit, node }) => {
+                          let animationHeader = node.querySelector(
+                            ".animation-header"
+                          );
+                          this.exitAnimation(exit, animationHeader);
+                        }
+                      }}
+                      entry={{
+                        delay: 1.8,
+                        length: 0
+                      }}
+                    >
+                      About
+                    </TransitionLink>
 
-                  <h3 id="hero-subcaption-video" className="hero-subcaption">
-                    Video
-                  </h3>
-                </HeroSubcaption>
-              </HeroCenter>
-              <FooterContainer>
-                <FooterLeft>
-                  <a
-                    href="https://www.instagram.com/caleb_dudley/"
-                    target="_blank"
-                    className="hero-link"
-                  >
-                    Instagram
-                  </a>
-                  <Link className="hero-link" to="/">
-                    Email
-                  </Link>
-                </FooterLeft>
-                <FooterCenter>Brooklyn, NY</FooterCenter>
-                <FooterRight>
-                  <TransitionLink
-                    className="hero-link"
-                    to="/about"
-                    exit={{
-                      length: 1.8,
-                      trigger: ({ exit, node }) => {
-                        let animationHeader = node.querySelector(
-                          ".animation-header"
-                        );
-                        this.exitAnimation(exit, animationHeader);
-                      }
-                    }}
-                    entry={{
-                      delay: 1.8,
-                      length: 0
-                    }}
-                  >
-                    About
-                  </TransitionLink>
-
-                  <Link className="hero-link" to="/">
-                    Contact
-                  </Link>
-                </FooterRight>
-              </FooterContainer>
-            </HeroLeftContainer>
-          )}
-          <div className={this.state.mobileView ? "hero-opacity-wrapper-mobile" : "hero-opacity-wrapper-desktop"} >
-          <HeroGallery
-            position={this.state.mobileView ? "fixed" : "relative"}
-            heroImageContainerClass={this.state.mobileView ? "hero-image-mobile" : "hero-image-desktop"}
-            heroGalleryContainer="hero-gallery-container"
-            width={this.state.mobileView ? "100%" : "100%"}
-            height="100%"
-          />
-          </div>
-          
-          {/* <OpacityFilter className="opacity-filter" /> */}
-        </HeroContainer>
-        {/* )} */}
-
-        <MobileNavFooterContainer style={{display: this.state.mobileView ? "" : "none"}}>
-            <MobileNavFooterLeft>
-              {" "}
-              <a
-                href="https://www.instagram.com/caleb_dudley/"
-                target="_blank"
-                className="hero-link-mobile"
+                    <Link className="hero-link" to="/">
+                      Contact
+                    </Link>
+                  </FooterRight>
+                </FooterContainer>
+              </HeroLeftContainer>
+              )}
+              <div
+                className="hero-opacity-wrapper-desktop"
+                
               >
-                Instagram
-              </a>
-              <Link className="hero-link-mobile">Email</Link>
-            </MobileNavFooterLeft>
-            <MobileNavFooterCenter className="hero-link-mobile">Brooklyn, NY</MobileNavFooterCenter>
-            <MobileNavFooterRight>
-            <TransitionLink
-                    className="hero-link-mobile"
-                    to="/about"
-                    exit={{
-                      length: 1.8,
-                      trigger: ({ exit, node }) => {
-                        let animationHeader = node.querySelector(".landing-animation-header");
-                        this.mobileExitAnimation(exit, animationHeader);
-                      }
-                    }}
-                    entry={{
-                      delay: 1.8,
-                      length: 0
-                    }}
-                  >
-                    About
-                  </TransitionLink>
-              <Link className="hero-link-mobile">Contact</Link>
-            </MobileNavFooterRight>
-          </MobileNavFooterContainer>
-      </LayoutContainer>
+                <HeroGallery
+                  position= "relative"
+                  heroImageContainerClass="hero-image-desktop"
+                  
+                  heroGalleryContainer="hero-gallery-container"
+                  width="100%"
+                  height="100%"
+                />
+              </div>
+            </HeroContainer>
+          </LayoutContainer>
+        )}
+      </>
     );
   }
 }
