@@ -182,7 +182,7 @@ let MobileNavHeaderContainer = styled.div`
     `
     let MobileNavFooterContainer = styled.div`
     position: sticky;
-    top: 91.2%;
+    bottom: 10px;
     display: flex;
     width: 100%;
     justify-content: space-between;
@@ -219,11 +219,15 @@ let MobileNavHeaderContainer = styled.div`
     `
     
     const LayoutContainer = styled.div`
+    position: sticky;
+    top: 0;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     width: 100%;
+   
     z-index: 7000;
+    
     `;
 
     const OpacityMaskEnter = styled.div`
@@ -441,6 +445,7 @@ export default class Analog extends Component {
   
   
     return (
+      <>
       <LayoutContainer>
         
           <MobileNavHeaderContainer style={{display: this.state.mobileView ? "" : "none"}}>
@@ -501,40 +506,7 @@ export default class Analog extends Component {
                   </TransitionLink>
             </MobileNavHeaderRight>
           </MobileNavHeaderContainer>
-          <MobileNavFooterContainer style={{display: this.state.mobileView ? "" : "none"}}>
-            <MobileNavFooterLeft>
-              {" "}
-              <a
-                href="https://www.instagram.com/caleb_dudley/"
-                target="_blank"
-                className="hero-link-mobile"
-              >
-                Instagram
-              </a>
-              <Link className="hero-link-mobile">Email</Link>
-            </MobileNavFooterLeft>
-            <MobileNavFooterCenter className="hero-link-mobile">Brooklyn, NY</MobileNavFooterCenter>
-            <MobileNavFooterRight>
-            <TransitionLink
-                    className="hero-link-mobile"
-                    to="/about"
-                    exit={{
-                      length: 1.8,
-                      trigger: ({ exit, node }) => {
-                        let animationHeader = node.querySelector(".mobile-animation-header");
-                        this.mobileExitAnimation(exit, animationHeader);
-                      }
-                    }}
-                    entry={{
-                      delay: 1.8,
-                      length: 0
-                    }}
-                  >
-                    About
-                  </TransitionLink>
-              <Link className="hero-link-mobile">Contact</Link>
-            </MobileNavFooterRight>
-          </MobileNavFooterContainer>
+          
 
           <AnalogContainer
            className={this.state.mobileView ? "analog-mobile-container" : ""}
@@ -661,6 +633,41 @@ export default class Analog extends Component {
         <OpacityMaskEnter style={{"opacity": this.state.opacityMaskEnterVisible ? "1" : "0", "width": this.state.mobileView ? "100vw" : "", "left": this.state.mobileView ? "0" : "", display: this.state.opacityMaskEnterDisplayed? "" : "none"}}/>
         <OpacityMaskExit className="opacity-mask-exit" style={{ "width": this.state.mobileView ? "100vw" : "", "left": this.state.mobileView ? "0" : "", display: this.state.opacityMaskExitDisplayed? "" : "none"}}/>
       </LayoutContainer>
+      <MobileNavFooterContainer style={{display: this.state.mobileView ? "" : "none"}}>
+      <MobileNavFooterLeft>
+        {" "}
+        <a
+          href="https://www.instagram.com/caleb_dudley/"
+          target="_blank"
+          className="hero-link-mobile"
+        >
+          Instagram
+        </a>
+        <Link className="hero-link-mobile">Email</Link>
+      </MobileNavFooterLeft>
+      <MobileNavFooterCenter className="hero-link-mobile">Brooklyn, NY</MobileNavFooterCenter>
+      <MobileNavFooterRight>
+      <TransitionLink
+              className="hero-link-mobile"
+              to="/about"
+              exit={{
+                length: 1.8,
+                trigger: ({ exit, node }) => {
+                  let animationHeader = node.querySelector(".mobile-animation-header");
+                  this.mobileExitAnimation(exit, animationHeader);
+                }
+              }}
+              entry={{
+                delay: 1.8,
+                length: 0
+              }}
+            >
+              About
+            </TransitionLink>
+        <Link className="hero-link-mobile">Contact</Link>
+      </MobileNavFooterRight>
+    </MobileNavFooterContainer>
+    </>
     )
   }
 }
