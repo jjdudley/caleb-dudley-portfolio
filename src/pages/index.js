@@ -150,7 +150,7 @@ const OpacityFilter = styled.div`
 `;
 
 let MobileNavHeaderContainer = styled.div`
-  position: fixed;
+  position: sticky;
   top: 0;
   display: flex;
   margin: 0;
