@@ -394,6 +394,7 @@ section {
 
 .tl-wrapper {
   height: 100% !important;
+  overflow: auto;
 }
 
 #fine-art-header {
@@ -442,10 +443,13 @@ section {
 }
 
 .mobile-animation-header {
+  font-family: orpheuspro, serif;
+  font-weight: 400;
+  font-style: regular;
   z-index: 9000 !important;
   display: flex;
   align-items: center;
-  
+  margin-top: 10px;
   height: 22px;
   
 }

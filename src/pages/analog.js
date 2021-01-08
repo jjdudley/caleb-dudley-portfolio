@@ -122,7 +122,7 @@ let FooterRight = styled.div`
 
 let MobileNavHeaderContainer = styled.div`
     position: sticky;
-    top: 10px;
+    top: 0;
     display: flex;
     margin: 0;
     width: 100%;
@@ -446,9 +446,7 @@ export default class Analog extends Component {
   
     return (
       <>
-      <LayoutContainer>
-        
-          <MobileNavHeaderContainer style={{display: this.state.mobileView ? "" : "none"}}>
+      <MobileNavHeaderContainer style={{display: this.state.mobileView ? "" : "none"}}>
             <MobileNavHeaderLeft>
             <TransitionLink
                     className="hero-link-mobile"
@@ -506,6 +504,9 @@ export default class Analog extends Component {
                   </TransitionLink>
             </MobileNavHeaderRight>
           </MobileNavHeaderContainer>
+      <LayoutContainer>
+        
+          
           
 
           <AnalogContainer
