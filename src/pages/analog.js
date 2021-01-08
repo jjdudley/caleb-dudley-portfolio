@@ -446,6 +446,8 @@ export default class Analog extends Component {
   
     return (
       <>
+      
+      <LayoutContainer>
       <MobileNavHeaderContainer style={{display: this.state.mobileView ? "" : "none"}}>
             <MobileNavHeaderLeft>
             <TransitionLink
@@ -504,8 +506,6 @@ export default class Analog extends Component {
                   </TransitionLink>
             </MobileNavHeaderRight>
           </MobileNavHeaderContainer>
-      <LayoutContainer>
-        
           
           
 
