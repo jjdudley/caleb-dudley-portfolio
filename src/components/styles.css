@@ -394,7 +394,7 @@ section {
 
 .tl-wrapper {
   height: 100% !important;
- 
+  
 }
 
 #fine-art-header {
@@ -449,7 +449,6 @@ section {
   z-index: 9000 !important;
   display: flex;
   align-items: center;
-  margin-top: 10px;
   height: 22px;
   
 }
@@ -549,4 +548,8 @@ section {
   height: 100%;
   width: 400px;
   height: 100%;
+}
+
+.place-holder {
+  height: 100vh;
 }

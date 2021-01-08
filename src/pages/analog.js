@@ -126,11 +126,11 @@ let MobileNavHeaderContainer = styled.div`
     display: flex;
     margin: 0;
     width: 100%;
-   
+    align-items: center;
     justify-content: space-between;
-    padding: 0 10px;
+    padding: 10px;
     z-index: 9000;
-
+   
     `
 
 //     let MobileNavHeaderContainer = styled.div`
@@ -169,6 +169,7 @@ let MobileNavHeaderContainer = styled.div`
     align-items: center;
     font-size: 1.2rem;
     text-transform: uppercase;
+    
     `
     
     let MobileNavHeaderRight = styled.div`
@@ -627,7 +628,7 @@ export default class Analog extends Component {
                   ? "gallery-mobile"
                   : "gallery-desktop"
               }
-            /> : ""} 
+            /> : <div className="place-holder"></div>} 
            </GalleryRight>
     
         </AnalogContainer>
