@@ -219,7 +219,7 @@ let MobileNavHeaderContainer = styled.div`
     `
     
     const LayoutContainer = styled.div`
-    position: sticky;
+    
     top: 0;
     display: flex;
     flex-direction: column;
