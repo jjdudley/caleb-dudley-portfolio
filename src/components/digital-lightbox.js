@@ -16,6 +16,7 @@ export default class Lightbox extends Component {
     this.state = {
       showLightbox: false,
       selectedImage: null,
+      scrollPosition: null
     }
   }
 
@@ -41,7 +42,7 @@ export default class Lightbox extends Component {
     `
     return (
       <Fragment>
-        <LightboxContainer className={this.props.name}>
+        <LightboxContainer id="lightbox-container" className={this.props.name}>
           {digitalImages.map(image => (
             <PreviewButton
               key={
@@ -49,7 +50,9 @@ export default class Lightbox extends Component {
               }
               type="button"
               onClick={() => {
-                this.setState({ showLightbox: true, selectedImage: image })
+                let lightboxContainer = document.querySelector("#lightbox-container")
+                let scrollPosition = lightboxContainer.scrollTop
+                this.setState({ showLightbox: true, selectedImage: image, scrollPosition: scrollPosition })
               }}
             >
               <div className="test-container-div" 
@@ -67,7 +70,27 @@ export default class Lightbox extends Component {
           ))}
         </LightboxContainer>
         {showLightbox && (
-          <Dialog className="dialog-box-container">
+          // <Dialog className="dialog-box-container">
+          //   <div className="dialog-box">
+          //     <Img
+          //       fluid={
+          //         selectedImage.node.frontmatter.galleryImage.childImageSharp
+          //           .fluid
+          //       }
+          //     />
+          //   </div>
+          //   <div className="caption-div">
+          //     {selectedImage.node.frontmatter.caption}
+          //   </div>
+          //   <button
+          //    className="close-dialog-button"
+          //     type="button"
+          //     onClick={() => this.setState({ showLightbox: false })}
+          //   >
+          //     Close
+          //   </button>
+          // </Dialog>
+          <div id="lightbox-container-test" style={{top: this.state.scrollPosition}}>
             <div className="dialog-box">
               <Img
                 fluid={
@@ -84,9 +107,9 @@ export default class Lightbox extends Component {
               type="button"
               onClick={() => this.setState({ showLightbox: false })}
             >
-              Close
+             
             </button>
-          </Dialog>
+            </div>
         )}
       </Fragment>
     )

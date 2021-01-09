@@ -2,6 +2,9 @@
   box-sizing: border-box;
 }
 
+html {
+  overflow-x: hidden;
+}
 body,
 html {
   margin: 0;
@@ -12,6 +15,8 @@ html {
   font-weight: 400;
   font-style: normal;
 }
+
+
 
 body {
   background-color: rgb(19, 19, 18);
@@ -135,7 +140,7 @@ table {
   mix-blend-mode: difference !important;
   text-decoration: none;
   padding: 3px 0;
-  z-index: 9000;
+  z-index: 7000;
 }
 
 /* .hero-link-mobile-test {
@@ -185,10 +190,6 @@ table {
   text-decoration: none;
 }
 
-.mobile-archive-menu-link:hover {
-  text-decoration: underline;
-}
-
 
 
 /* /////////////////////////////////////////////////*/
@@ -204,9 +205,14 @@ table {
   height: 100%;
 } 
 
+/* [data-focus-guard] {
+ 
+} */
 
 [data-reach-dialog-overlay] {
-  position: fixed !important;
+  /* position: fixed !important;
+  top: 0 !important; */
+  position: sticky !important;
   top: 0 !important;
   display: flex;
   width: 100% !important;
@@ -215,11 +221,13 @@ table {
   align-content: center !important;
   background-color: rgb(241, 241, 239) !important;
   z-index: 9000 !important;
+  background: transparent !important;
 }
 
 .dialog-box {
-  width: 400px !important;
+  width: 94% !important;
   height: auto !important;
+  
 }
 
 .dialog-box-container {
@@ -230,7 +238,8 @@ table {
   flex-direction: column !important;
  justify-content: center !important;
  align-items: center !important;
-  background-color: rgb(241, 241, 239) !important;
+  
+  background: transparent !important;
   width: 100% !important;
   height: 100% !important;
   max-width: 100% !important;
@@ -249,9 +258,9 @@ table {
 
 .close-dialog-button {
   position: absolute !important;
-  top: 0 !important;
-  background-color: transparent;
-  height: 100% !important;
+  /* top: 0 !important; */
+  background: transparent !important;
+  height: 100vh !important;
   width: 100% !important;
   z-index: 9000 !important;
   outline: none;
@@ -261,6 +270,21 @@ table {
 .close-dialog-button:hover {
   outline: none;
 }
+
+#lightbox-container-test {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  background-color: rgb(241, 241, 239);
+  z-index: 8000;
+  
+}
+
+
 
 
 .gallery-desktop {
@@ -284,10 +308,10 @@ table {
 .digital-gallery-mobile {
   grid-template-columns: repeat(1, 1fr);
       grid-auto-rows: auto;
-      grid-gap: 240px 80px;
+      grid-gap: 220px 80px;
       width: 100%;
       padding-top: 0;
-      padding-top: 35%;
+      padding-top: 50%;
       padding-bottom: 60%;
 }
 
