@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "gatsby";
 import "../components/styles.css";
 import styled from "styled-components";
-import ArchiveMenu from "../components/archive-menu";
+// import ArchiveMenu from "../components/archive-menu";
 import anime from "animejs/lib/anime.es.js";
 import TransitionLink from "gatsby-plugin-transition-link";
 
@@ -104,10 +104,11 @@ let MobileNavHeaderContainer = styled.div`
   display: flex;
   margin: 0;
   width: 100%;
+  align-items: center;
   justify-content: space-between;
   padding: 10px;
   z-index: 9000;
-
+  border: 1px solid black;
 `;
 
 let MobileNavHeaderLeft = styled.div`
@@ -115,7 +116,7 @@ let MobileNavHeaderLeft = styled.div`
   flex-direction: column;
   align-items: flex-start;
   z-index: 2000;
-  height: 100%;
+  
   width: 100px;
   justify-content: center;
   margin: 0;
@@ -133,6 +134,7 @@ let MobileNavHeaderCenter = styled.div`
   align-items: center;
   font-size: 1.2rem;
   text-transform: uppercase;
+  
 `;
 
 let MobileNavHeaderRight = styled.div`
@@ -527,8 +529,8 @@ export default class Archive extends Component {
                     Home
                   </TransitionLink>
           </MobileNavHeaderLeft>
-          <MobileNavHeaderCenter>
-            <div className="mobile-animation-header">ARCHIVE</div>
+          <MobileNavHeaderCenter className="mobile-animation-header">
+            ARCHIVE
           </MobileNavHeaderCenter>
           <MobileNavHeaderRight>
             <div className="hero-link-mobile">Archive</div>

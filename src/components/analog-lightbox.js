@@ -53,9 +53,6 @@ export default class Lightbox extends Component {
               }}
             >
               <Img
-              
-                fadeIn="true"
-                durationFadeIn="3000"
                 fluid={
                   image.node.frontmatter.galleryImage.childImageSharp.fluid
                 }

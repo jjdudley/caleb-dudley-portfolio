@@ -52,11 +52,17 @@ export default class Lightbox extends Component {
                 this.setState({ showLightbox: true, selectedImage: image })
               }}
             >
+              <div className="test-container-div" 
+              style={{marginRight: image.node.frontmatter.mobileMarginRight}}
+              >
               <Img
+                style={{width: image.node.frontmatter.mobileWidth}}
                 fluid={
                   image.node.frontmatter.galleryImage.childImageSharp.fluid
                 }
               />
+              </div>
+              
             </PreviewButton>
           ))}
         </LightboxContainer>

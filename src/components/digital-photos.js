@@ -13,6 +13,8 @@ const DigitalPhotos = (props) => (
                             frontmatter {
                                 path
                                 caption
+                                mobileWidth
+                                mobileMarginRight
                                 galleryImage {
                                     childImageSharp {
                                         fluid {

@@ -130,7 +130,7 @@ let MobileNavHeaderContainer = styled.div`
     justify-content: space-between;
     padding: 10px;
     z-index: 9000;
-   
+    
     `
 
 //     let MobileNavHeaderContainer = styled.div`
@@ -164,7 +164,6 @@ let MobileNavHeaderContainer = styled.div`
     let MobileNavHeaderCenter = styled.div`
     display: flex;
     color: rgb(19, 19, 18);
-    display: flex;
     justify-content: center;
     align-items: center;
     font-size: 1.2rem;

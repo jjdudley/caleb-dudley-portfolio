@@ -1,6 +1,9 @@
 ---
-path: "/digital-markdown/digital31"
+path: "/digital-markdown/digital41"
+order: "31"
 type: "digital"
 galleryImage: ../../images/archive/digital/Digital31_2019.jpg
 caption: "2019"
+mobileWidth: "60px"
+mobileMarginRight: "80px"
 ---
