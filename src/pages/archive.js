@@ -7,11 +7,11 @@ import anime from "animejs/lib/anime.es.js";
 import TransitionLink from "gatsby-plugin-transition-link";
 
 const ArchiveContainer = styled.div`
-  position: relative;
+  position: fixed;
+  top: 0;
   display: flex;
-  margin: 0;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   justify-content: center;
 `;
 const HeroHeader = styled.div`
@@ -110,6 +110,18 @@ let MobileNavHeaderContainer = styled.div`
   z-index: 9000;
   
 
+  position: sticky;
+  top: 0;
+  display: flex;
+  margin: 0;
+  width: 100%;
+  justify-content: space-between;
+
+ 
+  z-index: 9000;
+
+
+
 `;
 
 let MobileNavHeaderLeft = styled.div`
@@ -144,6 +156,8 @@ let MobileNavHeaderRight = styled.div`
   flex-direction: column;
   align-items: flex-end;
   z-index: 2000;
+ 
+
 
   &:hover {
     cursor: pointer;

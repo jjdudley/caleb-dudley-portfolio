@@ -14,7 +14,8 @@ import { Link } from "gatsby";
 import TransitionLink from "gatsby-plugin-transition-link";
 
 const HeroContainer = styled.div`
-  position: relative;
+  position: fixed;
+  top: 0;
   display: flex;
   margin: 0;
   width: 100%;
@@ -153,11 +154,11 @@ let MobileNavHeaderContainer = styled.div`
   position: sticky;
   top: 0;
   display: flex;
-  margin: 0;
+  align-items: center;
   width: 100%;
   justify-content: space-between;
-
-  margin-top: 10px;
+ 
+  padding: 10px;
   z-index: 9000;
 
 
@@ -171,30 +172,28 @@ let MobileNavHeaderLeft = styled.div`
   align-items: flex-start;
 
   z-index: 2000;
-  height: 100%;
+  
   width: 100px;
   justify-content: center;
   margin: 0;
-  margin-left: 10px;
+  
   &:hover {
     cursor: pointer;
   }
 `;
 
 let MobileNavHeaderCenter = styled.div`
-  position: absolute;
-  top: 4px;
-  width: 100vw;
-  max-width: 100vw;
+  position: fixed;
+  top: 13px;
+  left: 0;
+  width: 100%;
+  
   display: flex;
   flex-direction: column;
   color: rgb(19, 19, 18);
-  display: flex;
   justify-content: center;
   align-items: center;
   font-size: 1.2rem;
-
-  margin: 0;
 `;
 
 let MobileNavHeaderRight = styled.div`
@@ -203,7 +202,8 @@ let MobileNavHeaderRight = styled.div`
   flex-direction: column;
   align-items: flex-end;
   z-index: 2000;
-  margin-right: 10px;
+ 
+  
   &:hover {
     cursor: pointer;
   }
