@@ -162,14 +162,7 @@ let MobileNavHeaderContainer = styled.div`
 
 
 
-  display: flex;
-  margin: 0;
-  width: 100%;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px;
-  z-index: 9000;
-  border: 1px solid black;
+  
 `;
 
 let MobileNavHeaderLeft = styled.div`

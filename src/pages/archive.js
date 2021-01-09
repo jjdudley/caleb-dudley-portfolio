@@ -108,7 +108,8 @@ let MobileNavHeaderContainer = styled.div`
   justify-content: space-between;
   padding: 10px;
   z-index: 9000;
-  border: 1px solid black;
+  
+
 `;
 
 let MobileNavHeaderLeft = styled.div`
@@ -150,6 +151,17 @@ let MobileNavHeaderRight = styled.div`
 `;
 
 let MobileNavFooterContainer = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+
+  padding: 0 10px;
+  margin-bottom: 10px;
+  z-index: 9000;
+
+
+  position: fixed;
+  bottom: 0;
   display: flex;
   width: 100%;
   justify-content: space-between;
