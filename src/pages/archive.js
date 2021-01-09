@@ -110,7 +110,7 @@ let MobileNavHeaderContainer = styled.div`
   z-index: 9000;
   
 
-  position: sticky;
+  position: fixed;
   top: 0;
   display: flex;
   margin: 0;
