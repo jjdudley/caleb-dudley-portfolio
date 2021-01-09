@@ -4,6 +4,7 @@ order: "23"
 type: "digital"
 galleryImage: ../../images/archive/digital/Digital23_2018.png
 caption: "2018"
-mobileWidth: "70px"
-mobileMarginRight: "80px"
+mobileWidth: "140px"
+mobilePaddingLeft: "0px"
+mobilePaddingRight: "210px"
 ---

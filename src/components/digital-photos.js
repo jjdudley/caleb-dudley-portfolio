@@ -14,7 +14,8 @@ const DigitalPhotos = (props) => (
                                 path
                                 caption
                                 mobileWidth
-                                mobileMarginRight
+                                mobilePaddingLeft
+                                mobilePaddingRight
                                 galleryImage {
                                     childImageSharp {
                                         fluid {

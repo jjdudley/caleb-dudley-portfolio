@@ -4,6 +4,7 @@ order: "32"
 type: "digital"
 galleryImage: ../../images/archive/digital/Digital32_2019.jpg
 caption: "2019"
-mobileWidth: "80px"
-mobileMarginRight: "80px"
+mobileWidth: "150px"
+mobilePaddingLeft: "0px"
+mobilePaddingRight: "105px"
 ---

@@ -53,7 +53,7 @@ export default class Lightbox extends Component {
               }}
             >
               <div className="test-container-div" 
-              style={{marginRight: image.node.frontmatter.mobileMarginRight}}
+              style={{paddingLeft: image.node.frontmatter.mobilePaddingLeft, paddingRight: image.node.frontmatter.mobilePaddingRight}}
               >
               <Img
                 style={{width: image.node.frontmatter.mobileWidth}}

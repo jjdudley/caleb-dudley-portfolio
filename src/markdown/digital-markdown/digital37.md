@@ -4,6 +4,7 @@ order: "37"
 type: "digital"
 galleryImage: ../../images/archive/digital/Digital37_2020.jpg
 caption: "2020"
-mobileWidth: "60px"
-mobileMarginRight: "80px"
+mobileWidth: "120px"
+mobilePaddingLeft: "0px"
+mobilePaddingRight: "0px"
 ---

@@ -4,6 +4,7 @@ order: "9"
 type: "digital"
 galleryImage: ../../images/archive/digital/Digital09_2018.jpg
 caption: "2018"
-mobileWidth: "150px"
-mobileMarginRight: "80px"
+mobileWidth: "120px"
+mobilePaddingLeft: "100px"
+mobilePaddingRight: "0px"
 ---
