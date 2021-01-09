@@ -180,6 +180,16 @@ table {
   transition: width .3s;
 }
 
+.mobile-archive-menu-link {
+  color: rgb(19, 19, 18);
+  text-decoration: none;
+}
+
+.mobile-archive-menu-link:hover {
+  text-decoration: underline;
+}
+
+
 
 /* /////////////////////////////////////////////////*/
 .gallery {
@@ -277,7 +287,8 @@ table {
       grid-gap: 240px 80px;
       width: 100%;
       padding-top: 0;
-      margin-top: 40%;
+      padding-top: 35%;
+      padding-bottom: 60%;
 }
 
 .test-container-div {

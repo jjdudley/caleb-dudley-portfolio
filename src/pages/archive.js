@@ -208,6 +208,8 @@ let MobileNavFooterRight = styled.div`
 `;
 
 const LayoutContainer = styled.div`
+  position: fixed;
+  top: 0;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -762,7 +764,7 @@ export default class Archive extends Component {
             <ArchiveMenuItem>
               <TransitionLink
                 id="archive-digital-link"
-                className="archive-menu-link"
+                className={this.state.mobileView ? "mobile-archive-menu-link" : "archive-menu-link"}
                 to="/digital"
                 exit={{
                   length: 1.8,
@@ -812,7 +814,7 @@ export default class Archive extends Component {
             <ArchiveMenuItem>
               <TransitionLink
                 id="archive-analog-link"
-                className="archive-menu-link"
+                className={this.state.mobileView ? "mobile-archive-menu-link" : "archive-menu-link"}
                 to="/analog"
                 exit={{
                   length: 1.4,
@@ -862,7 +864,7 @@ export default class Archive extends Component {
             <ArchiveMenuItem>
               <TransitionLink
                 id="archive-video-link"
-                className="archive-menu-link"
+                className={this.state.mobileView ? "mobile-archive-menu-link" : "archive-menu-link"}
                 to="/video"
                 exit={{
                   length: 1.8,
