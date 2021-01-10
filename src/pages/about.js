@@ -156,6 +156,8 @@ let MobileNavFooterContainer = styled.div`
 
   padding: 10px;
   z-index: 9000;
+
+
 `;
 
 let MobileNavFooterLeft = styled.div`

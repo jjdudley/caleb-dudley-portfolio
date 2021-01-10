@@ -19,33 +19,49 @@ const AboutContentContainer = styled.div`
 const AboutContentCaption = styled.div`
   position: fixed;
   top: 0;
-  width: 100%;
+  
+  width: 99%;
   font-family: orpheuspro, serif;
 
   font-weight: 100;
   text-align: center;
   font-style: normal;
   font-size: 0.8rem;
-  
+  text-align: left;
   font-size: 16px;
-  font-size: 1.1rem;
+  font-size: 30px;
+  
   color: rgb(19, 19, 18);
   margin-bottom: 50px;
   padding: 0 10px;
-  line-height: 1.7rem;
-  padding-top: 100px;
+  line-height: 2.5rem;
+  padding-top: 80px;
   z-index: 2000;
   
 `
 
 const AboutPhotoContainer = styled.div`
  position: fixed;
- top: 49%;
-  width: 100px;
+ 
+  width: 150px;
+  
+ margin-top: 60%;
   margin-bottom: 10%;
   z-index: 1000;
 `
-
+const OpacityFilter = styled.div`
+position: fixed;
+  width: 152px;
+ 
+  height: 192px;
+ 
+ margin-top: 58%;
+ 
+  margin-bottom: 10%;
+  z-index: 1100;
+  opacity: 0.7;
+  background-color: rgb(241, 241, 239);
+`
 class AboutContent extends Component {
   constructor(props) {
     super(props)
@@ -58,7 +74,7 @@ class AboutContent extends Component {
         
       
         <AboutContentCaption>
-          <p><span id="line-one">
+          {/* <p><span id="line-one">
             <span className="about-strong">Caleb Dudley&nbsp;</span>
           &nbsp;&nbsp;&nbsp;&nbsp;is&nbsp;&nbsp;&nbsp;&nbsp;a&nbsp;&nbsp;&nbsp;&nbsp;Brooklyn&nbsp;&nbsp;&nbsp;&nbsp; -&nbsp;&nbsp;&nbsp;&nbsp; based
           </span>
@@ -93,12 +109,14 @@ class AboutContent extends Component {
           <br></br><br></br>
            CONTACT
            <br></br>
-           www.calebjdudley@gmail.com</p>
+           www.calebjdudley@gmail.com</p> */}
+           <p>CALEB DUDLEY is a photographer + videographer based in Brooklyn, New York. He has expertise in digital + analog processes as well as experimental media, and is a graduate of the Fashion Institute of Technology where he studied alongside some of the world's most passsionate collegiate artists.<br></br></p>
+          
         </AboutContentCaption>
         <AboutPhotoContainer>
         <AboutPhoto />
         </AboutPhotoContainer>
-        
+        <OpacityFilter/>
       </AboutContentContainer>
     )
   }
