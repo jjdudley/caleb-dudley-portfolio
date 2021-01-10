@@ -318,6 +318,13 @@ table {
 .test-container-div {
   display: flex;
   justify-content: center;
+ 
+}
+
+.analog-photos-container-div {
+  display: flex;
+  justify-content: center;
+  height: auto;
 }
 
 .mobile-container {
@@ -401,14 +408,18 @@ section {
 }
 
 .player-container-mobile {
-  width: 400px !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100% !important;
   height: 250px !important;
   padding: 10px;
+  
 }
 
 .react-player {
   position: relative !important;
-  width: 100% !important;
+  width: 90% !important;
   height: 100% !important;
 }
 
@@ -601,4 +612,52 @@ section {
 
 .place-holder {
   height: 100vh;
+}
+
+.about-strong {
+  font-family: orpheuspro, serif;
+  font-weight: 400;
+  font-size: 16px;
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+
+.email-strong {
+  font-family: orpheuspro, serif;
+  font-weight: 400;
+  font-size: 1.2rem;
+  
+  text-transform: uppercase;
+}
+
+/* .about-italic {
+  font-family: orpheuspro, serif;
+  font-weight: 400;
+  
+  font-size: 16px;
+  text-transform: uppercase;
+} */
+
+#line-two {
+  word-spacing: 0.6rem;
+}
+
+#line-three {
+  word-spacing: 0.68rem;
+}
+
+#line-four {
+  word-spacing: 0.65rem;
+}
+
+#line-five {
+  word-spacing: 0.59rem;
+}
+
+#line-six {
+  word-spacing: 0.6rem;
+}
+
+#line-seven {
+  word-spacing: 2.1rem;
 }

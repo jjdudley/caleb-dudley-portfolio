@@ -98,14 +98,16 @@ let FooterRight = styled.div`
 `;
 
 let MobileNavHeaderContainer = styled.div`
-  position: sticky;
-  top: 10px;
-  display: flex;
-  margin: 0;
-  width: 100%;
-  justify-content: space-between;
-  padding: 0 10px;
-  z-index: 4000;
+position: fixed;
+top: 0;
+display: flex;
+align-items: center;
+width: 100%;
+justify-content: space-between;
+
+padding: 10px;
+z-index: 9000;
+
 `;
 
 let MobileNavHeaderLeft = styled.div`
@@ -146,14 +148,14 @@ let MobileNavHeaderRight = styled.div`
 `;
 
 let MobileNavFooterContainer = styled.div`
-  position: sticky;
-  top: 90vh;
+  position: fixed;
+  bottom: 0;
   display: flex;
   width: 100%;
   justify-content: space-between;
 
-  padding: 0 10px;
-  z-index: 2000;
+  padding: 10px;
+  z-index: 9000;
 `;
 
 let MobileNavFooterLeft = styled.div`
@@ -377,7 +379,7 @@ export default class About extends Component {
             <Link className="hero-link-mobile" to="/about">
               About
             </Link>
-            <Link className="hero-link-mobile">Contact</Link>
+            <Link className="hero-link-mobile">C.V.</Link>
           </MobileNavFooterRight>
         </MobileNavFooterContainer>
 
@@ -497,7 +499,7 @@ export default class About extends Component {
                   </TransitionLink>
 
                   <Link className="hero-link" to="/">
-                    Contact
+                    C.V.
                   </Link>
                 </FooterRight>
               </FooterContainer>

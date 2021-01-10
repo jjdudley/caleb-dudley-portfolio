@@ -129,7 +129,7 @@ let MobileNavHeaderContainer = styled.div`
     align-items: center;
     justify-content: space-between;
     padding: 10px;
-    z-index: 9000;
+    z-index: 7000;
     
     `
 
@@ -187,7 +187,7 @@ let MobileNavHeaderContainer = styled.div`
     width: 100%;
     justify-content: space-between;
     padding: 0 10px;
-    z-index: 9000;
+    z-index: 7000;
     `
     
     let MobileNavFooterLeft = styled.div`

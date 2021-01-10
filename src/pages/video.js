@@ -818,6 +818,13 @@ const VideosContainer = styled.div`
   margin: 0;
   width: 100%;
   justify-content: flex-start;
+
+  position: fixed;
+  top: 0;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
 `
 
 const VideosHeader = styled.div`
@@ -833,11 +840,14 @@ const VideosHeader = styled.div`
 `
 
 const GalleryRight = styled.div`
+  position: fixed;
+  top: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 1%;
+  height: 100%;
+  
 `
 
 
@@ -926,15 +936,15 @@ let FooterRight = styled.div`
 `
 
 let MobileNavHeaderContainer = styled.div`
-    position: sticky;
-    top: 10px;
-    display: flex;
-    margin: 0;
-    width: 100%;
-   
-    justify-content: space-between;
-    padding: 0 10px;
-    z-index: 9000;
+position: fixed;
+top: 0;
+display: flex;
+align-items: center;
+width: 100%;
+justify-content: space-between;
+
+padding: 10px;
+z-index: 9000;
 
     `
 
@@ -986,12 +996,14 @@ let MobileNavHeaderContainer = styled.div`
     }
     `
     let MobileNavFooterContainer = styled.div`
-    position: sticky;
-    top: 93.5%;
+    position: fixed;
+    bottom: 0;
     display: flex;
     width: 100%;
     justify-content: space-between;
+  
     padding: 0 10px;
+    margin-bottom: 10px;
     z-index: 9000;
     `
     
