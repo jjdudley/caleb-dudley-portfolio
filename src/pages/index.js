@@ -128,6 +128,7 @@ let FooterCenter = styled.div`
 let FooterRight = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: flex-end;
 `;
 
 const LayoutContainer = styled.div`
@@ -160,6 +161,8 @@ let MobileNavHeaderContainer = styled.div`
  
   padding: 10px;
   z-index: 9000;
+background-color: rgb(241, 241, 239);
+
 
 
 
@@ -219,6 +222,7 @@ let MobileNavFooterContainer = styled.div`
   padding: 0 10px;
   margin-bottom: 10px;
   z-index: 9000;
+  
 `;
 
 let MobileNavFooterLeft = styled.div`
@@ -255,7 +259,7 @@ export default class Home extends Component {
   }
 
   handleResize = () => {
-    if (window.matchMedia("(max-width: 1000px)").matches) {
+    if (window.matchMedia("(max-width: 1050px)").matches) {
       if (this.state.mobileView) {
         return;
       } else {
@@ -570,11 +574,11 @@ export default class Home extends Component {
                     Home
                   </TransitionLink>
                 </MobileNavHeaderLeft>
-                <MobileNavHeaderCenter>
+                <MobileNavHeaderCenter className="mobile-nav-header-center">
                   <div className="landing-animation-header">
                     CALEB&nbsp;DUDLEY
                   </div>
-                  <MobileHeroSubcaption>
+                  <MobileHeroSubcaption className="mobile-hero-subcaption-container">
                     <h3
                       id="mobile-hero-subcaption-photo"
                       className="mobile-hero-subcaption"
@@ -686,7 +690,7 @@ export default class Home extends Component {
                   >
                     About
                   </TransitionLink>
-                  <Link className="hero-link-mobile">Contact</Link>
+                  <Link className="hero-link-mobile" to="/cv">C.V.</Link>
                 </MobileNavFooterRight>
               </MobileNavFooterContainer>
             </LayoutContainer>
@@ -812,13 +816,13 @@ export default class Home extends Component {
                         About
                       </TransitionLink>
   
-                      <Link className="hero-link" to="/">
-                        Contact
+                      <Link className="hero-link" to="/cv">
+                        C.V.
                       </Link>
                     </FooterRight>
                   </FooterContainer>
                 </HeroLeftContainer>
-                )}
+                
                 <div
                   className="hero-opacity-wrapper-desktop"
                   
@@ -829,6 +833,7 @@ export default class Home extends Component {
                     
                     heroGalleryContainer="hero-gallery-container"
                     width="100%"
+                    
                     height="100%"
                   />
                 </div>

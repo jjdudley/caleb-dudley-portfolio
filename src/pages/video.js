@@ -840,8 +840,7 @@ const VideosHeader = styled.div`
 `
 
 const GalleryRight = styled.div`
-  position: fixed;
-  top: 0;
+  
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -933,6 +932,7 @@ let FooterCenter = styled.div`
 let FooterRight = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: flex-end;
 `
 
 let MobileNavHeaderContainer = styled.div`
@@ -1077,7 +1077,7 @@ export default class Video extends Component {
   }
 
   handleResize = () => {
-    if (window.matchMedia("(max-width: 1000px)").matches) {
+    if (window.matchMedia("(max-width: 1050px)").matches) {
       if (this.state.mobileView) {
         return
       } else {
@@ -1368,7 +1368,7 @@ export default class Video extends Component {
                   >
                     About
                   </TransitionLink>
-              <Link className="hero-link-mobile">Contact</Link>
+              <Link className="hero-link-mobile" to="/cv">C.V.</Link>
             </MobileNavFooterRight>
           </MobileNavFooterContainer>
 
@@ -1475,8 +1475,8 @@ export default class Video extends Component {
                   >
                     About
                   </TransitionLink>
-                  <Link className="hero-link" to="/">
-                    Contact
+                  <Link className="hero-link" to="/cv">
+                    C.V.
                   </Link>
                 </FooterRight>
               </FooterContainer>

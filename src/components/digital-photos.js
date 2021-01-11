@@ -31,7 +31,7 @@ const DigitalPhotos = (props) => (
         `
     }
 
-render={data => <Lightbox  name={props.name} digitalImages={data.digitalImages.edges} />}
+render={data => <Lightbox mobileView={props.mobileView} name={props.name} digitalImages={data.digitalImages.edges} />}
 />
 )
 

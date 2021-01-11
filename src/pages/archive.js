@@ -98,6 +98,7 @@ let FooterCenter = styled.div`
 let FooterRight = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: flex-end;
 `;
 
 let MobileNavHeaderContainer = styled.div`
@@ -215,6 +216,9 @@ const LayoutContainer = styled.div`
   justify-content: space-between;
   width: 100%;
   z-index: 7000;
+
+
+  
 `;
 
 let ArchiveMenuContainer = styled.div`
@@ -248,7 +252,7 @@ export default class Archive extends Component {
   }
 
   handleResize = () => {
-    if (window.matchMedia("(max-width: 1000px)").matches) {
+    if (window.matchMedia("(max-width: 1050px)").matches) {
       if (this.state.mobileView) {
         return;
       } else {
@@ -745,8 +749,8 @@ export default class Archive extends Component {
                   >
                     About
                   </TransitionLink>
-                  <Link className="hero-link" to="/">
-                    Contact
+                  <Link className="hero-link" to="/cv">
+                    C.V.
                   </Link>
                 </FooterRight>
               </FooterContainer>
@@ -983,7 +987,7 @@ export default class Archive extends Component {
               About
             </TransitionLink>
 
-            <Link className="hero-link-mobile">Contact</Link>
+            <Link className="hero-link-mobile" to="/cv">C.V.</Link>
           </MobileNavFooterRight>
         </MobileNavFooterContainer>
       </LayoutContainer>

@@ -7,4 +7,5 @@ caption: "2018"
 mobileWidth: "150px"
 mobilePaddingLeft: "0px"
 mobilePaddingRight: "80px"
+
 ---

@@ -1,10 +1,8 @@
-import { Link } from "gatsby"
-import React, { Component } from "react"
-import styled from "styled-components"
-import AboutPhoto from "../image-components/about-photo"
+import React, { Component } from "react";
+import styled from "styled-components";
 
-const AboutContentContainer = styled.div`
-
+const ContactContentContainer = styled.div`
+position: relative;
 display: flex;
 flex-direction: column;
 justify-content: center;
@@ -14,8 +12,9 @@ font-size: 100%;
 width: 100%;
 height: 100%;
 background-color: rgb(241, 241, 239);
-`
-const AboutContentCaption = styled.div`
+ 
+`;
+const ContactContentCaption = styled.div`
 display: flex;
 justify-content: center;
 align-items: center;
@@ -38,32 +37,34 @@ line-height: 120%;
 
 z-index: 2000;
 
-  
-`
 
-const AboutPhotoContainer = styled.div`
+`;
 
-  width: 150px;
-  width: 22%;
+const OpacityFilter = styled.div`
 
-  margin-bottom: 5%;
-  z-index: 1000;
-`
+  position: absolute;
+  top: 0;
+  display: flex;
+  width: 100%;
+  height: 100%;
 
-class AboutContent extends Component {
+ 
+  margin-bottom: 10%;
+  z-index: 1100;
+  opacity: 0.7;
+  background-color: rgb(241, 241, 239);
+ 
+`;
+export default class CvContent extends Component {
   constructor(props) {
-    super(props)
+    super(props);
 
-    this.state = {}
+    this.state = {};
   }
   render() {
     return (
-      <AboutContentContainer>
-        
-      <AboutPhotoContainer>
-        <AboutPhoto />
-        </AboutPhotoContainer>
-        <AboutContentCaption>
+      <ContactContentContainer>
+        <ContactContentCaption>
           {/* <p><span id="line-one">
             <span className="about-strong">Caleb Dudley&nbsp;</span>
           &nbsp;&nbsp;&nbsp;&nbsp;is&nbsp;&nbsp;&nbsp;&nbsp;a&nbsp;&nbsp;&nbsp;&nbsp;Brooklyn&nbsp;&nbsp;&nbsp;&nbsp; -&nbsp;&nbsp;&nbsp;&nbsp; based
@@ -100,21 +101,38 @@ class AboutContent extends Component {
            CONTACT
            <br></br>
            www.calebjdudley@gmail.com</p> */}
-           <p>Caleb Dudley is a photographer + videographer based in Brooklyn, New York. He has expertise in digital + analog processes as well as experimental media, and is a graduate of the Fashion Institute of Technology where he studied alongside some of the world's most passsionate collegiate artists.
-             <br></br>
-             <br></br>
-             <br></br>
-             For all inquiries and collaborations:
-             <br></br>
-             www.calebjdudley@gmail.com
-             </p>
-          
-        </AboutContentCaption>
-        
-        
-      </AboutContentContainer>
-    )
+          <p>
+            FEATURES
+            <br></br>
+            <br></br>
+            Paper Magazine 2020 
+            <br></br>
+            Early Rising 2020 
+            <br></br>
+            9 To 5 Magazine 2019 
+            <br></br>
+            Reuben NYC 2019 
+            <br></br>
+            Pingayao Photography Festival 2019
+            <br></br>
+            <br></br>
+            CLIENTELE
+            <br></br>
+            <br></br>
+            Entire World
+            <br></br>
+            Toast
+            <br></br>
+            Sézane
+            <br></br>
+            Nisolo
+            <br></br>
+            ArayaWorld
+          </p>
+        </ContactContentCaption>
+
+        <OpacityFilter />
+      </ContactContentContainer>
+    );
   }
 }
-
-export default AboutContent

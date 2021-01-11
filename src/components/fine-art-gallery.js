@@ -15,7 +15,7 @@ let FineArtGalleryContainer = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
-  width: 50%;
+ 
   overflow: auto;
   background-color: rgb(241, 241, 239);
   padding-top: 30px;

@@ -88,7 +88,7 @@ const AnalogPhotos = (props) => (
         `
     }
 
-render={data => <Lightbox  name={props.name} analogImages={data.analogImages.edges} />}
+render={data => <Lightbox  name={props.name} mobileView={props.mobileView} analogImages={data.analogImages.edges} />}
 />
 )
 

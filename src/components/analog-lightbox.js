@@ -124,6 +124,7 @@ render() {
             }}
           >
             <div className="analog-photos-container-div" 
+            style={{display: this.props.mobileView ? "" : "none"}}
             // style={{paddingLeft: image.node.frontmatter.mobilePaddingLeft, paddingRight: image.node.frontmatter.mobilePaddingRight}}
             >
             <Img
@@ -133,6 +134,13 @@ render() {
               }
             />
             </div>
+            <Img
+               style={{display: this.props.mobileView ? "none" : ""}}
+              fluid={
+                image.node.frontmatter.galleryImage.childImageSharp.fluid
+              }
+            />
+            
             
           </PreviewButton>
         ))}
