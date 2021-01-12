@@ -61,6 +61,7 @@ export default class Lightbox extends Component {
               style={{display: this.props.mobileView ? "" : "none", paddingLeft: image.node.frontmatter.mobilePaddingLeft, paddingRight:  image.node.frontmatter.mobilePaddingRight }}
               >
               <Img
+                loading="eager"
                 style={{width: image.node.frontmatter.mobileWidth}}
                 fluid={
                   image.node.frontmatter.galleryImage.childImageSharp.fluid

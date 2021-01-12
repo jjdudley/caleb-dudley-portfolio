@@ -5,7 +5,7 @@ import styled from "styled-components";
 
 
 const Image = styled(Img)`
-  width: 300px;
+  width: 100%;
 `;
 
 const FineArtOne = () => {
@@ -21,7 +21,7 @@ const FineArtOne = () => {
       }
     `);
   
-    return <Image fluid={data.placeholderImage.childImageSharp.fluid} />;
+    return <Image  fluid={data.placeholderImage.childImageSharp.fluid} />;
   };
 
   export default FineArtOne;

@@ -20,14 +20,7 @@ import Main15 from "../image-components/main-15";
 import Main16 from "../image-components/main-16";
 import Main17 from "../image-components/main-17";
 
-// let KentContainer = styled.div`
-//   position: absolute;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   left: 10%;
-//   top: 5%;
-// `
+
 
 class HeroGallery extends Component {
   constructor(props) {
@@ -117,7 +110,7 @@ class HeroGallery extends Component {
       background-color: rgb(241, 241, 239);
       width: ${this.props.width};
       height: ${this.props.height};
-      z-index: 1000;
+      z-index: 0;
     `;
     return (
       <HeroRight

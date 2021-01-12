@@ -6,6 +6,7 @@ import styled from "styled-components";
 
 const Image = styled(Img)`
   width: 400px;
+  width: 100%;
   margin-top: 10px;
   margin-bottom: 10px;
   z-index: 999;
@@ -24,7 +25,7 @@ const Main6 = () => {
       }
     `);
   
-    return <Image fluid={data.placeholderImage.childImageSharp.fluid} />;
+    return <Image  fluid={data.placeholderImage.childImageSharp.fluid} />;
   };
   
   export default Main6;

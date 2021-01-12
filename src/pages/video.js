@@ -1228,6 +1228,13 @@ export default class Video extends Component {
       delay: (el, index) => 30 * index
     });
 
+    anime.timeline().add({
+      targets: ".hero-opacity-wrapper-desktop",
+      duration: 1600,
+      easing: "easeOutExpo",
+      opacity: 0,
+      delay: 0
+    });
     
 
   };
@@ -1347,7 +1354,8 @@ export default class Video extends Component {
               >
                 Instagram
               </a>
-              <Link className="hero-link-mobile">Email</Link>
+             
+              <a className="hero-link-mobile" target="_blank" href="mailto:calebjdudley@gmail.com">Email</a> 
             </MobileNavFooterLeft>
             <MobileNavFooterCenter className="hero-link-mobile">Brooklyn, NY</MobileNavFooterCenter>
             <MobileNavFooterRight>
@@ -1450,9 +1458,8 @@ export default class Video extends Component {
                   >
                     Instagram
                   </a>
-                  <Link className="hero-link" to="/">
-                    Email
-                  </Link>
+                 
+                  <a className="hero-link" target="_blank" href="mailto:calebjdudley@gmail.com">Email</a> 
                 </FooterLeft>
                 <FooterCenter>Brooklyn, NY</FooterCenter>
                 <FooterRight>
@@ -1483,7 +1490,7 @@ export default class Video extends Component {
             </HeroLeftContainer>
             
           )}
-          <GalleryRight style={{ width: this.state.mobileView ? "100%" : "50%" }}>
+          <GalleryRight className="hero-opacity-wrapper-desktop" style={{ width: this.state.mobileView ? "100%" : "50%" }}>
            {/* <Videos
               id="videos-container"
               playerClass={this.state.mobileView ? "player-mobile" : "player-desktop"}
@@ -1510,7 +1517,7 @@ export default class Video extends Component {
     
         </VideosContainer>
         {/* <OpacityMaskEnter className="opacity-mask-enter" style={{"z-index": this.state.opacityMaskEnterVisible ? "9000" : "0", "width": this.state.mobileView ? "100vw" : "", "left": this.state.mobileView ? "0" : "", display: this.state.opacityMaskEnterDisplayed? "" : "none"}}/> */}
-        <OpacityMaskExit className="opacity-mask-exit" style={{ "width": this.state.mobileView ? "100vw" : "", "left": this.state.mobileView ? "0" : "", display: this.state.opacityMaskExitDisplayed? "" : "none"}}/>
+        {/* <OpacityMaskExit className="opacity-mask-exit" style={{ "width": this.state.mobileView ? "100vw" : "", "left": this.state.mobileView ? "0" : "", display: this.state.opacityMaskExitDisplayed? "" : "none"}}/> */}
       </LayoutContainer>
     )
   }

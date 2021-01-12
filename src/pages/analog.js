@@ -130,7 +130,7 @@ let MobileNavHeaderContainer = styled.div`
     align-items: center;
     justify-content: space-between;
     padding: 10px;
-    z-index: 7000;
+    z-index: 8600;
     
     `
 
@@ -188,7 +188,7 @@ let MobileNavHeaderContainer = styled.div`
     width: 100%;
     justify-content: space-between;
     padding: 0 10px;
-    z-index: 7000;
+    z-index: 8600;
     `
     
     let MobileNavFooterLeft = styled.div`
@@ -406,6 +406,14 @@ export default class Analog extends Component {
       delay: (el, index) => 30 * index
     });
 
+    anime.timeline().add({
+      targets: ".hero-opacity-wrapper-desktop",
+      duration: 1600,
+      easing: "easeOutExpo",
+      opacity: 0,
+      delay: 0
+    });
+
     
 
   };
@@ -588,9 +596,8 @@ export default class Analog extends Component {
                   >
                     Instagram
                   </a>
-                  <Link className="hero-link" to="/">
-                    Email
-                  </Link>
+                  
+                  <a className="hero-link" target="_blank" href="mailto:calebjdudley@gmail.com">Email</a> 
                 </FooterLeft>
                 <FooterCenter>Brooklyn, NY</FooterCenter>
                 <FooterRight>
@@ -621,7 +628,7 @@ export default class Analog extends Component {
             </HeroLeftContainer>
             
           )}
-          <GalleryRight style={{ width: this.state.mobileView ? "100%" : "50%" }}>
+          <GalleryRight className="hero-opacity-wrapper-desktop" style={{ width: this.state.mobileView ? "100%" : "50%" }}>
           { this.state.photosReady ? <AnalogPhotos
           mobileView={this.state.mobileView}
               name={
@@ -634,7 +641,7 @@ export default class Analog extends Component {
     
         </AnalogContainer>
         <OpacityMaskEnter style={{"opacity": this.state.opacityMaskEnterVisible ? "1" : "0", "width": this.state.mobileView ? "100vw" : "", "left": this.state.mobileView ? "0" : "", display: this.state.opacityMaskEnterDisplayed? "" : "none"}}/>
-        <OpacityMaskExit className="opacity-mask-exit" style={{ "width": this.state.mobileView ? "100vw" : "", "left": this.state.mobileView ? "0" : "", display: this.state.opacityMaskExitDisplayed? "" : "none"}}/>
+        {/* <OpacityMaskExit className="opacity-mask-exit" style={{ "width": this.state.mobileView ? "100vw" : "", "left": this.state.mobileView ? "0" : "", display: this.state.opacityMaskExitDisplayed? "" : "none"}}/> */}
       </LayoutContainer>
       <MobileNavFooterContainer style={{display: this.state.mobileView ? "" : "none"}}>
       <MobileNavFooterLeft>
@@ -646,7 +653,8 @@ export default class Analog extends Component {
         >
           Instagram
         </a>
-        <Link className="hero-link-mobile">Email</Link>
+        
+        <a className="hero-link-mobile" target="_blank" href="mailto:calebjdudley@gmail.com">Email</a> 
       </MobileNavFooterLeft>
       <MobileNavFooterCenter className="hero-link-mobile">Brooklyn, NY</MobileNavFooterCenter>
       <MobileNavFooterRight>

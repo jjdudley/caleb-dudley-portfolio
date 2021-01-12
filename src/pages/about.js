@@ -588,7 +588,7 @@ let HeaderLeft = styled.div`
 let HeaderRight = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  
 `;
 
 let LinkContainer = styled.div`
@@ -804,6 +804,15 @@ export default class About extends Component {
       delay: (el, index) => 30 * index
     });
 
+    
+    anime.timeline().add({
+      targets: ".hero-opacity-wrapper-desktop",
+      opacity: [0,1],
+      easing: "easeInExpo",
+      duration: 800,
+      delay: 800
+    });
+
   };
 
   mobileEnterAnimation = () => {
@@ -841,6 +850,14 @@ export default class About extends Component {
       translateX: [0, -30],
       opacity: [1, 0],
       delay: (el, index) => 30 * index
+    });
+
+    anime.timeline().add({
+      targets: ".hero-opacity-wrapper-desktop",
+      duration: 1600,
+      easing: "easeOutExpo",
+      opacity: 0,
+      delay: 0
     });
   };
 
@@ -903,7 +920,23 @@ export default class About extends Component {
             ABOUT
           </MobileNavHeaderCenter>
           <MobileNavHeaderRight>
-            <div className="hero-link-mobile">Archive</div>
+          <TransitionLink
+                    className="hero-link-mobile"
+                    to="/archive"
+                    exit={{
+                      length: 1.8,
+                      trigger: ({ exit, node }) => {
+                        let animationHeader = node.querySelector(".mobile-animation-header");
+                        this.mobileExitAnimation(exit, animationHeader);
+                      }
+                    }}
+                    entry={{
+                      delay: 1.8,
+                      length: 0
+                    }}
+                  >
+                    Archive
+                  </TransitionLink>
 
             <TransitionLink
               className="hero-link-mobile"
@@ -967,7 +1000,25 @@ export default class About extends Component {
                   </TransitionLink>
                 </HeaderLeft>
                 <HeaderRight>
-                  <div className="hero-link">Archive</div>
+                <TransitionLink
+                    className="hero-link"
+                    to="/archive"
+                    exit={{
+                      length: 2,
+                      trigger: ({ exit, node }) => {
+                        let animationHeader = node.querySelector(
+                          ".animation-header"
+                        );
+                        this.exitAnimation(exit, animationHeader);
+                      }
+                    }}
+                    entry={{
+                      delay: 2,
+                      length: 0
+                    }}
+                  >
+                    Archive
+                  </TransitionLink>
 
                   <TransitionLink
                     className="hero-link"
@@ -1009,15 +1060,22 @@ export default class About extends Component {
                   >
                     Instagram
                   </a>
-                  <Link className="hero-link" to="/">
-                    Email
-                  </Link>
+                  
+                  <a className="hero-link" target="_blank" href="mailto:calebjdudley@gmail.com">Email</a> 
                 </FooterLeft>
                 <FooterCenter>Brooklyn, NY</FooterCenter>
                 <FooterRight>
+                  <div
+                    className="hero-link"
+                   
+                    
+                    
+                  >
+                    About
+                  </div>
                   <TransitionLink
                     className="hero-link"
-                    to="/about"
+                    to="/cv"
                     exit={{
                       length: 1.8,
                       trigger: ({ exit, node }) => {
@@ -1025,7 +1083,6 @@ export default class About extends Component {
                           ".animation-header"
                         );
 
-                       
                         this.exitAnimation(
                           exit,
                           animationHeader
@@ -1037,11 +1094,9 @@ export default class About extends Component {
                       length: 0
                     }}
                   >
-                    About
-                  </TransitionLink>
-                  <Link className="hero-link" to="/cv">
                     C.V.
-                  </Link>
+                  </TransitionLink>
+                
                 </FooterRight>
               </FooterContainer>
             </HeroLeftContainer>
@@ -1072,7 +1127,8 @@ export default class About extends Component {
             >
               Instagram
             </a>
-            <Link className="hero-link-mobile">Email</Link>
+            
+            <a className="hero-link-mobile" target="_blank" href="mailto:calebjdudley@gmail.com">Email</a> 
           </MobileNavFooterLeft>
           <MobileNavFooterCenter className="hero-link-mobile">
             Brooklyn, NY

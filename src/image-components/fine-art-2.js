@@ -5,7 +5,7 @@ import styled from "styled-components";
 
 
 const Image = styled(Img)`
-  width: 300px;
+width: 100%;
 `;
 
 const FineArtTwo = () => {

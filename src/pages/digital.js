@@ -790,7 +790,7 @@ let MobileNavHeaderContainer = styled.div`
     align-items: center;
     justify-content: space-between;
     padding: 10px;
-    z-index: 7000;
+    z-index: 8600;
     
     `
 
@@ -848,7 +848,7 @@ let MobileNavHeaderContainer = styled.div`
     width: 100%;
     justify-content: space-between;
     padding: 0 10px;
-    z-index: 7000;
+    z-index: 8600;
     `
     
     let MobileNavFooterLeft = styled.div`
@@ -901,6 +901,7 @@ let MobileNavHeaderContainer = styled.div`
     opacity: 0;
     transition: opacity 0.5s ease;
     z-index: 8500;
+
     `
     const OpacityMaskExit = styled.div`
     position: absolute;
@@ -1023,15 +1024,25 @@ export default class Digital extends Component {
       duration: 800,
       delay: (el, index) => 30 * index
     });
+
+    anime.timeline().add({
+      targets: ".hero-opacity-wrapper-desktop",
+      duration: 2000,
+      easing: "easeInExpo",
+      opacity: [0,1],
+      delay: 0
+    });
+
+
   }
 
   
 
   exitAnimation = () => {
     // this.setState({ animateEnter: false })
-    this.setState({
-      opacityMaskExitDisplayed: true,
-    })
+    // this.setState({
+    //   opacityMaskExitDisplayed: true,
+    // })
   
     
 
@@ -1049,13 +1060,13 @@ export default class Digital extends Component {
     let selectAnimationHeaderLetters = document.querySelectorAll(".letter")
       console.log(selectAnimationHeaderLetters)
 
-      anime.timeline().add({
-        targets: ".opacity-mask-exit",
-        duration: 800,
-        easing: "linear",
-        opacity: 1,
-        delay: 800,
-      });
+      // anime.timeline().add({
+      //   targets: ".opacity-mask-exit",
+      //   duration: 800,
+      //   easing: "linear",
+      //   opacity: 1,
+      //   delay: 800,
+      // });
 
     anime.timeline().add({
       targets: ".animation-header .letter",
@@ -1066,6 +1077,13 @@ export default class Digital extends Component {
       delay: (el, index) => 30 * index
     });
 
+    anime.timeline().add({
+      targets: ".hero-opacity-wrapper-desktop",
+      duration: 1600,
+      easing: "easeOutExpo",
+      opacity: 0,
+      delay: 0
+    });
     
 
   };
@@ -1075,9 +1093,9 @@ export default class Digital extends Component {
   mobileExitAnimation = (exit, selectAnimationHeader) => {
     // this.setState({ animateEnter: false })
 
-    this.setState({
-      opacityMaskExitDisplayed: true,
-    }) 
+    // this.setState({
+    //   opacityMaskExitDisplayed: true,
+    // }) 
 
     selectAnimationHeader.innerHTML = selectAnimationHeader.textContent.replace(
       /\S/g,
@@ -1088,8 +1106,8 @@ export default class Digital extends Component {
       targets: ".opacity-mask-exit",
       duration: 800,
       easing: "linear",
-      opacity: 1,
-      delay: 800,
+      opacity: [0,1],
+      delay: 0,
     });
 
     anime.timeline().add({
@@ -1100,6 +1118,16 @@ export default class Digital extends Component {
       opacity: [1, 0],
       delay: (el, index) => 30 * index
     });
+
+    // anime.timeline().add({
+    //   targets: ".hero-opacity-wrapper-desktop",
+    //   duration: 1600,
+    //   easing: "easeOutExpo",
+    //   opacity: 0,
+    //   delay: 0
+    // });
+
+    
   }
 
   render() {
@@ -1115,14 +1143,14 @@ export default class Digital extends Component {
                     className="hero-link-mobile"
                     to="/"
                     exit={{
-                      length: 2.2,
+                      length: 2,
                       trigger: ({ exit, node }) => {
                         let animationHeader = node.querySelector(".mobile-animation-header");
                         this.mobileExitAnimation(exit, animationHeader);
                       }
                     }}
                     entry={{
-                      delay: 2.2,
+                      delay: 2,
                       length: 0
                     }}
                   >
@@ -1248,9 +1276,8 @@ export default class Digital extends Component {
                   >
                     Instagram
                   </a>
-                  <Link className="hero-link" to="/">
-                    Email
-                  </Link>
+                  
+                  <a className="hero-link" target="_blank" href="mailto:calebjdudley@gmail.com">Email</a> 
                 </FooterLeft>
                 <FooterCenter>Brooklyn, NY</FooterCenter>
                 <FooterRight>
@@ -1281,7 +1308,7 @@ export default class Digital extends Component {
             </HeroLeftContainer>
             
           )}
-          <GalleryRight style={{ width: this.state.mobileView ? "100%" : "50%" }}>
+          <GalleryRight className="hero-opacity-wrapper-desktop" style={{ width: this.state.mobileView ? "100%" : "50%" }}>
           { this.state.photosReady ? <DigitalPhotos
           mobileView={this.state.mobileView}
               name={
@@ -1306,7 +1333,8 @@ export default class Digital extends Component {
         >
           Instagram
         </a>
-        <Link className="hero-link-mobile">Email</Link>
+        
+        <a className="hero-link-mobile" target="_blank" href="mailto:calebjdudley@gmail.com">Email</a> 
       </MobileNavFooterLeft>
       <MobileNavFooterCenter className="hero-link-mobile">Brooklyn, NY</MobileNavFooterCenter>
       <MobileNavFooterRight>

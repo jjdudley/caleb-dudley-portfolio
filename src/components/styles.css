@@ -138,7 +138,7 @@ table {
   font-weight: 400;
   font-style: regular;
   color: rgb(19, 19, 18);
-  mix-blend-mode: difference !important;
+  
   text-decoration: none;
   padding: 3px 0;
   z-index: 7000;
@@ -307,17 +307,59 @@ table {
       padding-top: 0;
 }
 
+@media only screen and (max-width: 1265px) {
+  .player-container-desktop {
+    width: 550px !important;
+    height: 300px !important;
+    
+  }
+}
+
+@media only screen and (min-width: 500px) {
+  .player-container-mobile {
+    width: 420px !important;
+    height: 300px !important;
+  }
+  
+}
+
+
+@media only screen and (max-width: 500px) {
+  
+  
+}
+
 @media only screen and (max-width: 415px) {
   .digital-gallery-mobile {
     padding-top: 245px !important ;
+    
+  }
+  
+  .fine-art-gallery-mobile {
+    padding-top: 128px !important;
+    width: 100% !important;
+    
+  }
+
+  .fine-art-photo-container {
+    width: 350px !important;
     
   }
 }
 
 @media only screen and (max-width: 376px) {
   .digital-gallery-mobile {
-    padding-top: 220px !important ;
+    padding-top: 215px !important ;
   
+  }
+  .fine-art-gallery-mobile {
+    padding-top: 120px !important;
+    width: 100% !important;
+    
+  }
+  .fine-art-photo-container {
+    width: 300px !important;
+    
   }
 }
 
@@ -347,32 +389,29 @@ table {
 
   .hero-image-mobile {
     max-height: 60% !important;
+    /* width: 400px; */
   }
 
-}
-
-
-
-@media only screen and (max-width: 415px) {
-  .digital-gallery-mobile {
-    padding-top: 245px;
+  .fine-art-gallery-mobile {
+    padding-top: 100px !important;
+    width: 100% !important;
   }
-}
 
-@media only screen and (min-width: 500px) {
-  .player-container-mobile {
-    width: 420px !important;
-    height: 300px !important;
-  }
-}
-
-@media only screen and (max-width: 1265px) {
-  .player-container-desktop {
-    width: 550px !important;
-    height: 300px !important;
+  .fine-art-photo-container {
+    width: 250px !important;
     
   }
+
 }
+
+
+
+
+
+
+
+
+
 
 @media only screen and (max-width: 1177px) {
   .player-container-desktop {
@@ -388,6 +427,7 @@ table {
     padding: 5px;
   }
 }
+
 
 .digital-gallery-mobile {
   grid-template-columns: repeat(1, 1fr);
@@ -406,7 +446,7 @@ table {
       grid-gap: 220px 80px;
       width: 100%;
       
-      padding-top: 150px !important;
+      padding-top: 150px;
      
       padding-bottom: 60%;
 }
@@ -695,7 +735,8 @@ section {
   align-items: center;
   width: 300px;
   height: auto;
- 
+  width: 100%;
+  padding: 0 10px;
 }
 
 .hero-image-desktop {

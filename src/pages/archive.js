@@ -67,6 +67,7 @@ let HeaderLeft = styled.div`
 let HeaderRight = styled.div`
   display: flex;
   flex-direction: column;
+ 
 `;
 
 let LinkContainer = styled.div`
@@ -708,9 +709,8 @@ export default class Archive extends Component {
                   >
                     Instagram
                   </a>
-                  <Link className="hero-link" to="/">
-                    Email
-                  </Link>
+                  
+                  <a className="hero-link" target="_blank" href="mailto:calebjdudley@gmail.com">Email</a> 
                 </FooterLeft>
                 <FooterCenter>Brooklyn, NY</FooterCenter>
                 <FooterRight>
@@ -931,7 +931,8 @@ export default class Archive extends Component {
             >
               Instagram
             </a>
-            <Link className="hero-link-mobile">Email</Link>
+           
+            <a className="hero-link-mobile" target="_blank" href="mailto:calebjdudley@gmail.com">Email</a> 
           </MobileNavFooterLeft>
           <MobileNavFooterCenter className="hero-link-mobile">
             Brooklyn, NY

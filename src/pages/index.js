@@ -59,7 +59,6 @@ const MobileHeroSubcaption = styled.div`
   font-style: italic;
   font-size: 1.5rem;
   font-size: 16px;
-  
 `;
 
 const HeroCenter = styled.div`
@@ -140,6 +139,18 @@ const LayoutContainer = styled.div`
   z-index: 7000;
 `;
 
+const OpacityMaskEnter = styled.div`
+  position: absolute;
+  display: flex;
+  background-color: rgb(241, 241, 239);
+  height: 100vh;
+  width: 50%;
+  left: 50%;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  z-index: 8500;
+`;
+
 const OpacityFilter = styled.div`
   position: absolute;
   display: flex;
@@ -158,15 +169,10 @@ let MobileNavHeaderContainer = styled.div`
   align-items: center;
   width: 100%;
   justify-content: space-between;
- 
+
   padding: 10px;
   z-index: 9000;
-background-color: rgb(241, 241, 239);
-
-
-
-
-  
+  background-color: rgb(241, 241, 239);
 `;
 
 let MobileNavHeaderLeft = styled.div`
@@ -175,11 +181,11 @@ let MobileNavHeaderLeft = styled.div`
   align-items: flex-start;
 
   z-index: 2000;
-  
+
   width: 100px;
   justify-content: center;
   margin: 0;
-  
+
   &:hover {
     cursor: pointer;
   }
@@ -190,7 +196,7 @@ let MobileNavHeaderCenter = styled.div`
   top: 13px;
   left: 0;
   width: 100%;
-  
+
   display: flex;
   flex-direction: column;
   color: rgb(19, 19, 18);
@@ -205,8 +211,7 @@ let MobileNavHeaderRight = styled.div`
   flex-direction: column;
   align-items: flex-end;
   z-index: 2000;
- 
-  
+
   &:hover {
     cursor: pointer;
   }
@@ -219,10 +224,9 @@ let MobileNavFooterContainer = styled.div`
   width: 100%;
   justify-content: space-between;
 
-  padding: 0 10px;
-  margin-bottom: 10px;
+  padding: 10px;
   z-index: 9000;
-  
+  background-color: rgb(241, 241, 239);
 `;
 
 let MobileNavFooterLeft = styled.div`
@@ -230,14 +234,12 @@ let MobileNavFooterLeft = styled.div`
   flex-direction: column;
   width: 100px;
   align-items: flex-start;
-  background: transparent;
 `;
 
 let MobileNavFooterCenter = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background: transparent;
 `;
 
 let MobileNavFooterRight = styled.div`
@@ -254,7 +256,11 @@ export default class Home extends Component {
       mobileView: false,
       splashPage: true,
       animateEnter: true,
-      siteLoaded: false
+      photosReady: false,
+      siteLoaded: false,
+      opacityMaskEnterVisible: true,
+      opacityMaskEnterDisplayed: true,
+      opacityMaskExitDisplayed: false
     };
   }
 
@@ -290,8 +296,11 @@ export default class Home extends Component {
     console.log("index mounting");
 
     await this.handleResize();
+    // setTimeout(()=> this.setState({opacityMaskEnterVisible: false}), 1100)
+    setTimeout(() => this.setState({ photosReady: true }), 1200);
+    // setTimeout(() => this.setState({opacityMaskEnterDisplayed: false }), 3200)
     window.addEventListener("resize", this.handleResize.bind(this));
-    this.setState({siteLoaded: true})
+    this.setState({ siteLoaded: true });
     if (!this.state.mobileView) {
       this.enterAnimation();
     } else {
@@ -344,7 +353,7 @@ export default class Home extends Component {
       targets: "#hero-subcaption-photo .photo-letter",
       opacity: [0, 1],
       easing: "linear",
-      duration: 1100,
+      duration: 800,
       delay: 1200
     });
 
@@ -352,7 +361,7 @@ export default class Home extends Component {
       targets: "#hero-subcaption-amp",
       opacity: [0, 1],
       easing: "linear",
-      duration: 1100,
+      duration: 800,
       delay: 1200
     });
 
@@ -360,7 +369,7 @@ export default class Home extends Component {
       targets: "#hero-subcaption-video .video-letter",
       opacity: [0, 1],
       easing: "linear",
-      duration: 1100,
+      duration: 800,
       delay: 1200
     });
   };
@@ -430,12 +439,10 @@ export default class Home extends Component {
   exitAnimation = (exit, selectAnimationHeader) => {
     // this.setState({ animateEnter: false })
 
-    console.log(selectAnimationHeader);
     selectAnimationHeader.innerHTML = selectAnimationHeader.textContent.replace(
       /\S/g,
       "<span class='letter'>$&</span>"
     );
-    let testCharacters = document.querySelectorAll(".letter");
 
     let testImage = document.querySelector(".hero-gallery-container");
     console.log(testImage);
@@ -475,11 +482,22 @@ export default class Home extends Component {
       opacity: [1, 0],
       delay: (el, index) => 30 * index
     });
+
+    anime.timeline().add({
+      targets: ".hero-opacity-wrapper-desktop",
+      duration: 1600,
+      easing: "easeOutExpo",
+      opacity: 0,
+      delay: 0
+    });
   };
 
   mobileExitAnimation = (exit, selectAnimationHeader) => {
     // this.setState({ animateEnter: false })
 
+    this.setState({
+      opacityMaskExitDisplayed: true
+    });
     console.log(selectAnimationHeader);
     selectAnimationHeader.innerHTML = selectAnimationHeader.textContent.replace(
       /\S/g,
@@ -527,12 +545,13 @@ export default class Home extends Component {
     });
 
     anime.timeline().add({
-      targets: ".hero-opacity-wrapper-mobile",
-      duration: 800,
-      easing: "linear",
+      targets: ".hero-opacity-wrapper-desktop",
+      duration: 1600,
+      easing: "easeOutExpo",
       opacity: 0,
       delay: 0
     });
+
   };
 
   exitHeroGallery = (exit, item) => {
@@ -585,14 +604,14 @@ export default class Home extends Component {
                     >
                       Photo
                     </h3>
-  
+
                     <h3
                       id="mobile-hero-subcaption-amp"
                       className="mobile-hero-subcaption"
                     >
                       &
                     </h3>
-  
+
                     <h3
                       id="mobile-hero-subcaption-video"
                       className="mobile-hero-subcaption"
@@ -615,7 +634,7 @@ export default class Home extends Component {
                       }
                     }}
                     entry={{
-                      delay: 1.8,
+                      delay: 1.2,
                       length: 0
                     }}
                   >
@@ -634,7 +653,7 @@ export default class Home extends Component {
                       }
                     }}
                     entry={{
-                      delay: 1.8,
+                      delay: 1.2,
                       length: 0
                     }}
                   >
@@ -642,8 +661,8 @@ export default class Home extends Component {
                   </TransitionLink>
                 </MobileNavHeaderRight>
               </MobileNavHeaderContainer>
-  
-              <HeroContainer>
+
+             
                 <div className="hero-opacity-wrapper-mobile">
                   <HeroGallery
                     position="fixed"
@@ -653,8 +672,8 @@ export default class Home extends Component {
                     height="100%"
                   />
                 </div>
-              </HeroContainer>
-  
+              
+
               <MobileNavFooterContainer>
                 <MobileNavFooterLeft>
                   {" "}
@@ -665,7 +684,13 @@ export default class Home extends Component {
                   >
                     Instagram
                   </a>
-                  <Link className="hero-link-mobile">Email</Link>
+                  <a
+                    className="hero-link-mobile"
+                    target="_blank"
+                    href="mailto:calebjdudley@gmail.com"
+                  >
+                    Email
+                  </a>
                 </MobileNavFooterLeft>
                 <MobileNavFooterCenter className="hero-link-mobile">
                   Brooklyn, NY
@@ -690,7 +715,9 @@ export default class Home extends Component {
                   >
                     About
                   </TransitionLink>
-                  <Link className="hero-link-mobile" to="/cv">C.V.</Link>
+                  <Link className="hero-link-mobile" to="/cv">
+                    C.V.
+                  </Link>
                 </MobileNavFooterRight>
               </MobileNavFooterContainer>
             </LayoutContainer>
@@ -720,19 +747,19 @@ export default class Home extends Component {
                             let exitImage = document.querySelector(
                               ".hero-gallery-container"
                             );
-  
-                            this.exitHeroGallery(exit, exitImage);
+
+                            // this.exitHeroGallery(exit, exitImage);
                             this.exitAnimation(exit, animationHeader);
                           }
                         }}
                         entry={{
-                          delay: 1.8,
+                          delay: 1.2,
                           length: 0
                         }}
                       >
                         Archive
                       </TransitionLink>
-  
+
                       <TransitionLink
                         className="hero-link"
                         to="/fine-art"
@@ -748,7 +775,7 @@ export default class Home extends Component {
                             let exitImage = document.querySelector(
                               ".hero-gallery-container"
                             );
-  
+
                             this.exitHeroGallery(exit, exitImage);
                             this.exitAnimation(exit, animationHeader);
                           }
@@ -762,21 +789,27 @@ export default class Home extends Component {
                       </TransitionLink>
                     </HeaderRight>
                   </HeaderContainer>
-  
+
                   <HeroCenter>
                     <HeroHeader>
                       <div className="animation-header">CALEB DUDLEY</div>
                     </HeroHeader>
                     <HeroSubcaption>
-                      <h3 id="hero-subcaption-photo" className="hero-subcaption">
+                      <h3
+                        id="hero-subcaption-photo"
+                        className="hero-subcaption"
+                      >
                         Photo
                       </h3>
-  
+
                       <h3 id="hero-subcaption-amp" className="hero-subcaption">
                         &
                       </h3>
-  
-                      <h3 id="hero-subcaption-video" className="hero-subcaption">
+
+                      <h3
+                        id="hero-subcaption-video"
+                        className="hero-subcaption"
+                      >
                         Video
                       </h3>
                     </HeroSubcaption>
@@ -790,9 +823,14 @@ export default class Home extends Component {
                       >
                         Instagram
                       </a>
-                      <Link className="hero-link" to="/">
+
+                      <a
+                        className="hero-link"
+                        target="_blank"
+                        href="mailto:calebjdudley@gmail.com"
+                      >
                         Email
-                      </Link>
+                      </a>
                     </FooterLeft>
                     <FooterCenter>Brooklyn, NY</FooterCenter>
                     <FooterRight>
@@ -815,35 +853,37 @@ export default class Home extends Component {
                       >
                         About
                       </TransitionLink>
-  
+
                       <Link className="hero-link" to="/cv">
                         C.V.
                       </Link>
                     </FooterRight>
                   </FooterContainer>
                 </HeroLeftContainer>
-                
-                <div
-                  className="hero-opacity-wrapper-desktop"
-                  
-                >
-                  <HeroGallery
-                    position= "relative"
-                    heroImageContainerClass="hero-image-desktop"
-                    
-                    heroGalleryContainer="hero-gallery-container"
-                    width="100%"
-                    
-                    height="100%"
-                  />
+
+                <div className="hero-opacity-wrapper-desktop">
+                  {this.state.photosReady ? (
+                    <HeroGallery
+                      position="relative"
+                      heroImageContainerClass="hero-image-desktop"
+                      heroGalleryContainer="hero-gallery-container"
+                      width="100%"
+                      height="100%"
+                    />
+                  ) : (
+                    <div className="place-holder"></div>
+                  )}
+                  {/* <OpacityMaskEnter style={{"opacity": this.state.opacityMaskEnterVisible ? "1" : "0", "width": this.state.mobileView ? "100vw" : "", "left": this.state.mobileView ? "0" : "", display: this.state.opacityMaskEnterDisplayed? "" : "none"}}/> */}
+                  {/* <OpacityMaskExit className="opacity-mask-exit" style={{ "width": this.state.mobileView ? "100vw" : "", "left": this.state.mobileView ? "0" : "", display: this.state.opacityMaskExitDisplayed? "" : "none"}}/> */}
                 </div>
+                {/* <OpacityMaskEnter style={{"opacity": this.state.opacityMaskEnterVisible ? "1" : "0", "width": this.state.mobileView ? "100vw" : "", "left": this.state.mobileView ? "0" : "", display: this.state.opacityMaskEnterDisplayed? "" : "none"}}/> */}
               </HeroContainer>
             </LayoutContainer>
           )}
         </>
       );
     } else {
-      return null
+      return null;
     }
   }
 }

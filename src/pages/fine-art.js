@@ -539,6 +539,7 @@ import "../components/styles.css";
 import styled from "styled-components";
 // import Layout from "../components/layout"
 import FineArtGallery from "../components/fine-art-gallery";
+import HeroGallery from "../components/hero-gallery";
 // import MobileNav from "../components/mobile-nav"
 import anime from "animejs/lib/anime.es.js";
 import TransitionLink from "gatsby-plugin-transition-link";
@@ -657,7 +658,7 @@ let MobileNavHeaderContainer = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 10px;
-  z-index: 7000;
+  z-index: 8600;
 `;
 
 //     let MobileNavHeaderContainer = styled.div`
@@ -710,7 +711,7 @@ let MobileNavFooterContainer = styled.div`
   width: 100%;
   justify-content: space-between;
   padding: 0 10px;
-  z-index: 7000;
+  z-index: 8600;
 `;
 
 let MobileNavFooterLeft = styled.div`
@@ -920,6 +921,15 @@ export default class FineArt extends Component {
       opacity: [1, 0],
       delay: (el, index) => 30 * index
     });
+
+    
+    anime.timeline().add({
+      targets: ".hero-opacity-wrapper-desktop",
+      duration: 1600,
+      easing: "easeOutExpo",
+      opacity: 0,
+      delay: 0
+    });
   };
 
   mobileExitAnimation = (exit, selectAnimationHeader) => {
@@ -949,6 +959,14 @@ export default class FineArt extends Component {
       translateX: [0, -30],
       opacity: [1, 0],
       delay: (el, index) => 30 * index
+    });
+
+    anime.timeline().add({
+      targets: ".hero-opacity-wrapper-desktop",
+      duration: 1600,
+      easing: "easeOutExpo",
+      opacity: 0,
+      delay: 0
     });
   };
 
@@ -1114,9 +1132,8 @@ export default class FineArt extends Component {
                     >
                       Instagram
                     </a>
-                    <Link className="hero-link" to="/">
-                      Email
-                    </Link>
+                    
+                    <a className="hero-link" target="_blank" href="mailto:calebjdudley@gmail.com">Email</a> 
                   </FooterLeft>
                   <FooterCenter>Brooklyn, NY</FooterCenter>
                   <FooterRight>
@@ -1139,22 +1156,37 @@ export default class FineArt extends Component {
                     >
                       About
                     </TransitionLink>
-                    <Link className="hero-link" to="/cv">
+                    <TransitionLink
+                      className="hero-link"
+                      to="/cv"
+                      exit={{
+                        length: 1.8,
+                        trigger: ({ exit, node }) => {
+                          let animationHeader = node.querySelector(
+                            ".animation-header"
+                          );
+                          this.exitAnimation(exit, animationHeader);
+                        }
+                      }}
+                      entry={{
+                        delay: 1.8,
+                        length: 0
+                      }}
+                    >
                       C.V.
-                    </Link>
+                    </TransitionLink>
                   </FooterRight>
                 </FooterContainer>
               </HeroLeftContainer>
             )}
             <GalleryRight
+            className="hero-opacity-wrapper-desktop"
               style={{ width: this.state.mobileView ? "100%" : "50%" }}
             >
               {this.state.photosReady ? (
                 <FineArtGallery
                   
-                  // width={
-                  //   this.state.mobileView ? "100% !important" : "50% !important"
-                  // }
+  
                   name={this.state.mobileView ? "mobile-gallery-container" : ""}
                   
                   name={
@@ -1176,14 +1208,14 @@ export default class FineArt extends Component {
               display: this.state.opacityMaskEnterDisplayed ? "" : "none"
             }}
           />
-          <OpacityMaskExit
+          {/* <OpacityMaskExit
             className="opacity-mask-exit"
             style={{
               width: this.state.mobileView ? "100vw" : "",
               left: this.state.mobileView ? "0" : "",
               display: this.state.opacityMaskExitDisplayed ? "" : "none"
             }}
-          />
+          /> */}
         </LayoutContainer>
         <MobileNavFooterContainer
           style={{ display: this.state.mobileView ? "" : "none" }}
@@ -1197,7 +1229,8 @@ export default class FineArt extends Component {
             >
               Instagram
             </a>
-            <Link className="hero-link-mobile">Email</Link>
+            
+            <a className="hero-link-mobile" target="_blank" href="mailto:calebjdudley@gmail.com">Email</a> 
           </MobileNavFooterLeft>
           <MobileNavFooterCenter className="hero-link-mobile">
             Brooklyn, NY
@@ -1222,7 +1255,25 @@ export default class FineArt extends Component {
             >
               About
             </TransitionLink>
-            <Link className="hero-link-mobile" to="/cv">C.V.</Link>
+            <TransitionLink
+              className="hero-link-mobile"
+              to="/cv"
+              exit={{
+                length: 1.8,
+                trigger: ({ exit, node }) => {
+                  let animationHeader = node.querySelector(
+                    ".mobile-animation-header"
+                  );
+                  this.mobileExitAnimation(exit, animationHeader);
+                }
+              }}
+              entry={{
+                delay: 1.8,
+                length: 0
+              }}
+            >
+              C.V.
+            </TransitionLink>
           </MobileNavFooterRight>
         </MobileNavFooterContainer>
       </>
