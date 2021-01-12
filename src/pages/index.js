@@ -297,7 +297,7 @@ export default class Home extends Component {
 
     await this.handleResize();
     // setTimeout(()=> this.setState({opacityMaskEnterVisible: false}), 1100)
-    setTimeout(() => this.setState({ photosReady: true }), 1200);
+    setTimeout(() => this.setState({ photosReady: true }), 1000);
     // setTimeout(() => this.setState({opacityMaskEnterDisplayed: false }), 3200)
     window.addEventListener("resize", this.handleResize.bind(this));
     this.setState({ siteLoaded: true });
@@ -485,8 +485,8 @@ export default class Home extends Component {
 
     anime.timeline().add({
       targets: ".hero-opacity-wrapper-desktop",
-      duration: 1600,
-      easing: "easeOutExpo",
+      duration: 800,
+      easing: "linear",
       opacity: 0,
       delay: 0
     });
@@ -545,13 +545,12 @@ export default class Home extends Component {
     });
 
     anime.timeline().add({
-      targets: ".hero-opacity-wrapper-desktop",
+      targets: ".hero-opacity-wrapper-mobile",
       duration: 1600,
-      easing: "easeOutExpo",
+      easing: "linear",
       opacity: 0,
       delay: 0
     });
-
   };
 
   exitHeroGallery = (exit, item) => {
@@ -573,25 +572,12 @@ export default class Home extends Component {
             <LayoutContainer className="home-layout-container-mobile">
               <MobileNavHeaderContainer>
                 <MobileNavHeaderLeft>
-                  <TransitionLink
+                  <div
                     className="hero-link-mobile"
-                    to="/"
-                    exit={{
-                      length: 2.2,
-                      trigger: ({ exit, node }) => {
-                        let animationHeader = node.querySelector(
-                          ".landing-animation-header"
-                        );
-                        this.mobileExitAnimation(exit, animationHeader);
-                      }
-                    }}
-                    entry={{
-                      delay: 2.2,
-                      length: 0
-                    }}
+                    
                   >
                     Home
-                  </TransitionLink>
+                  </div>
                 </MobileNavHeaderLeft>
                 <MobileNavHeaderCenter className="mobile-nav-header-center">
                   <div className="landing-animation-header">
@@ -634,14 +620,13 @@ export default class Home extends Component {
                       }
                     }}
                     entry={{
-                      delay: 1.2,
+                      delay: 1.8,
                       length: 0
                     }}
                   >
                     Archive
                   </TransitionLink>
-                  <TransitionLink
-                    className="hero-link-mobile"
+                  <TransitionLink className="hero-link-mobile"
                     to="/fine-art"
                     exit={{
                       length: 1.8,
@@ -653,7 +638,7 @@ export default class Home extends Component {
                       }
                     }}
                     entry={{
-                      delay: 1.2,
+                      delay: 1.8,
                       length: 0
                     }}
                   >
@@ -662,17 +647,19 @@ export default class Home extends Component {
                 </MobileNavHeaderRight>
               </MobileNavHeaderContainer>
 
-             
-                <div className="hero-opacity-wrapper-mobile">
+              <div className="hero-opacity-wrapper-mobile">
+                {this.state.photosReady ? (
                   <HeroGallery
-                    position="fixed"
+                    position="relative"
                     heroImageContainerClass="hero-image-mobile"
                     heroGalleryContainer="hero-gallery-container"
                     width="100%"
                     height="100%"
                   />
-                </div>
-              
+                ) : (
+                  <div className="place-holder"></div>
+                )}
+              </div>
 
               <MobileNavFooterContainer>
                 <MobileNavFooterLeft>

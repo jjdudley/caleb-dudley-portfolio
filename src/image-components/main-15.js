@@ -25,7 +25,7 @@ const Main15 = () => {
       }
     `);
   
-    return <Image  fluid={data.placeholderImage.childImageSharp.fluid} />;
+    return <Image loading="eager" fluid={data.placeholderImage.childImageSharp.fluid} />;
   };
   
   export default Main15;
