@@ -1,14 +1,9 @@
 import React, { Component } from "react";
 import "../components/styles.css";
 import styled from "styled-components";
-// import Layout from "../components/layout"
 
-// import VideoBg from "reactjs-videobg"
-
-// import HeroLeft from "../components/hero-left"
 import HeroGallery from "../components/hero-gallery";
-import MobileNav from "../components/mobile-nav";
-import Anime from "react-anime";
+
 import anime from "animejs/lib/anime.es.js";
 import { Link } from "gatsby";
 import TransitionLink from "gatsby-plugin-transition-link";
@@ -274,9 +269,9 @@ export default class Home extends Component {
         });
       }
     } else {
-      // if the window is desktop size
+     
       if (!this.state.mobileView) {
-        // if mobile view is already off, return
+       
         return;
       } else {
         this.setState({
@@ -553,15 +548,7 @@ export default class Home extends Component {
     });
   };
 
-  exitHeroGallery = (exit, item) => {
-    // return anime.timeline().add({
-    //   targets: ".opacity-filter",
-    //   duration: 800,
-    //   easing: "linear",
-    //   opacity: 1,
-    //   delay: 800
-    // });
-  };
+ 
 
   render() {
    
@@ -650,7 +637,7 @@ export default class Home extends Component {
               <div className="hero-opacity-wrapper-mobile">
                 {this.state.photosReady ? (
                   <HeroGallery
-                    position="relative"
+                    position="fixed"
                     heroImageContainerClass="hero-image-mobile"
                     heroGalleryContainer="hero-gallery-container"
                     width="100%"

@@ -1,4 +1,3 @@
-import { Link } from "gatsby"
 import React, { Component } from "react"
 import styled from "styled-components"
 import AboutPhoto from "../image-components/about-photo"
@@ -64,42 +63,7 @@ class AboutContent extends Component {
         <AboutPhoto />
         </AboutPhotoContainer>
         <AboutContentCaption>
-          {/* <p><span id="line-one">
-            <span className="about-strong">Caleb Dudley&nbsp;</span>
-          &nbsp;&nbsp;&nbsp;&nbsp;is&nbsp;&nbsp;&nbsp;&nbsp;a&nbsp;&nbsp;&nbsp;&nbsp;Brooklyn&nbsp;&nbsp;&nbsp;&nbsp; -&nbsp;&nbsp;&nbsp;&nbsp; based
-          </span>
-          <br></br>
-          <span id="line-two">
-          photographer + videographer with expertise
-          </span>
-          <br></br>
-          <span id="line-three">
-          in digital + analog processes as well as
-          </span>
-          <br></br>
-          <span id="line-four">
-          experimental media. He is a graduate of 
-          </span>
-          <br></br>
-          <span id="line-five">
-          the Fashion Institute of Technology, where 
-          </span>
-          <br></br>
-          <span id="line-six">
-          he studied alongside some of the world's
-          </span>
-          <br></br>
-          <span id="line-seven">
-          most passionate collegiate artists.
-          </span>
-            
-          <br></br><br></br>
-          <br></br><br></br>
-          <br></br><br></br>
-          <br></br><br></br>
-           CONTACT
-           <br></br>
-           www.calebjdudley@gmail.com</p> */}
+         
            <p>Caleb Dudley is a photographer + videographer based in Brooklyn, New York. He has expertise in digital + analog processes as well as experimental media, and is a graduate of the Fashion Institute of Technology where he studied alongside some of the world's most passsionate collegiate artists.
              <br></br>
              <br></br>

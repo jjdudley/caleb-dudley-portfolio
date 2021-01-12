@@ -2,9 +2,9 @@ import React, { Component, Fragment } from "react"
 import PropTypes from "prop-types"
 import Img from "gatsby-image"
 import styled from "styled-components"
-import { Dialog } from "@reach/dialog"
+
 import "@reach/dialog/styles.css"
-// import BackgroundImage from "gatsby-background-image"
+
 export default class Lightbox extends Component {
   static propTypes = {
     digitalImages: PropTypes.array.isRequired, // eslint-disable-line
@@ -28,12 +28,7 @@ export default class Lightbox extends Component {
       display: grid;
     `
 
-    // display: grid;
-    //   grid-template-columns: repeat(3, 1fr);
-    //   grid-auto-rows: 12vw;
-    //   grid-gap: 80px 80px;
-    //   width: 100%;
-    //   padding: 60px;
+  
     const PreviewButton = styled.button`
       background: transparent;
       border: none;
@@ -78,26 +73,7 @@ export default class Lightbox extends Component {
           ))}
         </LightboxContainer>
         {showLightbox && (
-          // <Dialog className="dialog-box-container">
-          //   <div className="dialog-box">
-          //     <Img
-          //       fluid={
-          //         selectedImage.node.frontmatter.galleryImage.childImageSharp
-          //           .fluid
-          //       }
-          //     />
-          //   </div>
-          //   <div className="caption-div">
-          //     {selectedImage.node.frontmatter.caption}
-          //   </div>
-          //   <button
-          //    className="close-dialog-button"
-          //     type="button"
-          //     onClick={() => this.setState({ showLightbox: false })}
-          //   >
-          //     Close
-          //   </button>
-          // </Dialog>
+         
           <div  id={this.props.lightboxId} style={{top: this.state.scrollPosition}}>
             <div  className={this.props.dialogBox}>
               <Img

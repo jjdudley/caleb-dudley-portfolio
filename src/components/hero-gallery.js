@@ -1,7 +1,5 @@
-import { Link } from "gatsby";
 import React, { Component } from "react";
 import styled from "styled-components";
-
 import Main1 from "../image-components/main-1";
 import Main2 from "../image-components/main-2";
 import Main3 from "../image-components/main-3";
@@ -114,7 +112,7 @@ class HeroGallery extends Component {
     `;
     return (
       <HeroRight
-        onClick={this.addToStack}
+        // onClick={this.addToStack}
         className={this.props.heroGalleryContainer}
       >
         <HeroImageContainer
@@ -233,70 +231,6 @@ class HeroGallery extends Component {
         >
           <Main17 />
         </HeroImageContainer>
-
-        {/* <KentContainer
-          style={{ display: this.state.kentDisplayed ? "" : "none" }}
-        >
-          <Kent id="kent" />
-        </KentContainer>
-
-        <div style={{ display: this.state.dakotaTwoDisplayed ? "" : "none" }}>
-          <DakotaTwo id="dakota-two" />
-        </div>
-
-        <div
-          style={{ display: this.state.verhampThreeDisplayed ? "" : "none" }}
-        >
-          <VerhampThree id="verhamp-three" />
-        </div>
-
-        <div style={{ display: this.state.collageDisplayed ? "" : "none" }}>
-          <Collage id="collage" />
-        </div>
-
-        <div style={{ display: this.state.sierraOneDisplayed ? "" : "none" }}>
-          <SierraOne id="sierra-one" />
-        </div>
-        <div style={{ display: this.state.dakotaThreeDisplayed ? "" : "none" }}>
-          <DakotaThree id="dakota-three" />
-        </div>
-
-        <div
-          style={{ display: this.state.californiaOneDisplayed ? "" : "none" }}
-        >
-          <CaliforniaOne id="california-one" />
-        </div>
-
-        <div
-          style={{
-            display: this.state.californiaThreeDisplayed ? "" : "none",
-          }}
-        >
-          <CaliforniaThree id="california-three" />
-        </div>
-
-        <div style={{ display: this.state.sethDisplayed ? "" : "none" }}>
-          <Seth id="seth" />
-        </div>
-
-        <div style={{ display: this.state.dakotaFourDisplayed ? "" : "none" }}>
-          <DakotaFour id="dakota-four" />
-        </div>
-
-        <div style={{ display: this.state.dakotaFourDisplayed ? "" : "none" }}>
-          <VerhampOne
-            id="verhamp-one"
-            style={{ display: this.state.verhampOneDisplayed ? "" : "none" }}
-          />
-        </div>
-
-        <div style={{ display: this.state.daltonOneDisplayed ? "" : "none" }}>
-          <DaltonOne id="dalton-one" />
-        </div>
-
-        <div style={{ display: this.state.sierraTwoDisplayed ? "" : "none" }}>
-          <SierraTwo id="sierra-two" />
-        </div> */}
       </HeroRight>
     );
   }

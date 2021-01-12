@@ -533,7 +533,7 @@ export default class Analog extends Component {
               mobileView={this.state.mobileView}
                   name={
                     this.state.mobileView
-                      ? "gallery-mobile"
+                      ? "analog-gallery-mobile"
                       : "gallery-desktop"
                   }
                 /> : <div className="place-holder"></div>} 

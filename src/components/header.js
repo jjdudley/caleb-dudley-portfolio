@@ -1,5 +1,5 @@
 import { Link } from "gatsby";
-import React, { Component } from "react";
+import React from "react";
 import styled from "styled-components";
 
 
@@ -20,11 +20,6 @@ let HeaderRight = styled.div`
     display: flex;
     flex-direction: column;
 `
-
-let LinkContainer = styled.div`
-    font-size: 14px;
-`
-
 
 
 const Header = () => (

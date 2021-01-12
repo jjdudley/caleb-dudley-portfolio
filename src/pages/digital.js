@@ -2,9 +2,9 @@ import React, { Component } from "react"
 import { Link } from "gatsby"
 import "../components/styles.css"
 import styled from "styled-components"
-// import Layout from "../components/layout"
+
 import DigitalPhotos from "../components/digital-photos"
-// import MobileNav from "../components/mobile-nav"
+
 import anime from "animejs/lib/anime.es.js";
 import TransitionLink from "gatsby-plugin-transition-link";
 

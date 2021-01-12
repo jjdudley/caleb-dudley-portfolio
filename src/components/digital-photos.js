@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import { StaticQuery, graphql, useStaticQuery } from 'gatsby';
+import React from 'react';
+import { StaticQuery, graphql} from 'gatsby';
 import Lightbox from './digital-lightbox';
 
 
@@ -18,7 +18,7 @@ const DigitalPhotos = (props) => (
                                 mobilePaddingRight
                                 galleryImage {
                                     childImageSharp {
-                                        fluid {
+                                        fluid(maxWidth: 2000) {
                                             ...GatsbyImageSharpFluid
                                         }
                                     }
