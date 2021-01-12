@@ -225,9 +225,18 @@ table {
   background: transparent !important;
 }
 
-.dialog-box {
+.dialog-box-mobile {
   width: 94% !important;
   height: auto !important;
+  
+
+}
+
+.dialog-box-desktop {
+  width: 48%;
+  max-height: 90vh;
+  
+  
   
 }
 
@@ -257,7 +266,7 @@ table {
   width: 400px !important;
 }
 
-.close-dialog-button {
+.close-dialog-button-mobile {
   position: absolute !important;
   /* top: 0 !important; */
   background: transparent !important;
@@ -268,11 +277,24 @@ table {
   border: none;
 }
 
+.close-dialog-button-desktop {
+  position: absolute !important;
+  top: 0;
+  left: 0;
+  /* top: 0 !important; */
+  background: transparent !important;
+  height: 100vh !important;
+  width: 100vw !important;
+  z-index: 9000 !important;
+  outline: none;
+  border: none;
+}
+
 .close-dialog-button:hover {
   outline: none;
 }
 
-#lightbox-container-test {
+#lightbox-container-mobile {
   position: fixed;
   display: flex;
   flex-direction: column;
@@ -283,6 +305,23 @@ table {
   background-color: rgb(241, 241, 239);
   z-index: 8000;
   
+}
+
+#lightbox-container-desktop {
+  position: fixed;
+  display: flex;
+  top: 0;
+  left: 0;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+  height: 100vh;
+  width: 100vw;
+  padding: 10%;
+  background-color: rgb(241, 241, 239);
+  z-index: 8000;
+
 }
 
 
@@ -331,12 +370,12 @@ table {
 
 @media only screen and (max-width: 415px) {
   .digital-gallery-mobile {
-    padding-top: 245px !important ;
-    
+    padding-top: 200px !important ;
+    /* background-color: yellow !important; */
   }
   
   .fine-art-gallery-mobile {
-    padding-top: 128px !important;
+    padding-top: 108px !important;
     width: 100% !important;
     
   }
@@ -349,11 +388,12 @@ table {
 
 @media only screen and (max-width: 376px) {
   .digital-gallery-mobile {
-    padding-top: 215px !important ;
+    padding-top: 180px !important ;
+    /* background-color: orange !important; */
   
   }
   .fine-art-gallery-mobile {
-    padding-top: 120px !important;
+    padding-top: 100px !important;
     width: 100% !important;
     
   }
@@ -365,7 +405,8 @@ table {
 
 @media only screen and (max-width: 321px) {
   .digital-gallery-mobile {
-    padding-top: 140px !important;
+    padding-top: 100px !important;
+    /* background-color: red !important; */
   }
 
   .landing-animation-header {
@@ -393,7 +434,7 @@ table {
   }
 
   .fine-art-gallery-mobile {
-    padding-top: 100px !important;
+    padding-top: 80px !important;
     width: 100% !important;
   }
 
@@ -748,7 +789,7 @@ section {
   height: 100%;
   height: auto;
   
-}
+} 
 
 .place-holder {
   height: 100vh;

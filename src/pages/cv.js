@@ -312,6 +312,14 @@ export default class Cv extends Component {
       duration: 800,
       delay: (el, index) => 30 * index
     });
+
+    anime.timeline().add({
+      targets: ".hero-opacity-wrapper-desktop",
+      opacity: [0,1],
+      easing: "easeInExpo",
+      duration: 800,
+      delay: 800
+    });
   };
 
   exitAnimation = ( exit, selectAnimationHeader) => {
@@ -357,6 +365,14 @@ export default class Cv extends Component {
       translateX: [0, -30],
       opacity: [1, 0],
       delay: (el, index) => 30 * index
+    });
+
+    anime.timeline().add({
+      targets: ".hero-opacity-wrapper-desktop",
+      duration: 1600,
+      easing: "easeOutExpo",
+      opacity: 0,
+      delay: 0
     });
   };
 

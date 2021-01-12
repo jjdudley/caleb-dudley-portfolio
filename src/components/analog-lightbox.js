@@ -166,8 +166,8 @@ render() {
         //     Close
         //   </button>
         // </Dialog>
-        <div id="lightbox-container-test" style={{top: this.state.scrollPosition}}>
-          <div className="dialog-box">
+        <div id={this.props.lightboxId}  style={{top: this.state.scrollPosition}}>
+          <div className={this.props.dialogBox}>
             <Img
               fluid={
                 selectedImage.node.frontmatter.galleryImage.childImageSharp
@@ -179,7 +179,8 @@ render() {
             {selectedImage.node.frontmatter.caption}
           </div>
           <button
-           className="close-dialog-button"
+          className={this.props.closeDialogButton}
+           
             type="button"
             onClick={() => this.setState({ showLightbox: false })}
           >

@@ -297,7 +297,7 @@ export default class Home extends Component {
 
     await this.handleResize();
     // setTimeout(()=> this.setState({opacityMaskEnterVisible: false}), 1100)
-    setTimeout(() => this.setState({ photosReady: true }), 1000);
+    setTimeout(() => this.setState({ photosReady: true }), 2000);
     // setTimeout(() => this.setState({opacityMaskEnterDisplayed: false }), 3200)
     window.addEventListener("resize", this.handleResize.bind(this));
     this.setState({ siteLoaded: true });
@@ -546,7 +546,7 @@ export default class Home extends Component {
 
     anime.timeline().add({
       targets: ".hero-opacity-wrapper-mobile",
-      duration: 1600,
+      duration: 800,
       easing: "linear",
       opacity: 0,
       delay: 0
@@ -564,7 +564,7 @@ export default class Home extends Component {
   };
 
   render() {
-    console.log("INDEX IS RENDERINGGGGGG");
+   
     if (this.state.siteLoaded) {
       return (
         <>
@@ -611,7 +611,7 @@ export default class Home extends Component {
                     className="hero-link-mobile"
                     to="/archive"
                     exit={{
-                      length: 1.8,
+                      length: 1.2,
                       trigger: ({ exit, node }) => {
                         let animationHeader = node.querySelector(
                           ".landing-animation-header"
@@ -620,7 +620,7 @@ export default class Home extends Component {
                       }
                     }}
                     entry={{
-                      delay: 1.8,
+                      delay: 1.2,
                       length: 0
                     }}
                   >
@@ -638,7 +638,7 @@ export default class Home extends Component {
                       }
                     }}
                     entry={{
-                      delay: 1.8,
+                      delay: 1.2,
                       length: 0
                     }}
                   >
@@ -696,7 +696,7 @@ export default class Home extends Component {
                       }
                     }}
                     entry={{
-                      delay: 1.8,
+                      delay: 1,
                       length: 0
                     }}
                   >
