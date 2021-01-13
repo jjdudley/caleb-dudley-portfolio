@@ -18,7 +18,7 @@ const AnalogPhotos = (props) => (
                                 mobilePaddingRight
                                 galleryImage {
                                     childImageSharp {
-                                        fluid(maxWidth: 2000, quality: 100) {
+                                        fluid(maxWidth: 2000, quality: 60) {
                                             ...GatsbyImageSharpFluid
                                         }
                                     }
