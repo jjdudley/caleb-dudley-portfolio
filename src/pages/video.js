@@ -1,41 +1,42 @@
 import React, { Component } from "react"
-import { Link } from "gatsby"
+
 import "../components/styles.css"
 import styled from "styled-components"
 // import Layout from "../components/layout"
-// import AnalogPhotos from "../components/analog-photos"
+
 // import MobileNav from "../components/mobile-nav"
 import anime from "animejs/lib/anime.es.js";
-import Videos from "../components/videos"
 import TransitionLink from "gatsby-plugin-transition-link";
 import ReactPlayer from "react-player/lazy";
+import { Helmet } from 'react-helmet'
 
 
-
-const VideosContainer = styled.div`
+const VideoContainer = styled.div`
   display: flex;
   margin: 0;
   width: 100%;
   justify-content: flex-start;
-
-  position: fixed;
-  top: 0;
-  display: flex;
-  width: 100%;
-  height: 100%;
-  justify-content: center;
 `
 
+const VideoHeader = styled.div`
+  font-family: orpheuspro, serif;
+  font-weight: 400;
+  font-style: regular;
+  font-size: 4.4rem;
+  text-transform: uppercase;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  
+`
 
 const GalleryRight = styled.div`
-  
   display: flex;
-  flex-direction: column;
   justify-content: center;
-  align-items: center;
-  height: 100%;
-  
+  padding: 1%;
 `
+
+
 
 
 const HeroHeader = styled.div`
@@ -125,14 +126,26 @@ let MobileNavHeaderContainer = styled.div`
 position: fixed;
 top: 0;
 display: flex;
-align-items: center;
+margin: 0;
 width: 100%;
+padding: 10px;
 justify-content: space-between;
 
-padding: 10px;
-z-index: 9000;
 
+z-index: 9000;
+    
     `
+
+//     let MobileNavHeaderContainer = styled.div`
+//   display: flex;
+//   margin: 0;
+//   width: 100%;
+//   justify-content: space-between;
+//   padding: 0 10px;
+//   margin-top: 10px;
+//   z-index: 9000;
+//   border: 1px solid blue !important;
+// `;
 
     
     
@@ -154,11 +167,11 @@ z-index: 9000;
     let MobileNavHeaderCenter = styled.div`
     display: flex;
     color: rgb(19, 19, 18);
-    display: flex;
     justify-content: center;
     align-items: center;
     font-size: 1.2rem;
     text-transform: uppercase;
+    
     `
     
     let MobileNavHeaderRight = styled.div`
@@ -172,14 +185,14 @@ z-index: 9000;
     `
     let MobileNavFooterContainer = styled.div`
     position: fixed;
-    bottom: 0;
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-  
-    padding: 0 10px;
-    margin-bottom: 10px;
-    z-index: 9000;
+  bottom: 0;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+
+  padding: 0 10px;
+  margin-bottom: 10px;
+  z-index: 9000;
     `
     
     let MobileNavFooterLeft = styled.div`
@@ -211,11 +224,15 @@ z-index: 9000;
     `
     
     const LayoutContainer = styled.div`
+    
+    top: 0;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     width: 100%;
+   
     z-index: 7000;
+    
     `;
 
     const OpacityMaskEnter = styled.div`
@@ -226,8 +243,8 @@ z-index: 9000;
     width: 50%;
     left: 50%;
     opacity: 0;
-    transition: opacity 2.5s ease;
-    z-index: 0;
+    transition: opacity 0.5s ease;
+    z-index: 8500;
     `
     const OpacityMaskExit = styled.div`
     position: absolute;
@@ -245,6 +262,7 @@ export default class Video extends Component {
 
     this.state = {
       mobileView: false,
+      photosReady: false,
       siteLoaded: false,
       opacityMaskEnterVisible: true,
       opacityMaskEnterDisplayed: true,
@@ -270,25 +288,29 @@ export default class Video extends Component {
 
   async componentDidMount() {
     await this.handleResize();
+    setTimeout(()=> this.setState({opacityMaskEnterVisible: false}), 1100)
+    setTimeout(() => this.setState({photosReady: true}), 1200)
+    setTimeout(() => this.setState({opacityMaskEnterDisplayed: false }), 3200)
+    
     window.addEventListener("resize", this.handleResize.bind(this));
     this.setState({ siteLoaded: true });
     if (!this.state.mobileView) {
-       this.enterAnimation();
+      this.enterAnimation();
     } else {
-      await this.mobileEnterAnimation();
+      this.mobileEnterAnimation();
     }
   }
 
   componentWillUnmount() {
     window.removeEventListener("resize", this.handleResize.bind(this))
-    console.log("videos unmounting")
+    console.log("analog unmounting")
     
   }
 
   enterAnimation = () => {
     console.log("enter normal")
     let animationHeader = document.querySelector(".animation-header");
-    
+
     animationHeader.innerHTML = animationHeader.textContent.replace(
       /\S/g,
       "<span class='letter'>$&</span>"
@@ -304,25 +326,30 @@ export default class Video extends Component {
       delay: (el, index) => 30 * index
     });
 
-    anime.timeline().add({
-      targets: ".player-container-desktop",
-      duration: 800,
-      easing: "linear",
-      opacity: [0,1],
-      delay: 1400,
-    });
-
     // anime.timeline().add({
-    //   targets: ".opacity-mask-exit",
-    //   duration: 400,
+    //   targets: ".opacity-mask-two",
+    //   duration: 200,
     //   easing: "linear",
     //   opacity: 0,
-    //   delay: 0,
+    //   delay: 600,
     // });
   };
 
-  
-  
+  // triggerTransition = () => {
+  //   return useTriggerTransition({
+  //     exit: {
+  //       length: 1.8
+  //     },
+  //     entry: {
+  //       delay: 1.8
+  //     },
+  //   })
+  // }
+
+  // progTransition = async () => {
+  //   await this.exitAnimation()
+  //   this.triggerTransition({ to: "/"})
+  // }
 
   mobileEnterAnimation = () => {
     console.log("enter mobile")
@@ -342,14 +369,6 @@ export default class Video extends Component {
       duration: 800,
       delay: (el, index) => 30 * index
     });
-
-    anime.timeline().add({
-      targets: ".player-container-mobile",
-      duration: 800,
-      easing: "linear",
-      opacity: [0,1],
-      delay: 1400,
-    });
   }
 
   
@@ -360,7 +379,8 @@ export default class Video extends Component {
       opacityMaskExitDisplayed: true,
     })
   
-  
+    
+
     // setTimeout(()=> this.setState({opacityMaskVisible: false}), 1100)
     // setTimeout(() => this.setState({photosReady: true}), 1200)
     // setTimeout(() => this.setState({opacityMaskDisplayed: false}), 3200)
@@ -376,10 +396,10 @@ export default class Video extends Component {
       console.log(selectAnimationHeaderLetters)
 
       anime.timeline().add({
-        targets: ".player-container-desktop",
+        targets: ".opacity-mask-exit",
         duration: 800,
         easing: "linear",
-        opacity: [1,0],
+        opacity: 1,
         delay: 800,
       });
 
@@ -393,12 +413,13 @@ export default class Video extends Component {
     });
 
     anime.timeline().add({
-      targets: ".hero-opacity-wrapper-desktop",
+      targets: ".video-opacity-wrapper-desktop",
       duration: 1600,
       easing: "easeOutExpo",
       opacity: 0,
       delay: 0
     });
+
     
 
   };
@@ -417,21 +438,12 @@ export default class Video extends Component {
       "<span class='letter'>$&</span>"
     );
 
-
-    anime.timeline().add({
-      targets: ".player-container-mobile",
-      duration: 800,
-      easing: "linear",
-      opacity: [1,0],
-      delay: 0,
-    });
-
     anime.timeline().add({
       targets: ".opacity-mask-exit",
       duration: 800,
       easing: "linear",
       opacity: 1,
-      delay: 800,
+      delay: 0,
     });
 
     anime.timeline().add({
@@ -445,72 +457,137 @@ export default class Video extends Component {
   }
 
   render() {
-  
     if (this.state.siteLoaded) {
-      return ( 
-      <>
-      {this.state.mobileView ? 
+    
+      return (
+        <>
+        <Helmet>
+            <title>Video</title>
+            <meta http-equiv="ScreenOrientation" content="autoRotate:disabled"></meta>
+          </Helmet>
+        {this.state.mobileView ? (
+        <>
         <LayoutContainer>
-          
-        <MobileNavHeaderContainer >
-          <MobileNavHeaderLeft>
-          <TransitionLink
-                  className="hero-link-mobile"
-                  to="/"
-                  exit={{
-                    length: 2.2,
-                    trigger: ({ exit, node }) => {
-                      let animationHeader = node.querySelector(".mobile-animation-header");
-                      this.mobileExitAnimation(exit, animationHeader);
-                    }
-                  }}
-                  entry={{
-                    delay: 2.2,
-                    length: 0
-                  }}
-                >
-                  Home
-                </TransitionLink>
-          </MobileNavHeaderLeft>
-          <MobileNavHeaderCenter className="mobile-animation-header">VIDEO</MobileNavHeaderCenter>
-          <MobileNavHeaderRight>
-          <TransitionLink
-                  className="hero-link-mobile"
-                  to="/archive"
-                  exit={{
-                    length: 2.2,
-                    trigger: ({ exit, node }) => {
-                      let animationHeader = node.querySelector(".mobile-animation-header");
-                      this.mobileExitAnimation(exit, animationHeader);
-                    }
-                  }}
-                  entry={{
-                    delay: 2.2,
-                    length: 0
-                  }}
-                >
-                  Archive
-                </TransitionLink>
+          <MobileNavHeaderContainer >
+                <MobileNavHeaderLeft>
                 <TransitionLink
-                  className="hero-link-mobile"
-                  to="/fine-art"
-                  exit={{
-                    length: 1.8,
-                    trigger: ({ exit, node }) => {
-                      let animationHeader = node.querySelector(".mobile-animation-header");
-                      this.mobileExitAnimation(exit, animationHeader);
-                    }
-                  }}
-                  entry={{
-                    delay: 1.8,
-                    length: 0
-                  }}
-                >
-                  Fine Art
-                </TransitionLink>
-          </MobileNavHeaderRight>
-        </MobileNavHeaderContainer>
-        <MobileNavFooterContainer>
+                        className="hero-link-mobile"
+                        to="/"
+                        exit={{
+                          length: 2,
+                          trigger: ({ exit, node }) => {
+                            let animationHeader = node.querySelector(".mobile-animation-header");
+                            this.mobileExitAnimation(exit, animationHeader);
+                          }
+                        }}
+                        entry={{
+                          delay: 2,
+                          length: 0
+                        }}
+                      >
+                        Home
+                      </TransitionLink>
+                </MobileNavHeaderLeft>
+                <MobileNavHeaderCenter className="mobile-animation-header">VIDEO</MobileNavHeaderCenter>
+                <MobileNavHeaderRight>
+                <TransitionLink
+                        className="hero-link-mobile"
+                        to="/archive"
+                        exit={{
+                          length: 1.8,
+                          trigger: ({ exit, node }) => {
+                            let animationHeader = node.querySelector(".mobile-animation-header");
+                            this.mobileExitAnimation(exit, animationHeader);
+                          }
+                        }}
+                        entry={{
+                          delay: 1.8,
+                          length: 0
+                        }}
+                      >
+                        Archive
+                      </TransitionLink>
+                      <TransitionLink
+                        className="hero-link-mobile"
+                        to="/fine-art"
+                        exit={{
+                          length: 1.8,
+                          trigger: ({ exit, node }) => {
+                            let animationHeader = node.querySelector(".mobile-animation-header");
+                            this.mobileExitAnimation(exit, animationHeader);
+                          }
+                        }}
+                        entry={{
+                          delay: 1.8,
+                          length: 0
+                        }}
+                      >
+                        Fine Art
+                      </TransitionLink>
+                </MobileNavHeaderRight>
+              </MobileNavHeaderContainer>
+              
+              
+    
+              <VideoContainer
+               className="analog-mobile-container"
+              >
+              
+              <GalleryRight className="video-opacity-wrapper-mobile" style={{ width: "100%" }}>
+
+
+              {/* { this.state.photosReady ? <AnalogPhotos
+              lightboxId="lightbox-container-mobile"
+              dialogBox="dialog-box-mobile"
+              closeDialogButton="close-dialog-button-mobile"
+              mobileView={this.state.mobileView}
+                  name={
+                    this.state.mobileView
+                      ? "analog-gallery-mobile"
+                      : "gallery-desktop"
+                  }
+                /> : <div className="place-holder"></div>}  */}
+
+
+             {/* <Videos
+                id="videos-container"
+                playerClass={this.state.mobileView ? "player-mobile" : "player-desktop"}
+                // name={
+                //   this.state.mobileView
+                //     ? "gallery-mobile"
+                //     : "gallery-desktop"
+                // }
+              />  */}
+              <div 
+              // className="player-container" 
+              className= "player-container-mobile">
+              <ReactPlayer className="react-player" url="https://www.youtube.com/embed/G6qD8mb7SpM" />
+              </div>
+
+              <div 
+              // className="player-container" 
+              className= "player-container-mobile">
+              <ReactPlayer className="react-player" url="https://www.youtube.com/embed/plfNbTpK8m0" />
+              </div>
+              
+              <div 
+              // className="player-container" 
+              className="player-container-mobile">
+              <ReactPlayer className="react-player" url="https://www.youtube.com/embed/oW8w607gFes" />
+              </div>
+  
+              
+          
+
+
+
+               </GalleryRight>
+        
+            </VideoContainer>
+            <OpacityMaskEnter style={{"opacity": this.state.opacityMaskEnterVisible ? "1" : "0", "width": "100vw", "left": "0", display: this.state.opacityMaskEnterDisplayed? "" : "none"}}/>
+            <OpacityMaskExit className="opacity-mask-exit" style={{ "width": "100vw", "left": "0", display: this.state.opacityMaskExitDisplayed? "" : "none"}}/>
+          </LayoutContainer>
+          <MobileNavFooterContainer >
           <MobileNavFooterLeft>
             
             <a
@@ -520,7 +597,7 @@ export default class Video extends Component {
             >
               Instagram
             </a>
-           
+            
             <a className="hero-link-mobile" target="_blank" href="mailto:calebjdudley@gmail.com">Email</a> 
           </MobileNavFooterLeft>
           <MobileNavFooterCenter className="hero-link-mobile">Brooklyn, NY</MobileNavFooterCenter>
@@ -542,53 +619,31 @@ export default class Video extends Component {
                 >
                   About
                 </TransitionLink>
-            <Link className="hero-link-mobile" to="/cv">C.V.</Link>
+                <TransitionLink
+                  className="hero-link-mobile"
+                  to="/cv"
+                  exit={{
+                    length: 1.8,
+                    trigger: ({ exit, node }) => {
+                      let animationHeader = node.querySelector(".mobile-animation-header");
+                      this.mobileExitAnimation(exit, animationHeader);
+                    }
+                  }}
+                  entry={{
+                    delay: 1.8,
+                    length: 0
+                  }}
+                >
+                  C.V.
+                </TransitionLink>
+            
           </MobileNavFooterRight>
         </MobileNavFooterContainer>
-
-        <VideosContainer
-         className="videos-mobile-container"
-        >
-        
-        <GalleryRight className="hero-opacity-wrapper-desktop" style={{ width: "100%"}}>
-         {/* <Videos
-            id="videos-container"
-            playerClass={this.state.mobileView ? "player-mobile" : "player-desktop"}
-            // name={
-            //   this.state.mobileView
-            //     ? "gallery-mobile"
-            //     : "gallery-desktop"
-            // }
-          />  */}
-          <div 
-          // className="player-container" 
-          className="player-container-mobile"
-          >
-          <ReactPlayer className="react-player" url="https://www.youtube.com/embed/iiL3Q_T3j9I" />
-          </div>
-          
-          <div 
-          // className="player-container" 
-          className="player-container-mobile">
-          <ReactPlayer className="react-player" url="https://www.youtube.com/embed/hApPmHnWrb8" />
-          </div>
-
-          
-         </GalleryRight>
-  
-      </VideosContainer>
-      {/* <OpacityMaskEnter className="opacity-mask-enter" style={{"z-index": this.state.opacityMaskEnterVisible ? "9000" : "0", "width": this.state.mobileView ? "100vw" : "", "left": this.state.mobileView ? "0" : "", display: this.state.opacityMaskEnterDisplayed? "" : "none"}}/> */}
-      {/* <OpacityMaskExit className="opacity-mask-exit" style={{ "width": this.state.mobileView ? "100vw" : "", "left": this.state.mobileView ? "0" : "", display: this.state.opacityMaskExitDisplayed? "" : "none"}}/> */}
-    </LayoutContainer>
-
-
-
-        : 
-
+        </>
+        ) : (
         <LayoutContainer>
-          
-            
-            <VideosContainer
+  
+            <VideoContainer
             
             >
             
@@ -607,7 +662,7 @@ export default class Video extends Component {
                       className="hero-link"
                       to="/archive"
                       exit={{
-                        length: 1.8,
+                        length: 2,
                         trigger: ({ exit, node }) => {
                           let animationHeader = node.querySelector(
                             ".animation-header"
@@ -616,7 +671,7 @@ export default class Video extends Component {
                         }
                       }}
                       entry={{
-                        delay: 1.6,
+                        delay: 2,
                         length: 0
                       }}
                     >
@@ -663,7 +718,7 @@ export default class Video extends Component {
                     >
                       Instagram
                     </a>
-                   
+                    
                     <a className="hero-link" target="_blank" href="mailto:calebjdudley@gmail.com">Email</a> 
                   </FooterLeft>
                   <FooterCenter>Brooklyn, NY</FooterCenter>
@@ -687,51 +742,70 @@ export default class Video extends Component {
                     >
                       About
                     </TransitionLink>
-                    <Link className="hero-link" to="/cv">
+                    <TransitionLink
+                      className="hero-link"
+                      to="/cv"
+                      exit={{
+                        length: 1.8,
+                        trigger: ({ exit, node }) => {
+                          let animationHeader = node.querySelector(
+                            ".animation-header"
+                          );
+                          this.exitAnimation(exit, animationHeader);
+                        }
+                      }}
+                      entry={{
+                        delay: 1.8,
+                        length: 0
+                      }}
+                    >
                       C.V.
-                    </Link>
+                    </TransitionLink>
+                    
                   </FooterRight>
                 </FooterContainer>
               </HeroLeftContainer>
               
           
-            <GalleryRight className="hero-opacity-wrapper-desktop" style={{ width: "50%" }}>
-             {/* <Videos
-                id="videos-container"
-                playerClass={this.state.mobileView ? "player-mobile" : "player-desktop"}
-                // name={
-                //   this.state.mobileView
-                //     ? "gallery-mobile"
-                //     : "gallery-desktop"
-                // }
-              />  */}
+            <GalleryRight className="video-opacity-wrapper-desktop" style={{ width: "50%" }}>
+            
+            <div 
+              // className="player-container" 
+              className= "player-container-desktop">
+              <ReactPlayer className="react-player" url="https://www.youtube.com/embed/G6qD8mb7SpM" />
+              </div>
+
               <div 
               // className="player-container" 
               className= "player-container-desktop">
-              <ReactPlayer className="react-player" url="https://www.youtube.com/embed/iiL3Q_T3j9I" />
+              <ReactPlayer className="react-player" url="https://www.youtube.com/embed/plfNbTpK8m0" />
               </div>
               
               <div 
               // className="player-container" 
               className="player-container-desktop">
-              <ReactPlayer className="react-player" url="https://www.youtube.com/embed/hApPmHnWrb8" />
+              <ReactPlayer className="react-player" url="https://www.youtube.com/embed/oW8w607gFes" />
               </div>
   
-              
+
              </GalleryRight>
       
-          </VideosContainer>
-          {/* <OpacityMaskEnter className="opacity-mask-enter" style={{"z-index": this.state.opacityMaskEnterVisible ? "9000" : "0", "width": this.state.mobileView ? "100vw" : "", "left": this.state.mobileView ? "0" : "", display: this.state.opacityMaskEnterDisplayed? "" : "none"}}/> */}
-          {/* <OpacityMaskExit className="opacity-mask-exit" style={{ "width": this.state.mobileView ? "100vw" : "", "left": this.state.mobileView ? "0" : "", display: this.state.opacityMaskExitDisplayed? "" : "none"}}/> */}
-        </LayoutContainer>
-        }
-      </>
+          </VideoContainer>
+          <OpacityMaskEnter style={{"opacity": this.state.opacityMaskEnterVisible ? "1" : "0", display: this.state.opacityMaskEnterDisplayed? "" : "none"}}/>
+          <OpacityMaskExit className="opacity-mask-exit" style={{ display: this.state.opacityMaskExitDisplayed? "" : "none"}}/>
+        </LayoutContainer>)
+          
+    
+          }
+  
         
+      </>
       )
-    } else {
-      return null
+  
+     } else {
+      return null;
+    }
+      
     }
   
-    
-  }
 }

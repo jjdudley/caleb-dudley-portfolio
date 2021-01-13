@@ -1,12 +1,10 @@
 import React, { Component } from "react";
 import "../components/styles.css";
 import styled from "styled-components";
-
 import HeroGallery from "../components/hero-gallery";
-
 import anime from "animejs/lib/anime.es.js";
-import { Link } from "gatsby";
 import TransitionLink from "gatsby-plugin-transition-link";
+import { Helmet } from 'react-helmet'
 
 const HeroContainer = styled.div`
   position: fixed;
@@ -548,13 +546,17 @@ export default class Home extends Component {
     });
   };
 
- 
+  
 
   render() {
    
     if (this.state.siteLoaded) {
       return (
         <>
+          <Helmet>
+            <title>Homepage</title>
+            <meta http-equiv="ScreenOrientation" content="autoRotate:disabled"></meta>
+          </Helmet>
           {this.state.mobileView ? (
             <LayoutContainer className="home-layout-container-mobile">
               <MobileNavHeaderContainer>
@@ -689,9 +691,25 @@ export default class Home extends Component {
                   >
                     About
                   </TransitionLink>
-                  <Link className="hero-link-mobile" to="/cv">
+                  <TransitionLink
+                    className="hero-link-mobile"
+                    to="/cv"
+                    exit={{
+                      length: 1.8,
+                      trigger: ({ exit, node }) => {
+                        let animationHeader = node.querySelector(
+                          ".landing-animation-header"
+                        );
+                        this.mobileExitAnimation(exit, animationHeader);
+                      }
+                    }}
+                    entry={{
+                      delay: 1,
+                      length: 0
+                    }}
+                  >
                     C.V.
-                  </Link>
+                  </TransitionLink>
                 </MobileNavFooterRight>
               </MobileNavFooterContainer>
             </LayoutContainer>
@@ -701,9 +719,9 @@ export default class Home extends Component {
                 <HeroLeftContainer>
                   <HeaderContainer>
                     <HeaderLeft>
-                      <Link className="hero-link" to="/">
+                      <div className="hero-link">
                         Home
-                      </Link>
+                      </div>
                     </HeaderLeft>
                     <HeaderRight>
                       <TransitionLink
@@ -722,7 +740,7 @@ export default class Home extends Component {
                               ".hero-gallery-container"
                             );
 
-                            // this.exitHeroGallery(exit, exitImage);
+                            
                             this.exitAnimation(exit, animationHeader);
                           }
                         }}
@@ -750,7 +768,7 @@ export default class Home extends Component {
                               ".hero-gallery-container"
                             );
 
-                            this.exitHeroGallery(exit, exitImage);
+                            
                             this.exitAnimation(exit, animationHeader);
                           }
                         }}
@@ -828,9 +846,25 @@ export default class Home extends Component {
                         About
                       </TransitionLink>
 
-                      <Link className="hero-link" to="/cv">
+                      <TransitionLink
+                        className="hero-link"
+                        to="/cv"
+                        exit={{
+                          length: 1.8,
+                          trigger: ({ exit, node }) => {
+                            let animationHeader = node.querySelector(
+                              ".animation-header"
+                            );
+                            this.exitAnimation(exit, animationHeader);
+                          }
+                        }}
+                        entry={{
+                          delay: 1.8,
+                          length: 0
+                        }}
+                      >
                         C.V.
-                      </Link>
+                      </TransitionLink>
                     </FooterRight>
                   </FooterContainer>
                 </HeroLeftContainer>

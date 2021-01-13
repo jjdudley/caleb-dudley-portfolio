@@ -7,6 +7,7 @@ import styled from "styled-components";
 import CvContent from "../components/cv-content"
 import anime from "animejs/lib/anime.es.js";
 import TransitionLink from "gatsby-plugin-transition-link";
+import { Helmet } from 'react-helmet'
 
 const CvContainer = styled.div`
   position: fixed;
@@ -378,6 +379,11 @@ export default class Cv extends Component {
 
   render() {
     return (
+      <>
+      <Helmet>
+            <title>C.V.</title>
+            <meta http-equiv="ScreenOrientation" content="autoRotate:disabled"></meta>
+          </Helmet>
       <LayoutContainer
         className={
           this.state.mobileView ? "archive-layout-container-mobile" : ""
@@ -675,6 +681,7 @@ export default class Cv extends Component {
           </MobileNavFooterRight>
         </MobileNavFooterContainer>
       </LayoutContainer>
+      </>
     );
   }
 }

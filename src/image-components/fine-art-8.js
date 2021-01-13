@@ -13,7 +13,7 @@ const FineArtEight = () => {
       query {
         placeholderImage: file(relativePath: { eq: "fine-art/fine-art-8.jpg" }) {
           childImageSharp {
-            fluid(maxWidth: 2000) {
+            fluid(maxWidth: 2000, quality: 100) {
               ...GatsbyImageSharpFluid
             }
           }

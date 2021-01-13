@@ -41,6 +41,7 @@ const FineArtCaptionContainer = styled.div`
   font-weight: 400;
   font-style: normal;
   margin-top: 20px;
+  line-height: 1rem;
 `;
 
 const FineArtTitle = styled.div`

@@ -8,6 +8,7 @@ import FineArtGallery from "../components/fine-art-gallery";
 
 import anime from "animejs/lib/anime.es.js";
 import TransitionLink from "gatsby-plugin-transition-link";
+import { Helmet } from 'react-helmet'
 
 const FineArtContainer = styled.div`
   display: flex;
@@ -240,7 +241,7 @@ export default class FineArt extends Component {
   async componentDidMount() {
     await this.handleResize();
     setTimeout(() => this.setState({ opacityMaskEnterVisible: false }), 1100);
-    setTimeout(() => this.setState({ photosReady: true }), 1200);
+    setTimeout(() => this.setState({ photosReady: true }), 1000);
     setTimeout(() => this.setState({ opacityMaskEnterDisplayed: false }), 3200);
 
     window.addEventListener("resize", this.handleResize.bind(this));
@@ -386,6 +387,10 @@ export default class FineArt extends Component {
   render() {
     return (
       <>
+      <Helmet>
+            <title>Fine Art Photography</title>
+            <meta http-equiv="ScreenOrientation" content="autoRotate:disabled"></meta>
+          </Helmet>
         <LayoutContainer>
           <MobileNavHeaderContainer
             style={{ display: this.state.mobileView ? "" : "none" }}

@@ -7,6 +7,7 @@ import AnalogPhotos from "../components/analog-photos"
 // import MobileNav from "../components/mobile-nav"
 import anime from "animejs/lib/anime.es.js";
 import TransitionLink from "gatsby-plugin-transition-link";
+import { Helmet } from 'react-helmet'
 
 
 
@@ -439,7 +440,7 @@ export default class Analog extends Component {
       duration: 800,
       easing: "linear",
       opacity: 1,
-      delay: 800,
+      delay: 0,
     });
 
     anime.timeline().add({
@@ -457,6 +458,10 @@ export default class Analog extends Component {
     
       return (
         <>
+        <Helmet>
+            <title>Analog Photography</title>
+            <meta http-equiv="ScreenOrientation" content="autoRotate:disabled"></meta>
+          </Helmet>
         {this.state.mobileView ? (
         <>
         <LayoutContainer>
@@ -575,7 +580,23 @@ export default class Analog extends Component {
                 >
                   About
                 </TransitionLink>
-            <Link className="hero-link-mobile" to="/cv">C.V.</Link>
+                <TransitionLink
+                  className="hero-link-mobile"
+                  to="/cv"
+                  exit={{
+                    length: 1.8,
+                    trigger: ({ exit, node }) => {
+                      let animationHeader = node.querySelector(".mobile-animation-header");
+                      this.mobileExitAnimation(exit, animationHeader);
+                    }
+                  }}
+                  entry={{
+                    delay: 1.8,
+                    length: 0
+                  }}
+                >
+                  C.V.
+                </TransitionLink>
           </MobileNavFooterRight>
         </MobileNavFooterContainer>
         </>
@@ -681,9 +702,25 @@ export default class Analog extends Component {
                     >
                       About
                     </TransitionLink>
-                    <Link className="hero-link" to="/cv">
+                    <TransitionLink
+                      className="hero-link"
+                      to="/cv"
+                      exit={{
+                        length: 1.8,
+                        trigger: ({ exit, node }) => {
+                          let animationHeader = node.querySelector(
+                            ".animation-header"
+                          );
+                          this.exitAnimation(exit, animationHeader);
+                        }
+                      }}
+                      entry={{
+                        delay: 1.8,
+                        length: 0
+                      }}
+                    >
                       C.V.
-                    </Link>
+                    </TransitionLink>
                   </FooterRight>
                 </FooterContainer>
               </HeroLeftContainer>
@@ -726,3 +763,5 @@ export default class Analog extends Component {
     }
   
 }
+
+

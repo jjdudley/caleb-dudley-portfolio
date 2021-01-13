@@ -7,7 +7,7 @@ import DigitalPhotos from "../components/digital-photos"
 
 import anime from "animejs/lib/anime.es.js";
 import TransitionLink from "gatsby-plugin-transition-link";
-
+import { Helmet } from 'react-helmet'
 
 
 const DigitalContainer = styled.div`
@@ -436,20 +436,22 @@ export default class Digital extends Component {
   mobileExitAnimation = (exit, selectAnimationHeader) => {
     // this.setState({ animateEnter: false })
 
-    // this.setState({
-    //   opacityMaskExitDisplayed: true,
-    // }) 
+    this.setState({
+      opacityMaskExitDisplayed: true,
+    }) 
 
     selectAnimationHeader.innerHTML = selectAnimationHeader.textContent.replace(
       /\S/g,
       "<span class='letter'>$&</span>"
     );
 
+  
+
     anime.timeline().add({
       targets: ".opacity-mask-exit",
       duration: 800,
       easing: "linear",
-      opacity: [0,1],
+      opacity: 1,
       delay: 0,
     });
 
@@ -479,6 +481,10 @@ export default class Digital extends Component {
     
     return (
       <>
+      <Helmet>
+            <title>Digital Photography</title>
+            <meta http-equiv="ScreenOrientation" content="autoRotate:disabled"></meta>
+          </Helmet>
       {this.state.mobileView ? (
       <>
       <LayoutContainer>
@@ -597,7 +603,24 @@ export default class Digital extends Component {
               >
                 About
               </TransitionLink>
-          <Link className="hero-link-mobile" to="/cv">C.V.</Link>
+              <TransitionLink
+                className="hero-link-mobile"
+                to="/cv"
+                exit={{
+                  length: 1.8,
+                  trigger: ({ exit, node }) => {
+                    let animationHeader = node.querySelector(".mobile-animation-header");
+                    this.mobileExitAnimation(exit, animationHeader);
+                  }
+                }}
+                entry={{
+                  delay: 1.8,
+                  length: 0
+                }}
+              >
+                C.V.
+              </TransitionLink>
+         
         </MobileNavFooterRight>
       </MobileNavFooterContainer>
       </>
@@ -703,9 +726,25 @@ export default class Digital extends Component {
                   >
                     About
                   </TransitionLink>
-                  <Link className="hero-link" to="/cv">
+                  <TransitionLink
+                    className="hero-link"
+                    to="/cv"
+                    exit={{
+                      length: 1.8,
+                      trigger: ({ exit, node }) => {
+                        let animationHeader = node.querySelector(
+                          ".animation-header"
+                        );
+                        this.exitAnimation(exit, animationHeader);
+                      }
+                    }}
+                    entry={{
+                      delay: 1.8,
+                      length: 0
+                    }}
+                  >
                     C.V.
-                  </Link>
+                  </TransitionLink>
                 </FooterRight>
               </FooterContainer>
             </HeroLeftContainer>

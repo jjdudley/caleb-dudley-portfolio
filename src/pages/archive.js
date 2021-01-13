@@ -5,6 +5,7 @@ import styled from "styled-components";
 // import ArchiveMenu from "../components/archive-menu";
 import anime from "animejs/lib/anime.es.js";
 import TransitionLink from "gatsby-plugin-transition-link";
+import { Helmet } from 'react-helmet'
 
 const ArchiveContainer = styled.div`
   position: fixed;
@@ -517,6 +518,11 @@ export default class Archive extends Component {
   };
   render() {
     return (
+      <>
+      <Helmet>
+            <title>Media Archive</title>
+            <meta http-equiv="ScreenOrientation" content="autoRotate:disabled"></meta>
+          </Helmet>
       <LayoutContainer
         className={
           this.state.mobileView ? "archive-layout-container-mobile" : ""
@@ -992,6 +998,7 @@ export default class Archive extends Component {
           </MobileNavFooterRight>
         </MobileNavFooterContainer>
       </LayoutContainer>
+      </>
     );
   }
 }
