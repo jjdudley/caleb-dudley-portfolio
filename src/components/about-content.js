@@ -49,17 +49,35 @@ const AboutPhotoContainer = styled.div`
   z-index: 1000;
 `
 
+const AboutPhotoLightbox = styled.div` 
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(241, 241, 239);
+  padding: 80px 10%;
+  z-index: 3000;
+`
+
 class AboutContent extends Component {
   constructor(props) {
     super(props)
 
-    this.state = {}
+    this.state = {
+      aboutPhotoLightbox: false
+    }
   }
   render() {
     return (
       <AboutContentContainer>
         
-      <AboutPhotoContainer>
+        <AboutPhotoLightbox onClick={()=> this.setState({ aboutPhotoLightbox: false })} style={{display: this.state.aboutPhotoLightbox ? "" : "none"}}>
+          <AboutPhoto />
+        </AboutPhotoLightbox>
+      <AboutPhotoContainer onClick={()=> this.setState({ aboutPhotoLightbox: true })}>
         <AboutPhoto />
         </AboutPhotoContainer>
         <AboutContentCaption>

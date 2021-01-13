@@ -164,7 +164,7 @@ let MobileNavHeaderContainer = styled.div`
   justify-content: space-between;
 
   padding: 10px;
-  z-index: 9000;
+  z-index: 7000;
   background-color: rgb(241, 241, 239);
 `;
 
@@ -218,7 +218,7 @@ let MobileNavFooterContainer = styled.div`
   justify-content: space-between;
 
   padding: 10px;
-  z-index: 9000;
+  z-index: 7000;
   background-color: rgb(241, 241, 239);
 `;
 

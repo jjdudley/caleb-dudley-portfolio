@@ -6,6 +6,7 @@ import styled from "styled-components";
 
 const Image = styled(Img)`
   width: 100%;
+  height: auto;
 `;
 
 const AboutPhoto = () => {

@@ -96,11 +96,11 @@ class FineArtGallery extends Component {
           </FineArtCaptionContainer>
         </FineArtPhotoContainer>
 
-        <div className={this.props.fineArtLightbox} style={{display: this.state.fineArtOneDisplayed ? "" : "none", top: this.state.scrollPosition}}>
+        <div className={this.props.fineArtLightbox} style={{display: this.state.fineArtOneDisplayed ? "" : "none", top: this.state.scrollPosition, zIndex: this.state.fineArtOneDisplayed ? "9000" : "0"}}>
         <div className={this.props.fineArtLightboxImage}>
           <FineArtOne />
           </div>
-            <button className={this.props.fineArtLightboxButton} style={{top: this.state.scrollPosition}} type="button" onClick={()=> this.setState({fineArtOneDisplayed: false})}></button>
+            <button className={this.props.fineArtLightboxButton}  type="button" onClick={()=> this.setState({fineArtOneDisplayed: false})}></button>
           </div>
 
 
@@ -129,11 +129,11 @@ class FineArtGallery extends Component {
           </FineArtCaptionContainer>
         </FineArtPhotoContainer>
 
-        <div className={this.props.fineArtLightbox} style={{display: this.state.fineArtTwoDisplayed ? "" : "none", top: this.state.scrollPosition}}>
-        <div className={this.props.fineArtLightboxImage}>
+        <div className={this.props.fineArtLightbox} style={{display: this.state.fineArtTwoDisplayed ? "" : "none", top: this.state.scrollPosition, zIndex: this.state.fineArtTwoDisplayed ? "9000" : "0"}}>
+        <div className={this.props.fineArtLightboxImage} >
           <FineArtTwo />
           </div>
-            <button className={this.props.fineArtLightboxButton} style={{top: this.state.scrollPosition}} type="button" onClick={()=> this.setState({fineArtTwoDisplayed: false})}></button>
+            <button className={this.props.fineArtLightboxButton}  type="button" onClick={()=> this.setState({fineArtTwoDisplayed: false})}></button>
           </div>
         <FineArtPhotoContainer
           id="fine-art-container-three"
@@ -159,11 +159,11 @@ class FineArtGallery extends Component {
             2019
           </FineArtCaptionContainer>
         </FineArtPhotoContainer>
-        <div className={this.props.fineArtLightbox} style={{display: this.state.fineArtThreeDisplayed ? "" : "none", top: this.state.scrollPosition}}>
-        <div className={this.props.fineArtLightboxImage}>
+        <div className={this.props.fineArtLightbox} style={{display: this.state.fineArtThreeDisplayed ? "" : "none", top: this.state.scrollPosition, zIndex: this.state.fineArtThreeDisplayed ? "9000" : "0"}}>
+        <div className={this.props.fineArtLightboxImage} >
           <FineArtThree />
           </div>
-            <button className={this.props.fineArtLightboxButton} style={{top: this.state.scrollPosition}} type="button" onClick={()=> this.setState({fineArtThreeDisplayed: false})}></button>
+            <button className={this.props.fineArtLightboxButton} type="button" onClick={()=> this.setState({fineArtThreeDisplayed: false})}></button>
           </div>
         <FineArtPhotoContainer
           id="fine-art-container-four"
@@ -190,11 +190,11 @@ class FineArtGallery extends Component {
           </FineArtCaptionContainer>
         </FineArtPhotoContainer>
 
-        <div className={this.props.fineArtLightbox} style={{display: this.state.fineArtFourDisplayed ? "" : "none", top: this.state.scrollPosition}}>
-        <div className={this.props.fineArtLightboxImage}>
+        <div className={this.props.fineArtLightbox} style={{display: this.state.fineArtFourDisplayed ? "" : "none", top: this.state.scrollPosition, zIndex: this.state.fineArtFourDisplayed ? "9000" : "0"}}>
+        <div className={this.props.fineArtLightboxImage} >
           <FineArtFour />
           </div>
-            <button className={this.props.fineArtLightboxButton} type="button" onClick={()=> this.setState({fineArtFourDisplayed: false})}></button>
+            <button className={this.props.fineArtLightboxButton} type="button"  onClick={()=> this.setState({fineArtFourDisplayed: false})}></button>
           </div>
 
 
@@ -223,8 +223,8 @@ class FineArtGallery extends Component {
           </FineArtCaptionContainer>
         </FineArtPhotoContainer>
 
-        <div className={this.props.fineArtLightbox} style={{display: this.state.fineArtFiveDisplayed ? "" : "none", top: this.state.scrollPosition}}>
-        <div className={this.props.fineArtLightboxImage}>
+        <div className={this.props.fineArtLightbox} style={{display: this.state.fineArtFiveDisplayed ? "" : "none", top: this.state.scrollPosition, zIndex: this.state.fineArtFiveDisplayed ? "9000" : "0"}}>
+        <div className={this.props.fineArtLightboxImage} >
           <FineArtFive />
           </div>
             <button className={this.props.fineArtLightboxButton} type="button" onClick={()=> this.setState({fineArtFiveDisplayed: false})}></button>
@@ -256,11 +256,11 @@ class FineArtGallery extends Component {
           </FineArtCaptionContainer>
         </FineArtPhotoContainer>
 
-        <div className={this.props.fineArtLightbox} style={{display: this.state.fineArtSixDisplayed ? "" : "none", top: this.state.scrollPosition}}>
-        <div className={this.props.fineArtLightboxImage}>
+        <div className={this.props.fineArtLightbox} style={{display: this.state.fineArtSixDisplayed ? "" : "none", top: this.state.scrollPosition, zIndex: this.state.fineArtSixDisplayed ? "9000" : "0"}}>
+        <div className={this.props.fineArtLightboxImage}  >
           <FineArtSix />
           </div>
-            <button className={this.props.fineArtLightboxButton} type="button" onClick={()=> this.setState({fineArtSixDisplayed: false})}></button>
+            <button className={this.props.fineArtLightboxButton} type="button"  onClick={()=> this.setState({fineArtSixDisplayed: false})}></button>
           </div>
 
 
@@ -289,11 +289,11 @@ class FineArtGallery extends Component {
           </FineArtCaptionContainer>
         </FineArtPhotoContainer>
 
-        <div className={this.props.fineArtLightbox} style={{display: this.state.fineArtSevenDisplayed ? "" : "none", top: this.state.scrollPosition}}>
-        <div className={this.props.fineArtLightboxImage}>
+        <div className={this.props.fineArtLightbox} style={{display: this.state.fineArtSevenDisplayed ? "" : "none", top: this.state.scrollPosition, zIndex: this.state.fineArtSevenDisplayed ? "9000" : "0"}}>
+        <div className={this.props.fineArtLightboxImage} >
           <FineArtSeven />
           </div>
-            <button className={this.props.fineArtLightboxButton} type="button" onClick={()=> this.setState({fineArtSevenDisplayed: false})}></button>
+            <button className={this.props.fineArtLightboxButton} type="button"  onClick={()=> this.setState({fineArtSevenDisplayed: false})}></button>
           </div>
 
 
@@ -321,12 +321,12 @@ class FineArtGallery extends Component {
             2019
           </FineArtCaptionContainer>
         </FineArtPhotoContainer>
-        <div className={this.props.fineArtLightbox} style={{display: this.state.fineArtEightDisplayed ? "" : "none", top: this.state.scrollPosition}}>
-          <div className={this.props.fineArtLightboxImage}>
+        <div className={this.props.fineArtLightbox} style={{display: this.state.fineArtEightDisplayed ? "" : "none", top: this.state.scrollPosition, zIndex: this.state.fineArtEightDisplayed ? "9000" : "0"}}>
+          <div className={this.props.fineArtLightboxImage} >
           <FineArtEight />
           </div>
             
-            <button className={this.props.fineArtLightboxButton} type="button" onClick={()=> this.setState({fineArtEightDisplayed: false})}></button>
+            <button className={this.props.fineArtLightboxButton}  onClick={()=> this.setState({fineArtEightDisplayed: false})}></button>
           </div>
       </FineArtGalleryContainer>
     );

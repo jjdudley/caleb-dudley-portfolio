@@ -122,7 +122,7 @@ let MobileNavHeaderContainer = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 10px;
-  z-index: 8600;
+  z-index: 7000 !important;
 `;
 
 //     let MobileNavHeaderContainer = styled.div`
@@ -175,7 +175,7 @@ let MobileNavFooterContainer = styled.div`
   width: 100%;
   justify-content: space-between;
   padding: 0 10px;
-  z-index: 8600;
+  z-index: 7000 !important;
 `;
 
 let MobileNavFooterLeft = styled.div`
@@ -270,7 +270,7 @@ export default class Analog extends Component {
   async componentDidMount() {
     await this.handleResize();
     setTimeout(() => this.setState({ opacityMaskEnterVisible: false }), 1100);
-    setTimeout(() => this.setState({ photosReady: true }), 1200);
+    setTimeout(() => this.setState({ photosReady: true }), 1000);
     setTimeout(() => this.setState({ opacityMaskEnterDisplayed: false }), 3200);
 
     window.addEventListener("resize", this.handleResize.bind(this));
@@ -542,6 +542,8 @@ export default class Analog extends Component {
                   style={{
                     opacity: this.state.opacityMaskEnterVisible ? "1" : "0",
                     width: "100vw",
+                    height: "100vh",
+                    top: "0",
                     left: "0",
                     display: this.state.opacityMaskEnterDisplayed ? "" : "none"
                   }}

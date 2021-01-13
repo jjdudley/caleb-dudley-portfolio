@@ -14,6 +14,7 @@ const DigitalContainer = styled.div`
   margin: 0;
   width: 100%;
   justify-content: flex-start;
+  
 `;
 
 const DigitalHeader = styled.div`
@@ -123,7 +124,7 @@ let MobileNavHeaderContainer = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 10px;
-  z-index: 8600;
+  z-index: 7000 !important;
 `;
 
 //     let MobileNavHeaderContainer = styled.div`
@@ -176,7 +177,7 @@ let MobileNavFooterContainer = styled.div`
   width: 100%;
   justify-content: space-between;
   padding: 0 10px;
-  z-index: 8600;
+  z-index: 7000;
 `;
 
 let MobileNavFooterLeft = styled.div`
@@ -226,7 +227,8 @@ const OpacityMaskEnter = styled.div`
   left: 50%;
   opacity: 0;
   transition: opacity 0.5s ease;
-  z-index: 8500;
+  
+  z-index: 8500 !important;
 `;
 const OpacityMaskExit = styled.div`
   position: absolute;
@@ -248,7 +250,8 @@ export default class Digital extends Component {
       siteLoaded: false,
       opacityMaskEnterVisible: true,
       opacityMaskEnterDisplayed: true,
-      opacityMaskExitDisplayed: false
+      opacityMaskExitDisplayed: false,
+      showLightbox: false
     };
   }
 
@@ -271,7 +274,7 @@ export default class Digital extends Component {
   async componentDidMount() {
     await this.handleResize();
     setTimeout(() => this.setState({ opacityMaskEnterVisible: false }), 1100);
-    setTimeout(() => this.setState({ photosReady: true }), 1200);
+    setTimeout(() => this.setState({ photosReady: true }), 1000);
     setTimeout(() => this.setState({ opacityMaskEnterDisplayed: false }), 3200);
 
     window.addEventListener("resize", this.handleResize.bind(this));
@@ -287,6 +290,14 @@ export default class Digital extends Component {
     window.removeEventListener("resize", this.handleResize.bind(this));
     console.log("digital unmounting");
   }
+
+
+ 
+
+
+
+
+
 
   enterAnimation = () => {
     console.log("enter normal");
@@ -532,6 +543,7 @@ export default class Digital extends Component {
                   >
                     {this.state.photosReady ? (
                       <DigitalPhotos
+                      showLightbox={()=> { alert("yes")} }
                         lightboxId="lightbox-container-mobile"
                         dialogBox="dialog-box-mobile"
                         closeDialogButton="close-dialog-button-mobile"
@@ -551,6 +563,8 @@ export default class Digital extends Component {
                   style={{
                     opacity: this.state.opacityMaskEnterVisible ? "1" : "0",
                     width: "100vw",
+                    height: "100vh",
+                    top: "0",
                     left: "0",
                     display: this.state.opacityMaskEnterDisplayed ? "" : "none"
                   }}

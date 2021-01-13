@@ -103,7 +103,7 @@ let MobileNavHeaderContainer = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 10px;
-  z-index: 8600;
+  z-index: 7000 !important;
 `;
 
 let MobileNavHeaderLeft = styled.div`
@@ -145,7 +145,7 @@ let MobileNavFooterContainer = styled.div`
   width: 100%;
   justify-content: space-between;
   padding: 0 10px;
-  z-index: 8600;
+  z-index: 7000 !important;
 `;
 
 let MobileNavFooterLeft = styled.div`
@@ -196,6 +196,7 @@ const OpacityMaskEnter = styled.div`
   opacity: 0;
   transition: opacity 0.5s ease;
   z-index: 8500;
+  
 `;
 const OpacityMaskExit = styled.div`
   position: absolute;
@@ -479,6 +480,8 @@ export default class FineArt extends Component {
                     )}
                   </GalleryRight>
                 </FineArtContainer>
+
+
                 <OpacityMaskEnter
                   style={{
                     opacity: this.state.opacityMaskEnterVisible ? "1" : "0",
@@ -487,6 +490,8 @@ export default class FineArt extends Component {
                     display: this.state.opacityMaskEnterDisplayed ? "" : "none"
                   }}
                 />
+
+                
                 {/* <OpacityMaskExit
             className="opacity-mask-exit"
             style={{

@@ -51,6 +51,8 @@ export default class Lightbox extends Component {
                 let scrollPosition = lightboxContainer.scrollTop
                 this.setState({ showLightbox: true, selectedImage: image, scrollPosition: scrollPosition })
               }}
+
+              
             >
               <div className="test-container-div" 
               style={{display: this.props.mobileView ? "" : "none", paddingLeft: image.node.frontmatter.mobilePaddingLeft, paddingRight:  image.node.frontmatter.mobilePaddingRight }}
@@ -74,7 +76,7 @@ export default class Lightbox extends Component {
         </LightboxContainer>
         {showLightbox && (
          
-          <div  id={this.props.lightboxId} style={{top: this.state.scrollPosition}}>
+          <div  id={this.props.lightboxId} style={{top: this.state.scrollPosition, zIndex: this.state.showLightbox ? "8000" : "0"}}>
             <div  className={this.props.dialogBox}>
               <Img
                 fluid={
@@ -87,6 +89,7 @@ export default class Lightbox extends Component {
               {selectedImage.node.frontmatter.caption}
             </div>
             <button
+            style={{zIndex: this.state.showLightbox ? "9000" : "0"}}
              className="close-dialog-button"
              className={this.props.closeDialogButton}
               type="button"
