@@ -4,7 +4,7 @@ import styled from "styled-components";
 import HeroGallery from "../components/hero-gallery";
 import anime from "animejs/lib/anime.es.js";
 import TransitionLink from "gatsby-plugin-transition-link";
-import { Helmet } from 'react-helmet'
+import { Helmet } from "react-helmet";
 
 const HeroContainer = styled.div`
   position: fixed;
@@ -267,9 +267,7 @@ export default class Home extends Component {
         });
       }
     } else {
-     
       if (!this.state.mobileView) {
-       
         return;
       } else {
         this.setState({
@@ -546,27 +544,22 @@ export default class Home extends Component {
     });
   };
 
-  
-
   render() {
-   
     if (this.state.siteLoaded) {
       return (
         <>
           <Helmet>
             <title>Homepage</title>
-            <meta http-equiv="ScreenOrientation" content="autoRotate:disabled"></meta>
+            <meta
+              http-equiv="ScreenOrientation"
+              content="autoRotate:disabled"
+            ></meta>
           </Helmet>
           {this.state.mobileView ? (
             <LayoutContainer className="home-layout-container-mobile">
               <MobileNavHeaderContainer>
                 <MobileNavHeaderLeft>
-                  <div
-                    className="hero-link-mobile"
-                    
-                  >
-                    Home
-                  </div>
+                  <div className="hero-link-mobile">Home</div>
                 </MobileNavHeaderLeft>
                 <MobileNavHeaderCenter className="mobile-nav-header-center">
                   <div className="landing-animation-header">
@@ -615,7 +608,8 @@ export default class Home extends Component {
                   >
                     Archive
                   </TransitionLink>
-                  <TransitionLink className="hero-link-mobile"
+                  <TransitionLink
+                    className="hero-link-mobile"
                     to="/fine-art"
                     exit={{
                       length: 1.8,
@@ -719,9 +713,7 @@ export default class Home extends Component {
                 <HeroLeftContainer>
                   <HeaderContainer>
                     <HeaderLeft>
-                      <div className="hero-link">
-                        Home
-                      </div>
+                      <div className="hero-link">Home</div>
                     </HeaderLeft>
                     <HeaderRight>
                       <TransitionLink
@@ -740,7 +732,6 @@ export default class Home extends Component {
                               ".hero-gallery-container"
                             );
 
-                            
                             this.exitAnimation(exit, animationHeader);
                           }
                         }}
@@ -768,7 +759,6 @@ export default class Home extends Component {
                               ".hero-gallery-container"
                             );
 
-                            
                             this.exitAnimation(exit, animationHeader);
                           }
                         }}

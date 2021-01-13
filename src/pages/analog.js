@@ -1,22 +1,20 @@
-import React, { Component } from "react"
-import { Link } from "gatsby"
-import "../components/styles.css"
-import styled from "styled-components"
+import React, { Component } from "react";
+import { Link } from "gatsby";
+import "../components/styles.css";
+import styled from "styled-components";
 // import Layout from "../components/layout"
-import AnalogPhotos from "../components/analog-photos"
+import AnalogPhotos from "../components/analog-photos";
 // import MobileNav from "../components/mobile-nav"
 import anime from "animejs/lib/anime.es.js";
 import TransitionLink from "gatsby-plugin-transition-link";
-import { Helmet } from 'react-helmet'
-
-
+import { Helmet } from "react-helmet";
 
 const AnalogContainer = styled.div`
   display: flex;
   margin: 0;
   width: 100%;
   justify-content: flex-start;
-`
+`;
 
 const AnalogHeader = styled.div`
   font-family: orpheuspro, serif;
@@ -27,17 +25,13 @@ const AnalogHeader = styled.div`
   height: 80px;
   display: flex;
   align-items: center;
-  
-`
+`;
 
 const GalleryRight = styled.div`
   display: flex;
   justify-content: center;
   padding: 1%;
-`
-
-
-
+`;
 
 const HeroHeader = styled.div`
   font-family: orpheuspro, serif;
@@ -48,10 +42,7 @@ const HeroHeader = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-`
-
-
-
+`;
 
 const HeroCenter = styled.div`
   display: flex;
@@ -59,7 +50,7 @@ const HeroCenter = styled.div`
   width: 100%;
   justify-content: center;
   align-items: center;
-`
+`;
 
 const HeroLeftContainer = styled.div`
   position: sticky;
@@ -71,24 +62,24 @@ const HeroLeftContainer = styled.div`
   width: 50%;
   padding: 20px;
   height: 100vh;
-`
+`;
 
 let HeaderContainer = styled.div`
   display: flex;
   margin: 0;
   width: 100%;
   justify-content: space-between;
-`
+`;
 
 let HeaderLeft = styled.div`
   display: flex;
   flex-direction: column;
-`
+`;
 
 let HeaderRight = styled.div`
   display: flex;
   flex-direction: column;
-`
+`;
 
 let LinkContainer = styled.div`
   display: flex;
@@ -98,42 +89,41 @@ let LinkContainer = styled.div`
     cursor: pointer;
     transition: color 0.2s ease-out;
   }
-`
+`;
 let FooterContainer = styled.div`
   display: flex;
 
   width: 100%;
   justify-content: space-between;
-`
+`;
 
 let FooterLeft = styled.div`
   display: flex;
   flex-direction: column;
-`
+`;
 let FooterCenter = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-`
+`;
 
 let FooterRight = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-`
+`;
 
 let MobileNavHeaderContainer = styled.div`
-    position: sticky;
-    top: 0;
-    display: flex;
-    margin: 0;
-    width: 100%;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px;
-    z-index: 8600;
-    
-    `
+  position: fixed;
+  top: 0;
+  display: flex;
+  margin: 0;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  z-index: 8600;
+`;
 
 //     let MobileNavHeaderContainer = styled.div`
 //   display: flex;
@@ -146,116 +136,110 @@ let MobileNavHeaderContainer = styled.div`
 //   border: 1px solid blue !important;
 // `;
 
-    
-    
-    let MobileNavHeaderLeft = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    z-index: 2000;
-    
-    width: 100px;
-    justify-content: center;
-    margin: 0;
-    &:hover {
-      cursor: pointer;
-    }
-    `
+let MobileNavHeaderLeft = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  z-index: 2000;
 
-    
-    let MobileNavHeaderCenter = styled.div`
-    display: flex;
-    color: rgb(19, 19, 18);
-    justify-content: center;
-    align-items: center;
-    font-size: 1.2rem;
-    text-transform: uppercase;
-    
-    `
-    
-    let MobileNavHeaderRight = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    width: 100px;
-    &:hover {
-      cursor: pointer;
-    }
-    `
-    let MobileNavFooterContainer = styled.div`
-    position: sticky;
-    bottom: 10px;
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-    padding: 0 10px;
-    z-index: 8600;
-    `
-    
-    let MobileNavFooterLeft = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    width: 100px;
-    background: transparent;
-    `
-    
-    let MobileNavFooterCenter = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: transparent;
-    `
-    // let MobileNavFooterCenter = styled.div`
-    //   display: flex;
-    //   justify-content: center;
-    //   align-items: center;
-    //   color: rgb(19, 19, 18);
-    // `
-    
-    let MobileNavFooterRight = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    width: 100px;
-    `
-    
-    const LayoutContainer = styled.div`
-    
-    top: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 100%;
-   
-    z-index: 7000;
-    
-    `;
+  width: 100px;
+  justify-content: center;
+  margin: 0;
+  &:hover {
+    cursor: pointer;
+  }
+`;
 
-    const OpacityMaskEnter = styled.div`
-    position: absolute;
-    display: flex;
-    background-color: rgb(241, 241, 239);
-    height: 100vh;
-    width: 50%;
-    left: 50%;
-    opacity: 0;
-    transition: opacity 0.5s ease;
-    z-index: 8500;
-    `
-    const OpacityMaskExit = styled.div`
-    position: absolute;
-    display: flex;
-    background-color: rgb(241, 241, 239);
-    height: 100vh;
-    width: 50%;
-    left: 50%;
-    opacity: 0;
-    z-index: 8500;
-    `
+let MobileNavHeaderCenter = styled.div`
+  display: flex;
+  color: rgb(19, 19, 18);
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+`;
+
+let MobileNavHeaderRight = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 100px;
+  &:hover {
+    cursor: pointer;
+  }
+`;
+let MobileNavFooterContainer = styled.div`
+  position: sticky;
+  bottom: 10px;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  padding: 0 10px;
+  z-index: 8600;
+`;
+
+let MobileNavFooterLeft = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100px;
+  background: transparent;
+`;
+
+let MobileNavFooterCenter = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+`;
+// let MobileNavFooterCenter = styled.div`
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   color: rgb(19, 19, 18);
+// `
+
+let MobileNavFooterRight = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 100px;
+`;
+
+const LayoutContainer = styled.div`
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+
+  z-index: 7000;
+`;
+
+const OpacityMaskEnter = styled.div`
+  position: absolute;
+  display: flex;
+  background-color: rgb(241, 241, 239);
+  height: 100vh;
+  width: 50%;
+  left: 50%;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  z-index: 8500;
+`;
+const OpacityMaskExit = styled.div`
+  position: absolute;
+  display: flex;
+  background-color: rgb(241, 241, 239);
+  height: 100vh;
+  width: 50%;
+  left: 50%;
+  opacity: 0;
+  z-index: 8500;
+`;
 export default class Analog extends Component {
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = {
       mobileView: false,
@@ -264,31 +248,31 @@ export default class Analog extends Component {
       opacityMaskEnterVisible: true,
       opacityMaskEnterDisplayed: true,
       opacityMaskExitDisplayed: false
-    }
+    };
   }
 
   handleResize = () => {
     if (window.matchMedia("(max-width: 1050px)").matches) {
       if (this.state.mobileView) {
-        return
+        return;
       } else {
         this.setState({
-          mobileView: true,
-        })
+          mobileView: true
+        });
       }
     } else {
       this.setState({
-        mobileView: false,
-      })
+        mobileView: false
+      });
     }
-  }
+  };
 
   async componentDidMount() {
     await this.handleResize();
-    setTimeout(()=> this.setState({opacityMaskEnterVisible: false}), 1100)
-    setTimeout(() => this.setState({photosReady: true}), 1200)
-    setTimeout(() => this.setState({opacityMaskEnterDisplayed: false }), 3200)
-    
+    setTimeout(() => this.setState({ opacityMaskEnterVisible: false }), 1100);
+    setTimeout(() => this.setState({ photosReady: true }), 1200);
+    setTimeout(() => this.setState({ opacityMaskEnterDisplayed: false }), 3200);
+
     window.addEventListener("resize", this.handleResize.bind(this));
     this.setState({ siteLoaded: true });
     if (!this.state.mobileView) {
@@ -299,13 +283,12 @@ export default class Analog extends Component {
   }
 
   componentWillUnmount() {
-    window.removeEventListener("resize", this.handleResize.bind(this))
-    console.log("analog unmounting")
-    
+    window.removeEventListener("resize", this.handleResize.bind(this));
+    console.log("analog unmounting");
   }
 
   enterAnimation = () => {
-    console.log("enter normal")
+    console.log("enter normal");
     let animationHeader = document.querySelector(".animation-header");
 
     animationHeader.innerHTML = animationHeader.textContent.replace(
@@ -349,7 +332,7 @@ export default class Analog extends Component {
   // }
 
   mobileEnterAnimation = () => {
-    console.log("enter mobile")
+    console.log("enter mobile");
     let animationHeader = document.querySelector(".mobile-animation-header");
 
     animationHeader.innerHTML = animationHeader.textContent.replace(
@@ -366,39 +349,35 @@ export default class Analog extends Component {
       duration: 800,
       delay: (el, index) => 30 * index
     });
-  }
-
-  
+  };
 
   exitAnimation = () => {
     // this.setState({ animateEnter: false })
     this.setState({
-      opacityMaskExitDisplayed: true,
-    })
-  
-    
+      opacityMaskExitDisplayed: true
+    });
 
-    // setTimeout(()=> this.setState({opacityMaskVisible: false}), 1100)
-    // setTimeout(() => this.setState({photosReady: true}), 1200)
-    // setTimeout(() => this.setState({opacityMaskDisplayed: false}), 3200)
+    setTimeout(() => this.setState({ opacityMaskEnterVisible: false }), 1100);
+    setTimeout(() => this.setState({ photosReady: true }), 1000);
+    setTimeout(() => this.setState({ opacityMaskEnterDisplayed: false }), 3200);
 
-    let selectAnimationHeader = document.querySelector(".animation-header")
-    console.log(selectAnimationHeader)
+    let selectAnimationHeader = document.querySelector(".animation-header");
+    console.log(selectAnimationHeader);
     selectAnimationHeader.innerHTML = selectAnimationHeader.textContent.replace(
       /\S/g,
       "<span class='letter'>$&</span>"
     );
 
-    let selectAnimationHeaderLetters = document.querySelectorAll(".letter")
-      console.log(selectAnimationHeaderLetters)
+    let selectAnimationHeaderLetters = document.querySelectorAll(".letter");
+    console.log(selectAnimationHeaderLetters);
 
-      anime.timeline().add({
-        targets: ".opacity-mask-exit",
-        duration: 800,
-        easing: "linear",
-        opacity: 1,
-        delay: 800,
-      });
+    anime.timeline().add({
+      targets: ".opacity-mask-exit",
+      duration: 800,
+      easing: "linear",
+      opacity: 1,
+      delay: 800
+    });
 
     anime.timeline().add({
       targets: ".animation-header .letter",
@@ -416,19 +395,14 @@ export default class Analog extends Component {
       opacity: 0,
       delay: 0
     });
-
-    
-
   };
-
-
 
   mobileExitAnimation = (exit, selectAnimationHeader) => {
     // this.setState({ animateEnter: false })
 
     this.setState({
-      opacityMaskExitDisplayed: true,
-    }) 
+      opacityMaskExitDisplayed: true
+    });
 
     selectAnimationHeader.innerHTML = selectAnimationHeader.textContent.replace(
       /\S/g,
@@ -440,7 +414,7 @@ export default class Analog extends Component {
       duration: 800,
       easing: "linear",
       opacity: 1,
-      delay: 0,
+      delay: 800
     });
 
     anime.timeline().add({
@@ -451,183 +425,42 @@ export default class Analog extends Component {
       opacity: [1, 0],
       delay: (el, index) => 30 * index
     });
-  }
+
+    anime.timeline().add({
+      targets: ".hero-opacity-wrapper-desktop",
+      duration: 1600,
+      easing: "easeOutExpo",
+      opacity: 0,
+      delay: 0
+    });
+  };
 
   render() {
     if (this.state.siteLoaded) {
-    
       return (
         <>
-        <Helmet>
+          <Helmet>
             <title>Analog Photography</title>
-            <meta http-equiv="ScreenOrientation" content="autoRotate:disabled"></meta>
+            <meta
+              http-equiv="ScreenOrientation"
+              content="autoRotate:disabled"
+            ></meta>
           </Helmet>
-        {this.state.mobileView ? (
-        <>
-        <LayoutContainer>
-          <MobileNavHeaderContainer >
-                <MobileNavHeaderLeft>
-                <TransitionLink
-                        className="hero-link-mobile"
-                        to="/"
-                        exit={{
-                          length: 2,
-                          trigger: ({ exit, node }) => {
-                            let animationHeader = node.querySelector(".mobile-animation-header");
-                            this.mobileExitAnimation(exit, animationHeader);
-                          }
-                        }}
-                        entry={{
-                          delay: 2,
-                          length: 0
-                        }}
-                      >
-                        Home
-                      </TransitionLink>
-                </MobileNavHeaderLeft>
-                <MobileNavHeaderCenter className="mobile-animation-header">ANALOG</MobileNavHeaderCenter>
-                <MobileNavHeaderRight>
-                <TransitionLink
-                        className="hero-link-mobile"
-                        to="/archive"
-                        exit={{
-                          length: 1.8,
-                          trigger: ({ exit, node }) => {
-                            let animationHeader = node.querySelector(".mobile-animation-header");
-                            this.mobileExitAnimation(exit, animationHeader);
-                          }
-                        }}
-                        entry={{
-                          delay: 1.8,
-                          length: 0
-                        }}
-                      >
-                        Archive
-                      </TransitionLink>
-                      <TransitionLink
-                        className="hero-link-mobile"
-                        to="/fine-art"
-                        exit={{
-                          length: 1.8,
-                          trigger: ({ exit, node }) => {
-                            let animationHeader = node.querySelector(".mobile-animation-header");
-                            this.mobileExitAnimation(exit, animationHeader);
-                          }
-                        }}
-                        entry={{
-                          delay: 1.8,
-                          length: 0
-                        }}
-                      >
-                        Fine Art
-                      </TransitionLink>
-                </MobileNavHeaderRight>
-              </MobileNavHeaderContainer>
-              
-              
-    
-              <AnalogContainer
-               className="analog-mobile-container"
-              >
-              
-              <GalleryRight className="hero-opacity-wrapper-desktop" style={{ width: "100%" }}>
-              { this.state.photosReady ? <AnalogPhotos
-              lightboxId="lightbox-container-mobile"
-              dialogBox="dialog-box-mobile"
-              closeDialogButton="close-dialog-button-mobile"
-              mobileView={this.state.mobileView}
-                  name={
-                    this.state.mobileView
-                      ? "analog-gallery-mobile"
-                      : "gallery-desktop"
-                  }
-                /> : <div className="place-holder"></div>} 
-               </GalleryRight>
-        
-            </AnalogContainer>
-            <OpacityMaskEnter style={{"opacity": this.state.opacityMaskEnterVisible ? "1" : "0", "width": "100vw", "left": "0", display: this.state.opacityMaskEnterDisplayed? "" : "none"}}/>
-            <OpacityMaskExit className="opacity-mask-exit" style={{ "width": "100vw", "left": "0", display: this.state.opacityMaskExitDisplayed? "" : "none"}}/>
-          </LayoutContainer>
-          <MobileNavFooterContainer >
-          <MobileNavFooterLeft>
-            
-            <a
-              href="https://www.instagram.com/caleb_dudley/"
-              target="_blank"
-              className="hero-link-mobile"
-            >
-              Instagram
-            </a>
-            
-            <a className="hero-link-mobile" target="_blank" href="mailto:calebjdudley@gmail.com">Email</a> 
-          </MobileNavFooterLeft>
-          <MobileNavFooterCenter className="hero-link-mobile">Brooklyn, NY</MobileNavFooterCenter>
-          <MobileNavFooterRight>
-          <TransitionLink
-                  className="hero-link-mobile"
-                  to="/about"
-                  exit={{
-                    length: 1.8,
-                    trigger: ({ exit, node }) => {
-                      let animationHeader = node.querySelector(".mobile-animation-header");
-                      this.mobileExitAnimation(exit, animationHeader);
-                    }
-                  }}
-                  entry={{
-                    delay: 1.8,
-                    length: 0
-                  }}
-                >
-                  About
-                </TransitionLink>
-                <TransitionLink
-                  className="hero-link-mobile"
-                  to="/cv"
-                  exit={{
-                    length: 1.8,
-                    trigger: ({ exit, node }) => {
-                      let animationHeader = node.querySelector(".mobile-animation-header");
-                      this.mobileExitAnimation(exit, animationHeader);
-                    }
-                  }}
-                  entry={{
-                    delay: 1.8,
-                    length: 0
-                  }}
-                >
-                  C.V.
-                </TransitionLink>
-          </MobileNavFooterRight>
-        </MobileNavFooterContainer>
-        </>
-        ) : (
-        <LayoutContainer>
-  
-            <AnalogContainer
-            
-            >
-            
-  
-              <HeroLeftContainer
-                style={{ display: this.state.mobileView ? "none" : "" }}
-              >
-                <HeaderContainer>
-                  <HeaderLeft>
-                    
-                    <TransitionLink className="hero-link" to="/" exit={{ length: 1.8, delay: 0, trigger: () => { console.log("trigger running"); this.exitAnimation(); } }} entry={{ delay: 1.8, length: 0 }} > Home </TransitionLink>
-                   {/* <div className="hero-link" onClick={this.progTransition}>Home</div> */}
-                  </HeaderLeft>
-                  <HeaderRight>
+          {this.state.mobileView ? (
+            <>
+              <LayoutContainer>
+                <MobileNavHeaderContainer>
+                  <MobileNavHeaderLeft>
                     <TransitionLink
-                      className="hero-link"
-                      to="/archive"
+                      className="hero-link-mobile"
+                      to="/"
                       exit={{
                         length: 2,
                         trigger: ({ exit, node }) => {
                           let animationHeader = node.querySelector(
-                            ".animation-header"
+                            ".mobile-animation-header"
                           );
-                          this.exitAnimation(exit, animationHeader);
+                          this.mobileExitAnimation(exit, animationHeader);
                         }
                       }}
                       entry={{
@@ -635,22 +468,42 @@ export default class Analog extends Component {
                         length: 0
                       }}
                     >
+                      Home
+                    </TransitionLink>
+                  </MobileNavHeaderLeft>
+                  <MobileNavHeaderCenter className="mobile-animation-header">
+                    ANALOG
+                  </MobileNavHeaderCenter>
+                  <MobileNavHeaderRight>
+                    <TransitionLink
+                      className="hero-link-mobile"
+                      to="/archive"
+                      exit={{
+                        length: 1.8,
+                        trigger: ({ exit, node }) => {
+                          let animationHeader = node.querySelector(
+                            ".mobile-animation-header"
+                          );
+                          this.mobileExitAnimation(exit, animationHeader);
+                        }
+                      }}
+                      entry={{
+                        delay: 1.8,
+                        length: 0
+                      }}
+                    >
                       Archive
                     </TransitionLink>
-  
                     <TransitionLink
-                      className="hero-link"
+                      className="hero-link-mobile"
                       to="/fine-art"
                       exit={{
                         length: 1.8,
                         trigger: ({ exit, node }) => {
-                          
                           let animationHeader = node.querySelector(
-                            ".animation-header"
+                            ".mobile-animation-header"
                           );
-  
-                          console.log(animationHeader)
-                          this.exitAnimation(exit, animationHeader);
+                          this.mobileExitAnimation(exit, animationHeader);
                         }
                       }}
                       entry={{
@@ -660,108 +513,272 @@ export default class Analog extends Component {
                     >
                       Fine Art
                     </TransitionLink>
-  
-                  </HeaderRight>
-                </HeaderContainer>
-  
-                <HeroCenter>
-                  <HeroHeader>
-                    <div className="animation-header">ANALOG</div>
-                  </HeroHeader>
-                </HeroCenter>
-                <FooterContainer>
-                  <FooterLeft>
-                    <a
-                      href="https://www.instagram.com/caleb_dudley/"
-                      target="_blank"
-                      className="hero-link"
-                    >
-                      Instagram
-                    </a>
-                    
-                    <a className="hero-link" target="_blank" href="mailto:calebjdudley@gmail.com">Email</a> 
-                  </FooterLeft>
-                  <FooterCenter>Brooklyn, NY</FooterCenter>
-                  <FooterRight>
-                    <TransitionLink
-                      className="hero-link"
-                      to="/about"
-                      exit={{
-                        length: 1.8,
-                        trigger: ({ exit, node }) => {
-                          let animationHeader = node.querySelector(
-                            ".animation-header"
-                          );
-                          this.exitAnimation(exit, animationHeader);
+                  </MobileNavHeaderRight>
+                </MobileNavHeaderContainer>
+
+                <AnalogContainer className="analog-mobile-container">
+                  <GalleryRight
+                    className="hero-opacity-wrapper-desktop"
+                    style={{ width: "100%" }}
+                  >
+                    {this.state.photosReady ? (
+                      <AnalogPhotos
+                        lightboxId="lightbox-container-mobile"
+                        dialogBox="dialog-box-mobile"
+                        closeDialogButton="close-dialog-button-mobile"
+                        mobileView={this.state.mobileView}
+                        name={
+                          this.state.mobileView
+                            ? "analog-gallery-mobile"
+                            : "gallery-desktop"
                         }
-                      }}
-                      entry={{
-                        delay: 1.8,
-                        length: 0
-                      }}
-                    >
-                      About
-                    </TransitionLink>
-                    <TransitionLink
-                      className="hero-link"
-                      to="/cv"
-                      exit={{
-                        length: 1.8,
-                        trigger: ({ exit, node }) => {
-                          let animationHeader = node.querySelector(
-                            ".animation-header"
-                          );
-                          this.exitAnimation(exit, animationHeader);
-                        }
-                      }}
-                      entry={{
-                        delay: 1.8,
-                        length: 0
-                      }}
-                    >
-                      C.V.
-                    </TransitionLink>
-                  </FooterRight>
-                </FooterContainer>
-              </HeroLeftContainer>
-              
-          
-            <GalleryRight className="hero-opacity-wrapper-desktop" style={{ width: "50%" }}>
-            { this.state.photosReady ? <AnalogPhotos
-            lightboxId="lightbox-container-desktop"
-            dialogBox="dialog-box-desktop"
-            closeDialogButton="close-dialog-button-desktop"
-            mobileView={this.state.mobileView}
-                name="gallery-desktop"
-                
-              /> : <div className="place-holder"></div>} 
-             </GalleryRight>
-      
-          </AnalogContainer>
-          <OpacityMaskEnter style={{"opacity": this.state.opacityMaskEnterVisible ? "1" : "0", display: this.state.opacityMaskEnterDisplayed? "" : "none"}}/>
-          <OpacityMaskExit className="opacity-mask-exit" style={{ display: this.state.opacityMaskExitDisplayed? "" : "none"}}/>
-        </LayoutContainer>)
-          
-    
-          }
-  
-  
-  
-  
-  
-  
-  
-  
-        
-      </>
-      )
-  
-     } else {
+                      />
+                    ) : (
+                      <div className="place-holder"></div>
+                    )}
+                  </GalleryRight>
+                </AnalogContainer>
+                <OpacityMaskEnter
+                  style={{
+                    opacity: this.state.opacityMaskEnterVisible ? "1" : "0",
+                    width: "100vw",
+                    left: "0",
+                    display: this.state.opacityMaskEnterDisplayed ? "" : "none"
+                  }}
+                />
+                {/* <OpacityMaskExit className="opacity-mask-exit" style={{ "width": "100vw", "left": "0", display: this.state.opacityMaskExitDisplayed? "" : "none"}}/> */}
+              </LayoutContainer>
+              <MobileNavFooterContainer>
+                <MobileNavFooterLeft>
+                  <a
+                    href="https://www.instagram.com/caleb_dudley/"
+                    target="_blank"
+                    className="hero-link-mobile"
+                  >
+                    Instagram
+                  </a>
+
+                  <a
+                    className="hero-link-mobile"
+                    target="_blank"
+                    href="mailto:calebjdudley@gmail.com"
+                  >
+                    Email
+                  </a>
+                </MobileNavFooterLeft>
+                <MobileNavFooterCenter className="hero-link-mobile">
+                  Brooklyn, NY
+                </MobileNavFooterCenter>
+                <MobileNavFooterRight>
+                  <TransitionLink
+                    className="hero-link-mobile"
+                    to="/about"
+                    exit={{
+                      length: 1.8,
+                      trigger: ({ exit, node }) => {
+                        let animationHeader = node.querySelector(
+                          ".mobile-animation-header"
+                        );
+                        this.mobileExitAnimation(exit, animationHeader);
+                      }
+                    }}
+                    entry={{
+                      delay: 1.8,
+                      length: 0
+                    }}
+                  >
+                    About
+                  </TransitionLink>
+                  <TransitionLink
+                    className="hero-link-mobile"
+                    to="/cv"
+                    exit={{
+                      length: 1.8,
+                      trigger: ({ exit, node }) => {
+                        let animationHeader = node.querySelector(
+                          ".mobile-animation-header"
+                        );
+                        this.mobileExitAnimation(exit, animationHeader);
+                      }
+                    }}
+                    entry={{
+                      delay: 1.8,
+                      length: 0
+                    }}
+                  >
+                    C.V.
+                  </TransitionLink>
+                </MobileNavFooterRight>
+              </MobileNavFooterContainer>
+            </>
+          ) : (
+            <LayoutContainer>
+              <AnalogContainer>
+                <HeroLeftContainer
+                  style={{ display: this.state.mobileView ? "none" : "" }}
+                >
+                  <HeaderContainer>
+                    <HeaderLeft>
+                      <TransitionLink
+                        className="hero-link"
+                        to="/"
+                        exit={{
+                          length: 1.8,
+                          delay: 0,
+                          trigger: () => {
+                            console.log("trigger running");
+                            this.exitAnimation();
+                          }
+                        }}
+                        entry={{ delay: 1.8, length: 0 }}
+                      >
+                        {" "}
+                        Home{" "}
+                      </TransitionLink>
+                      {/* <div className="hero-link" onClick={this.progTransition}>Home</div> */}
+                    </HeaderLeft>
+                    <HeaderRight>
+                      <TransitionLink
+                        className="hero-link"
+                        to="/archive"
+                        exit={{
+                          length: 2,
+                          trigger: ({ exit, node }) => {
+                            let animationHeader = node.querySelector(
+                              ".animation-header"
+                            );
+                            this.exitAnimation(exit, animationHeader);
+                          }
+                        }}
+                        entry={{
+                          delay: 2,
+                          length: 0
+                        }}
+                      >
+                        Archive
+                      </TransitionLink>
+
+                      <TransitionLink
+                        className="hero-link"
+                        to="/fine-art"
+                        exit={{
+                          length: 1.8,
+                          trigger: ({ exit, node }) => {
+                            let animationHeader = node.querySelector(
+                              ".animation-header"
+                            );
+
+                            console.log(animationHeader);
+                            this.exitAnimation(exit, animationHeader);
+                          }
+                        }}
+                        entry={{
+                          delay: 1.8,
+                          length: 0
+                        }}
+                      >
+                        Fine Art
+                      </TransitionLink>
+                    </HeaderRight>
+                  </HeaderContainer>
+
+                  <HeroCenter>
+                    <HeroHeader>
+                      <div className="animation-header">ANALOG</div>
+                    </HeroHeader>
+                  </HeroCenter>
+                  <FooterContainer>
+                    <FooterLeft>
+                      <a
+                        href="https://www.instagram.com/caleb_dudley/"
+                        target="_blank"
+                        className="hero-link"
+                      >
+                        Instagram
+                      </a>
+
+                      <a
+                        className="hero-link"
+                        target="_blank"
+                        href="mailto:calebjdudley@gmail.com"
+                      >
+                        Email
+                      </a>
+                    </FooterLeft>
+                    <FooterCenter>Brooklyn, NY</FooterCenter>
+                    <FooterRight>
+                      <TransitionLink
+                        className="hero-link"
+                        to="/about"
+                        exit={{
+                          length: 1.8,
+                          trigger: ({ exit, node }) => {
+                            let animationHeader = node.querySelector(
+                              ".animation-header"
+                            );
+                            this.exitAnimation(exit, animationHeader);
+                          }
+                        }}
+                        entry={{
+                          delay: 1.8,
+                          length: 0
+                        }}
+                      >
+                        About
+                      </TransitionLink>
+                      <TransitionLink
+                        className="hero-link"
+                        to="/cv"
+                        exit={{
+                          length: 1.8,
+                          trigger: ({ exit, node }) => {
+                            let animationHeader = node.querySelector(
+                              ".animation-header"
+                            );
+                            this.exitAnimation(exit, animationHeader);
+                          }
+                        }}
+                        entry={{
+                          delay: 1.8,
+                          length: 0
+                        }}
+                      >
+                        C.V.
+                      </TransitionLink>
+                    </FooterRight>
+                  </FooterContainer>
+                </HeroLeftContainer>
+
+                <GalleryRight
+                  className="hero-opacity-wrapper-desktop"
+                  style={{ width: "50%" }}
+                >
+                  {this.state.photosReady ? (
+                    <AnalogPhotos
+                      lightboxId="lightbox-container-desktop"
+                      dialogBox="dialog-box-desktop"
+                      closeDialogButton="close-dialog-button-desktop"
+                      mobileView={this.state.mobileView}
+                      name="gallery-desktop"
+                    />
+                  ) : (
+                    <div className="place-holder"></div>
+                  )}
+                </GalleryRight>
+              </AnalogContainer>
+              <OpacityMaskEnter
+                style={{
+                  opacity: this.state.opacityMaskEnterVisible ? "1" : "0",
+                  display: this.state.opacityMaskEnterDisplayed ? "" : "none"
+                }}
+              />
+              {/* <OpacityMaskExit className="opacity-mask-exit" style={{ display: this.state.opacityMaskExitDisplayed? "" : "none"}}/> */}
+            </LayoutContainer>
+          )}
+        </>
+      );
+    } else {
       return null;
     }
-      
-    }
-  
+  }
 }
-
-

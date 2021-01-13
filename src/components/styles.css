@@ -314,7 +314,7 @@ table {
   width: 100%;
   background-color: rgb(241, 241, 239);
   z-index: 8000;
-  border: 1px solid red;
+  
 }
 
 #lightbox-container-desktop {
@@ -387,7 +387,7 @@ table {
   }
   
   .fine-art-gallery-mobile {
-    padding-top: 108px !important;
+    padding-top: 60px !important;
     width: 100% !important;
     
   }
@@ -398,8 +398,8 @@ table {
   }
 
   .player-container-mobile {
-    width: 390px !important;
-    height: 180px !important;
+    width: 300px !important;
+    height: 160px !important;
   }
 }
 
@@ -416,7 +416,7 @@ table {
   
   }
   .fine-art-gallery-mobile {
-    padding-top: 100px !important;
+    padding-top: 60px !important;
     width: 100% !important;
     
   }
@@ -426,8 +426,8 @@ table {
   }
 
   .player-container-mobile {
-    width: 350px !important;
-    height: 160px !important;
+    width: 280px !important;
+    height: 150px !important;
   }
 }
 
@@ -467,7 +467,7 @@ table {
   }
 
   .fine-art-gallery-mobile {
-    padding-top: 80px !important;
+    padding-top: 40px !important;
     width: 100% !important;
   }
 
@@ -477,8 +477,8 @@ table {
   }
 
   .player-container-mobile {
-    width: 300px !important;
-    height: 130px !important;
+    width: 250px !important;
+    height: 120px !important;
   }
 
 }

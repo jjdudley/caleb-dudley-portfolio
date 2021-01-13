@@ -18,7 +18,7 @@ const DigitalPhotos = (props) => (
                                 mobilePaddingRight
                                 galleryImage {
                                     childImageSharp {
-                                        fluid(maxWidth: 2000, quality: 60) {
+                                        fluid(maxWidth: 2000, quality: 70) {
                                             ...GatsbyImageSharpFluid
                                         }
                                     }

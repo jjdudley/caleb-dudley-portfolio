@@ -5,7 +5,7 @@ import styled from "styled-components";
 // import ArchiveMenu from "../components/archive-menu";
 import anime from "animejs/lib/anime.es.js";
 import TransitionLink from "gatsby-plugin-transition-link";
-import { Helmet } from 'react-helmet'
+import { Helmet } from "react-helmet";
 
 const ArchiveContainer = styled.div`
   position: fixed;
@@ -68,7 +68,6 @@ let HeaderLeft = styled.div`
 let HeaderRight = styled.div`
   display: flex;
   flex-direction: column;
- 
 `;
 
 let LinkContainer = styled.div`
@@ -111,7 +110,6 @@ let MobileNavHeaderContainer = styled.div`
   justify-content: space-between;
   padding: 10px;
   z-index: 9000;
-  
 
   position: fixed;
   top: 0;
@@ -120,11 +118,7 @@ let MobileNavHeaderContainer = styled.div`
   width: 100%;
   justify-content: space-between;
 
- 
   z-index: 9000;
-
-
-
 `;
 
 let MobileNavHeaderLeft = styled.div`
@@ -132,7 +126,7 @@ let MobileNavHeaderLeft = styled.div`
   flex-direction: column;
   align-items: flex-start;
   z-index: 2000;
-  
+
   width: 100px;
   justify-content: center;
   margin: 0;
@@ -150,7 +144,6 @@ let MobileNavHeaderCenter = styled.div`
   align-items: center;
   font-size: 1.2rem;
   text-transform: uppercase;
-  
 `;
 
 let MobileNavHeaderRight = styled.div`
@@ -159,8 +152,6 @@ let MobileNavHeaderRight = styled.div`
   flex-direction: column;
   align-items: flex-end;
   z-index: 2000;
- 
-
 
   &:hover {
     cursor: pointer;
@@ -175,7 +166,6 @@ let MobileNavFooterContainer = styled.div`
   padding: 0 10px;
   margin-bottom: 10px;
   z-index: 9000;
-
 
   position: fixed;
   bottom: 0;
@@ -218,9 +208,6 @@ const LayoutContainer = styled.div`
   justify-content: space-between;
   width: 100%;
   z-index: 7000;
-
-
-  
 `;
 
 let ArchiveMenuContainer = styled.div`
@@ -515,24 +502,32 @@ export default class Archive extends Component {
       opacity: [1, 0],
       delay: (el, index) => 30 * index
     });
+
+    anime.timeline().add({
+      targets: ".hero-opacity-wrapper-desktop",
+      duration: 1600,
+      easing: "easeOutExpo",
+      opacity: 0,
+      delay: 0
+    });
   };
   render() {
-    return (
-      <>
-      <Helmet>
+    if (this.state.siteLoaded) {
+      return (
+        <>
+          <Helmet>
             <title>Media Archive</title>
-            <meta http-equiv="ScreenOrientation" content="autoRotate:disabled"></meta>
+            <meta
+              http-equiv="ScreenOrientation"
+              content="autoRotate:disabled"
+            ></meta>
           </Helmet>
-      <LayoutContainer
-        className={
-          this.state.mobileView ? "archive-layout-container-mobile" : ""
-        }
-      >
-        <MobileNavHeaderContainer
-          style={{ display: this.state.mobileView ? "" : "none" }}
-        >
-          <MobileNavHeaderLeft>
-          <TransitionLink
+
+          {this.state.mobileView ? (
+            <LayoutContainer className="archive-layout-container-mobile">
+              <MobileNavHeaderContainer>
+                <MobileNavHeaderLeft>
+                  <TransitionLink
                     className="hero-link-mobile"
                     to="/"
                     exit={{
@@ -567,122 +562,34 @@ export default class Archive extends Component {
                   >
                     Home
                   </TransitionLink>
-          </MobileNavHeaderLeft>
-          <MobileNavHeaderCenter className="mobile-animation-header">
-            ARCHIVE
-          </MobileNavHeaderCenter>
-          <MobileNavHeaderRight>
-            <div className="hero-link-mobile">Archive</div>
-
-            <TransitionLink
-              className="hero-link-mobile"
-              to="/fine-art"
-              exit={{
-                length: 1.8,
-                trigger: ({ exit, node }) => {
-                  let animationHeader = node.querySelector(
-                    ".mobile-animation-header"
-                  );
-
-                  let archiveMenuDigital = node.querySelector(
-                    "#archive-digital-link"
-                  );
-
-                  let archiveMenuAnalog = node.querySelector(
-                    "#archive-analog-link"
-                  );
-                  let archiveMenuVideo = node.querySelector(
-                    "#archive-video-link"
-                  );
-                  this.mobileExitAnimation(
-                    exit,
-                    animationHeader,
-                    archiveMenuDigital,
-                    archiveMenuAnalog,
-                    archiveMenuVideo
-                  );
-                }
-              }}
-              entry={{
-                delay: 1,
-                length: 0
-              }}
-            >
-              Fine Art
-            </TransitionLink>
-          </MobileNavHeaderRight>
-        </MobileNavHeaderContainer>
-
-        <ArchiveContainer
-          className={this.state.mobileView ? "archive-mobile-container" : ""}
-        >
-          {this.state.mobileView ? (
-            ""
-          ) : (
-            <HeroLeftContainer
-              style={{ display: this.state.mobileView ? "none" : "" }}
-            >
-              <HeaderContainer>
-                <HeaderLeft>
-                <TransitionLink
-                    className="hero-link"
-                    to="/"
-                    exit={{
-                      length: 1.8,
-                      trigger: ({ exit, node }) => {
-                        let animationHeader = node.querySelector(
-                          ".animation-header"
-                        );
-
-                        let archiveMenuDigital = node.querySelector(
-                          "#archive-digital-link"
-                        );
-                        let archiveMenuAnalog = node.querySelector(
-                          "#archive-analog-link"
-                        );
-                        let archiveMenuVideo = node.querySelector(
-                          "#archive-video-link"
-                        );
-                        this.exitAnimation(
-                          exit,
-                          animationHeader,
-                          archiveMenuDigital,
-                          archiveMenuAnalog,
-                          archiveMenuVideo
-                        );
-                      }
-                    }}
-                    entry={{
-                      delay: 1,
-                      length: 0
-                    }}
-                  >
-                    Home
-                  </TransitionLink>
-                </HeaderLeft>
-                <HeaderRight>
-                  <div className="hero-link">Archive</div>
+                </MobileNavHeaderLeft>
+                <MobileNavHeaderCenter className="mobile-animation-header">
+                  ARCHIVE
+                </MobileNavHeaderCenter>
+                <MobileNavHeaderRight>
+                  <div className="hero-link-mobile">Archive</div>
 
                   <TransitionLink
-                    className="hero-link"
+                    className="hero-link-mobile"
                     to="/fine-art"
                     exit={{
                       length: 1.8,
                       trigger: ({ exit, node }) => {
                         let animationHeader = node.querySelector(
-                          ".animation-header"
+                          ".mobile-animation-header"
                         );
 
                         let archiveMenuDigital = node.querySelector(
                           "#archive-digital-link"
                         );
+
                         let archiveMenuAnalog = node.querySelector(
                           "#archive-analog-link"
                         );
                         let archiveMenuVideo = node.querySelector(
                           "#archive-video-link"
                         );
-                        this.exitAnimation(
+                        this.mobileExitAnimation(
                           exit,
                           animationHeader,
                           archiveMenuDigital,
@@ -698,38 +605,196 @@ export default class Archive extends Component {
                   >
                     Fine Art
                   </TransitionLink>
-                </HeaderRight>
-              </HeaderContainer>
+                </MobileNavHeaderRight>
+              </MobileNavHeaderContainer>
 
-              <HeroCenter>
-                <HeroHeader>
-                  <div className="animation-header">ARCHIVE</div>
-                </HeroHeader>
-              </HeroCenter>
-              <FooterContainer>
-                <FooterLeft>
+              <ArchiveContainer className="archive-mobile-container">
+                <ArchiveMenuContainer
+                  style={{
+                    width: "100%",
+                    height: "50vh"
+                  }}
+                >
+                  <ArchiveMenuItem>
+                    <TransitionLink
+                      id="archive-digital-link"
+                      className="mobile-archive-menu-link"
+                      to="/digital"
+                      exit={{
+                        length: 1.8,
+                        trigger: ({ exit, node }) => {
+                          let archiveMenuDigital = node.querySelector(
+                            "#archive-digital-link"
+                          );
+                          let archiveMenuAnalog = node.querySelector(
+                            "#archive-analog-link"
+                          );
+                          let archiveMenuVideo = node.querySelector(
+                            "#archive-video-link"
+                          );
+                          if (this.state.mobileView) {
+                            let animationHeader = node.querySelector(
+                              ".mobile-animation-header"
+                            );
+                            this.mobileExitAnimation(
+                              exit,
+                              animationHeader,
+                              archiveMenuDigital,
+                              archiveMenuAnalog,
+                              archiveMenuVideo
+                            );
+                          } else {
+                            let animationHeader = node.querySelector(
+                              ".animation-header"
+                            );
+                            this.exitAnimation(
+                              exit,
+                              animationHeader,
+                              archiveMenuDigital,
+                              archiveMenuAnalog,
+                              archiveMenuVideo
+                            );
+                          }
+                        }
+                      }}
+                      entry={{
+                        delay: 1,
+                        length: 0
+                      }}
+                    >
+                      Digital
+                    </TransitionLink>
+                  </ArchiveMenuItem>
+                  <ArchiveMenuItem>
+                    <TransitionLink
+                      id="archive-analog-link"
+                      className="mobile-archive-menu-link"
+                      to="/analog"
+                      exit={{
+                        length: 1.4,
+                        trigger: ({ exit, node }) => {
+                          let archiveMenuDigital = node.querySelector(
+                            "#archive-digital-link"
+                          );
+                          let archiveMenuAnalog = node.querySelector(
+                            "#archive-analog-link"
+                          );
+                          let archiveMenuVideo = node.querySelector(
+                            "#archive-video-link"
+                          );
+                          if (this.state.mobileView) {
+                            let animationHeader = node.querySelector(
+                              ".mobile-animation-header"
+                            );
+                            this.mobileExitAnimation(
+                              exit,
+                              animationHeader,
+                              archiveMenuDigital,
+                              archiveMenuAnalog,
+                              archiveMenuVideo
+                            );
+                          } else {
+                            let animationHeader = node.querySelector(
+                              ".animation-header"
+                            );
+                            this.exitAnimation(
+                              exit,
+                              animationHeader,
+                              archiveMenuDigital,
+                              archiveMenuAnalog,
+                              archiveMenuVideo
+                            );
+                          }
+                        }
+                      }}
+                      entry={{
+                        delay: 0.8,
+                        length: 0
+                      }}
+                    >
+                      Analog
+                    </TransitionLink>
+                  </ArchiveMenuItem>
+                  <ArchiveMenuItem>
+                    <TransitionLink
+                      id="archive-video-link"
+                      className="mobile-archive-menu-link"
+                      to="/video"
+                      exit={{
+                        length: 1.8,
+                        trigger: ({ exit, node }) => {
+                          let archiveMenuDigital = node.querySelector(
+                            "#archive-digital-link"
+                          );
+                          let archiveMenuAnalog = node.querySelector(
+                            "#archive-analog-link"
+                          );
+                          let archiveMenuVideo = node.querySelector(
+                            "#archive-video-link"
+                          );
+                          if (this.state.mobileView) {
+                            let animationHeader = node.querySelector(
+                              ".mobile-animation-header"
+                            );
+                            this.mobileExitAnimation(
+                              exit,
+                              animationHeader,
+                              archiveMenuDigital,
+                              archiveMenuAnalog,
+                              archiveMenuVideo
+                            );
+                          } else {
+                            let animationHeader = node.querySelector(
+                              ".animation-header"
+                            );
+                            this.exitAnimation(
+                              exit,
+                              animationHeader,
+                              archiveMenuDigital,
+                              archiveMenuAnalog,
+                              archiveMenuVideo
+                            );
+                          }
+                        }
+                      }}
+                      entry={{
+                        delay: 1,
+                        length: 0
+                      }}
+                    >
+                      Video
+                    </TransitionLink>
+                  </ArchiveMenuItem>
+                </ArchiveMenuContainer>
+              </ArchiveContainer>
+              <MobileNavFooterContainer>
+                <MobileNavFooterLeft>
+                  {" "}
                   <a
                     href="https://www.instagram.com/caleb_dudley/"
                     target="_blank"
-                    className="hero-link"
+                    className="hero-link-mobile"
                   >
                     Instagram
                   </a>
-                  
-                  <a className="hero-link" target="_blank" href="mailto:calebjdudley@gmail.com">Email</a> 
-                </FooterLeft>
-                <FooterCenter>Brooklyn, NY</FooterCenter>
-                <FooterRight>
+                  <a
+                    className="hero-link-mobile"
+                    target="_blank"
+                    href="mailto:calebjdudley@gmail.com"
+                  >
+                    Email
+                  </a>
+                </MobileNavFooterLeft>
+                <MobileNavFooterCenter className="hero-link-mobile">
+                  Brooklyn, NY
+                </MobileNavFooterCenter>
+                <MobileNavFooterRight>
                   <TransitionLink
-                    className="hero-link"
+                    className="hero-link-mobile"
                     to="/about"
                     exit={{
                       length: 1.8,
                       trigger: ({ exit, node }) => {
-                        let animationHeader = node.querySelector(
-                          ".animation-header"
-                        );
-
                         let archiveMenuDigital = node.querySelector(
                           "#archive-digital-link"
                         );
@@ -739,13 +804,31 @@ export default class Archive extends Component {
                         let archiveMenuVideo = node.querySelector(
                           "#archive-video-link"
                         );
-                        this.exitAnimation(
-                          exit,
-                          animationHeader,
-                          archiveMenuDigital,
-                          archiveMenuAnalog,
-                          archiveMenuVideo
-                        );
+                        if (this.state.mobileView) {
+                          let animationHeader = node.querySelector(
+                            ".mobile-animation-header"
+                          );
+
+                          this.mobileExitAnimation(
+                            exit,
+                            animationHeader,
+                            archiveMenuDigital,
+                            archiveMenuAnalog,
+                            archiveMenuVideo
+                          );
+                        } else {
+                          let animationHeader = node.querySelector(
+                            ".animation-header"
+                          );
+
+                          this.exitAnimation(
+                            exit,
+                            animationHeader,
+                            archiveMenuDigital,
+                            archiveMenuAnalog,
+                            archiveMenuVideo
+                          );
+                        }
                       }
                     }}
                     entry={{
@@ -755,250 +838,327 @@ export default class Archive extends Component {
                   >
                     About
                   </TransitionLink>
-                  <Link className="hero-link" to="/cv">
+
+                  <Link className="hero-link-mobile" to="/cv">
                     C.V.
                   </Link>
-                </FooterRight>
-              </FooterContainer>
-            </HeroLeftContainer>
+                </MobileNavFooterRight>
+              </MobileNavFooterContainer>
+            </LayoutContainer>
+          ) : (
+            <LayoutContainer>
+              <ArchiveContainer>
+                <HeroLeftContainer>
+                  <HeaderContainer>
+                    <HeaderLeft>
+                      <TransitionLink
+                        className="hero-link"
+                        to="/"
+                        exit={{
+                          length: 1.8,
+                          trigger: ({ exit, node }) => {
+                            let animationHeader = node.querySelector(
+                              ".animation-header"
+                            );
+
+                            let archiveMenuDigital = node.querySelector(
+                              "#archive-digital-link"
+                            );
+                            let archiveMenuAnalog = node.querySelector(
+                              "#archive-analog-link"
+                            );
+                            let archiveMenuVideo = node.querySelector(
+                              "#archive-video-link"
+                            );
+                            this.exitAnimation(
+                              exit,
+                              animationHeader,
+                              archiveMenuDigital,
+                              archiveMenuAnalog,
+                              archiveMenuVideo
+                            );
+                          }
+                        }}
+                        entry={{
+                          delay: 1,
+                          length: 0
+                        }}
+                      >
+                        Home
+                      </TransitionLink>
+                    </HeaderLeft>
+                    <HeaderRight>
+                      <div className="hero-link">Archive</div>
+
+                      <TransitionLink
+                        className="hero-link"
+                        to="/fine-art"
+                        exit={{
+                          length: 1.8,
+                          trigger: ({ exit, node }) => {
+                            let animationHeader = node.querySelector(
+                              ".animation-header"
+                            );
+
+                            let archiveMenuDigital = node.querySelector(
+                              "#archive-digital-link"
+                            );
+                            let archiveMenuAnalog = node.querySelector(
+                              "#archive-analog-link"
+                            );
+                            let archiveMenuVideo = node.querySelector(
+                              "#archive-video-link"
+                            );
+                            this.exitAnimation(
+                              exit,
+                              animationHeader,
+                              archiveMenuDigital,
+                              archiveMenuAnalog,
+                              archiveMenuVideo
+                            );
+                          }
+                        }}
+                        entry={{
+                          delay: 1,
+                          length: 0
+                        }}
+                      >
+                        Fine Art
+                      </TransitionLink>
+                    </HeaderRight>
+                  </HeaderContainer>
+
+                  <HeroCenter>
+                    <HeroHeader>
+                      <div className="animation-header">ARCHIVE</div>
+                    </HeroHeader>
+                  </HeroCenter>
+                  <FooterContainer>
+                    <FooterLeft>
+                      <a
+                        href="https://www.instagram.com/caleb_dudley/"
+                        target="_blank"
+                        className="hero-link"
+                      >
+                        Instagram
+                      </a>
+
+                      <a
+                        className="hero-link"
+                        target="_blank"
+                        href="mailto:calebjdudley@gmail.com"
+                      >
+                        Email
+                      </a>
+                    </FooterLeft>
+                    <FooterCenter>Brooklyn, NY</FooterCenter>
+                    <FooterRight>
+                      <TransitionLink
+                        className="hero-link"
+                        to="/about"
+                        exit={{
+                          length: 1.8,
+                          trigger: ({ exit, node }) => {
+                            let animationHeader = node.querySelector(
+                              ".animation-header"
+                            );
+
+                            let archiveMenuDigital = node.querySelector(
+                              "#archive-digital-link"
+                            );
+                            let archiveMenuAnalog = node.querySelector(
+                              "#archive-analog-link"
+                            );
+                            let archiveMenuVideo = node.querySelector(
+                              "#archive-video-link"
+                            );
+                            this.exitAnimation(
+                              exit,
+                              animationHeader,
+                              archiveMenuDigital,
+                              archiveMenuAnalog,
+                              archiveMenuVideo
+                            );
+                          }
+                        }}
+                        entry={{
+                          delay: 1,
+                          length: 0
+                        }}
+                      >
+                        About
+                      </TransitionLink>
+                      <Link className="hero-link" to="/cv">
+                        C.V.
+                      </Link>
+                    </FooterRight>
+                  </FooterContainer>
+                </HeroLeftContainer>
+
+                <ArchiveMenuContainer
+                  style={{
+                    width: "50%",
+                    height: "100vh"
+                  }}
+                >
+                  <ArchiveMenuItem>
+                    <TransitionLink
+                      id="archive-digital-link"
+                      className="archive-menu-link"
+                      to="/digital"
+                      exit={{
+                        length: 1.8,
+                        trigger: ({ exit, node }) => {
+                          let archiveMenuDigital = node.querySelector(
+                            "#archive-digital-link"
+                          );
+                          let archiveMenuAnalog = node.querySelector(
+                            "#archive-analog-link"
+                          );
+                          let archiveMenuVideo = node.querySelector(
+                            "#archive-video-link"
+                          );
+                          if (this.state.mobileView) {
+                            let animationHeader = node.querySelector(
+                              ".mobile-animation-header"
+                            );
+                            this.mobileExitAnimation(
+                              exit,
+                              animationHeader,
+                              archiveMenuDigital,
+                              archiveMenuAnalog,
+                              archiveMenuVideo
+                            );
+                          } else {
+                            let animationHeader = node.querySelector(
+                              ".animation-header"
+                            );
+                            this.exitAnimation(
+                              exit,
+                              animationHeader,
+                              archiveMenuDigital,
+                              archiveMenuAnalog,
+                              archiveMenuVideo
+                            );
+                          }
+                        }
+                      }}
+                      entry={{
+                        delay: 1,
+                        length: 0
+                      }}
+                    >
+                      Digital
+                    </TransitionLink>
+                  </ArchiveMenuItem>
+                  <ArchiveMenuItem>
+                    <TransitionLink
+                      id="archive-analog-link"
+                      className="mobile-archive-menu-link"
+                      to="/analog"
+                      exit={{
+                        length: 1.4,
+                        trigger: ({ exit, node }) => {
+                          let archiveMenuDigital = node.querySelector(
+                            "#archive-digital-link"
+                          );
+                          let archiveMenuAnalog = node.querySelector(
+                            "#archive-analog-link"
+                          );
+                          let archiveMenuVideo = node.querySelector(
+                            "#archive-video-link"
+                          );
+                          if (this.state.mobileView) {
+                            let animationHeader = node.querySelector(
+                              ".mobile-animation-header"
+                            );
+                            this.mobileExitAnimation(
+                              exit,
+                              animationHeader,
+                              archiveMenuDigital,
+                              archiveMenuAnalog,
+                              archiveMenuVideo
+                            );
+                          } else {
+                            let animationHeader = node.querySelector(
+                              ".animation-header"
+                            );
+                            this.exitAnimation(
+                              exit,
+                              animationHeader,
+                              archiveMenuDigital,
+                              archiveMenuAnalog,
+                              archiveMenuVideo
+                            );
+                          }
+                        }
+                      }}
+                      entry={{
+                        delay: 0.8,
+                        length: 0
+                      }}
+                    >
+                      Analog
+                    </TransitionLink>
+                  </ArchiveMenuItem>
+                  <ArchiveMenuItem>
+                    <TransitionLink
+                      id="archive-video-link"
+                      className="archive-menu-link"
+                      to="/video"
+                      exit={{
+                        length: 1.8,
+                        trigger: ({ exit, node }) => {
+                          let archiveMenuDigital = node.querySelector(
+                            "#archive-digital-link"
+                          );
+                          let archiveMenuAnalog = node.querySelector(
+                            "#archive-analog-link"
+                          );
+                          let archiveMenuVideo = node.querySelector(
+                            "#archive-video-link"
+                          );
+                          if (this.state.mobileView) {
+                            let animationHeader = node.querySelector(
+                              ".mobile-animation-header"
+                            );
+                            this.mobileExitAnimation(
+                              exit,
+                              animationHeader,
+                              archiveMenuDigital,
+                              archiveMenuAnalog,
+                              archiveMenuVideo
+                            );
+                          } else {
+                            let animationHeader = node.querySelector(
+                              ".animation-header"
+                            );
+                            this.exitAnimation(
+                              exit,
+                              animationHeader,
+                              archiveMenuDigital,
+                              archiveMenuAnalog,
+                              archiveMenuVideo
+                            );
+                          }
+                        }
+                      }}
+                      entry={{
+                        delay: 1,
+                        length: 0
+                      }}
+                    >
+                      Video
+                    </TransitionLink>
+                  </ArchiveMenuItem>
+                </ArchiveMenuContainer>
+              </ArchiveContainer>
+            </LayoutContainer>
           )}
-
-          {/* /////////////////////////////////////////////// */}
-
-          <ArchiveMenuContainer
-            style={{
-              width: this.state.mobileView ? "100%" : "50%",
-              height: this.state.mobileView ? "50vh" : "100vh"
-            }}
-          >
-            <ArchiveMenuItem>
-              <TransitionLink
-                id="archive-digital-link"
-                className={this.state.mobileView ? "mobile-archive-menu-link" : "archive-menu-link"}
-                to="/digital"
-                exit={{
-                  length: 1.8,
-                  trigger: ({ exit, node }) => {
-                    let archiveMenuDigital = node.querySelector(
-                      "#archive-digital-link"
-                    );
-                    let archiveMenuAnalog = node.querySelector(
-                      "#archive-analog-link"
-                    );
-                    let archiveMenuVideo = node.querySelector(
-                      "#archive-video-link"
-                    );
-                    if (this.state.mobileView) {
-                      let animationHeader = node.querySelector(
-                        ".mobile-animation-header"
-                      );
-                      this.mobileExitAnimation(
-                        exit,
-                        animationHeader,
-                        archiveMenuDigital,
-                        archiveMenuAnalog,
-                        archiveMenuVideo
-                      );
-                    } else {
-                      let animationHeader = node.querySelector(
-                        ".animation-header"
-                      );
-                      this.exitAnimation(
-                        exit,
-                        animationHeader,
-                        archiveMenuDigital,
-                        archiveMenuAnalog,
-                        archiveMenuVideo
-                      );
-                    }
-                  }
-                }}
-                entry={{
-                  delay: 1,
-                  length: 0
-                }}
-              >
-                Digital
-              </TransitionLink>
-            </ArchiveMenuItem>
-            <ArchiveMenuItem>
-              <TransitionLink
-                id="archive-analog-link"
-                className={this.state.mobileView ? "mobile-archive-menu-link" : "archive-menu-link"}
-                to="/analog"
-                exit={{
-                  length: 1.4,
-                  trigger: ({ exit, node }) => {
-                    let archiveMenuDigital = node.querySelector(
-                      "#archive-digital-link"
-                    );
-                    let archiveMenuAnalog = node.querySelector(
-                      "#archive-analog-link"
-                    );
-                    let archiveMenuVideo = node.querySelector(
-                      "#archive-video-link"
-                    );
-                    if (this.state.mobileView) {
-                      let animationHeader = node.querySelector(
-                        ".mobile-animation-header"
-                      );
-                      this.mobileExitAnimation(
-                        exit,
-                        animationHeader,
-                        archiveMenuDigital,
-                        archiveMenuAnalog,
-                        archiveMenuVideo
-                      );
-                    } else {
-                      let animationHeader = node.querySelector(
-                        ".animation-header"
-                      );
-                      this.exitAnimation(
-                        exit,
-                        animationHeader,
-                        archiveMenuDigital,
-                        archiveMenuAnalog,
-                        archiveMenuVideo
-                      );
-                    }
-                  }
-                }}
-                entry={{
-                  delay: 0.8,
-                  length: 0
-                }}
-              >
-                Analog
-              </TransitionLink>
-            </ArchiveMenuItem>
-            <ArchiveMenuItem>
-              <TransitionLink
-                id="archive-video-link"
-                className={this.state.mobileView ? "mobile-archive-menu-link" : "archive-menu-link"}
-                to="/video"
-                exit={{
-                  length: 1.8,
-                  trigger: ({ exit, node }) => {
-                    let archiveMenuDigital = node.querySelector(
-                      "#archive-digital-link"
-                    );
-                    let archiveMenuAnalog = node.querySelector(
-                      "#archive-analog-link"
-                    );
-                    let archiveMenuVideo = node.querySelector(
-                      "#archive-video-link"
-                    );
-                    if (this.state.mobileView) {
-                      let animationHeader = node.querySelector(
-                        ".mobile-animation-header"
-                      );
-                      this.mobileExitAnimation(
-                        exit,
-                        animationHeader,
-                        archiveMenuDigital,
-                        archiveMenuAnalog,
-                        archiveMenuVideo
-                      );
-                    } else {
-                      let animationHeader = node.querySelector(
-                        ".animation-header"
-                      );
-                      this.exitAnimation(
-                        exit,
-                        animationHeader,
-                        archiveMenuDigital,
-                        archiveMenuAnalog,
-                        archiveMenuVideo
-                      );
-                    }
-                  }
-                }}
-                entry={{
-                  delay: 1,
-                  length: 0
-                }}
-              >
-                Video
-              </TransitionLink>
-            </ArchiveMenuItem>
-          </ArchiveMenuContainer>
-
-          {/* /////////////////////////////////////////////// */}
-        </ArchiveContainer>
-        <MobileNavFooterContainer
-          style={{ display: this.state.mobileView ? "" : "none" }}
-        >
-          <MobileNavFooterLeft>
-            {" "}
-            <a
-              href="https://www.instagram.com/caleb_dudley/"
-              target="_blank"
-              className="hero-link-mobile"
-            >
-              Instagram
-            </a>
-           
-            <a className="hero-link-mobile" target="_blank" href="mailto:calebjdudley@gmail.com">Email</a> 
-          </MobileNavFooterLeft>
-          <MobileNavFooterCenter className="hero-link-mobile">
-            Brooklyn, NY
-          </MobileNavFooterCenter>
-          <MobileNavFooterRight>
-            <TransitionLink
-              className="hero-link-mobile"
-              to="/about"
-              exit={{
-                length: 1.8,
-                trigger: ({ exit, node }) => {
-                  let archiveMenuDigital = node.querySelector(
-                    "#archive-digital-link"
-                  );
-                  let archiveMenuAnalog = node.querySelector(
-                    "#archive-analog-link"
-                  );
-                  let archiveMenuVideo = node.querySelector(
-                    "#archive-video-link"
-                  );
-                  if (this.state.mobileView) {
-                    let animationHeader = node.querySelector(
-                      ".mobile-animation-header"
-                    );
-
-                    this.mobileExitAnimation(
-                      exit,
-                      animationHeader,
-                      archiveMenuDigital,
-                      archiveMenuAnalog,
-                      archiveMenuVideo
-                    );
-                  } else {
-                    let animationHeader = node.querySelector(
-                      ".animation-header"
-                    );
-
-                    this.exitAnimation(
-                      exit,
-                      animationHeader,
-                      archiveMenuDigital,
-                      archiveMenuAnalog,
-                      archiveMenuVideo
-                    );
-                  }
-                }
-              }}
-              entry={{
-                delay: 1,
-                length: 0
-              }}
-            >
-              About
-            </TransitionLink>
-
-            <Link className="hero-link-mobile" to="/cv">C.V.</Link>
-          </MobileNavFooterRight>
-        </MobileNavFooterContainer>
-      </LayoutContainer>
-      </>
-    );
+        </>
+      );
+    } else {
+      return null;
+    }
   }
 }
