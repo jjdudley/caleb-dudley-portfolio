@@ -967,3 +967,30 @@ section {
   opacity: 0;
   z-index: 8500;
 }
+
+.about-photo-lightbox-mobile {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(241, 241, 239);
+  padding: 80px 10%;
+  z-index: 3000;
+}
+
+.about-photo-lightbox-desktop {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  
+  
+  background-color: rgb(241, 241, 239);
+  padding: 20%;
+  z-index: 3000;
+  
+}

@@ -192,7 +192,7 @@ const OpacityMaskEnter = styled.div`
   left: 50%;
   opacity: 0;
   transition: opacity 0.5s ease;
-  z-index: 8500;
+  z-index: 2000;
   
 `;
 const OpacityMaskExit = styled.div`

@@ -575,7 +575,7 @@ export default class About extends Component {
               className="hero-opacity-wrapper-desktop"
               style={{ width: this.state.mobileView ? "100%" : "50%" }}
             >
-              <AboutContent />
+              <AboutContent aboutPhotoLightbox={this.state.mobileView ? "about-photo-lightbox-mobile" : "about-photo-lightbox-desktop"}/>
             </div>
           </AboutContainer>
 

@@ -58,8 +58,7 @@ const AboutPhotoLightbox = styled.div`
   width: 100%;
   height: 100%;
   background-color: rgb(241, 241, 239);
-  padding: 80px 10%;
-  z-index: 3000;
+  
 `
 
 class AboutContent extends Component {
@@ -74,7 +73,7 @@ class AboutContent extends Component {
     return (
       <AboutContentContainer>
         
-        <AboutPhotoLightbox onClick={()=> this.setState({ aboutPhotoLightbox: false })} style={{display: this.state.aboutPhotoLightbox ? "" : "none"}}>
+        <AboutPhotoLightbox className={this.props.aboutPhotoLightbox} onClick={()=> this.setState({ aboutPhotoLightbox: false })} style={{display: this.state.aboutPhotoLightbox ? "" : "none"}}>
           <AboutPhoto />
         </AboutPhotoLightbox>
       <AboutPhotoContainer onClick={()=> this.setState({ aboutPhotoLightbox: true })}>

@@ -4,6 +4,6 @@ type: "analog"
 galleryImage: ../../images/archive/analog/Analog26_2017.jpg
 caption: "2017"
 mobileWidth: "120px"
-mobilePaddingLeft: "0px"
+mobilePaddingLeft: "80px"
 mobilePaddingRight: "0px"
 ---
