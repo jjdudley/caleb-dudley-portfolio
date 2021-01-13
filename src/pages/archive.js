@@ -236,7 +236,8 @@ export default class Archive extends Component {
     super(props);
 
     this.state = {
-      mobileView: false
+      mobileView: false,
+      siteLoaded: false,
     };
   }
 
@@ -259,6 +260,7 @@ export default class Archive extends Component {
   async componentDidMount() {
     await this.handleResize();
     window.addEventListener("resize", this.handleResize.bind(this));
+    this.setState({ siteLoaded: true });
     if (!this.state.mobileView) {
       this.enterAnimation();
     } else {

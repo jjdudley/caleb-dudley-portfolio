@@ -214,6 +214,7 @@ export default class FineArt extends Component {
     this.state = {
       mobileView: false,
       photosReady: false,
+      siteLoaded: false,
       opacityMaskEnterVisible: true,
       opacityMaskEnterDisplayed: true,
       opacityMaskExitDisplayed: false
@@ -243,6 +244,7 @@ export default class FineArt extends Component {
     setTimeout(() => this.setState({ opacityMaskEnterDisplayed: false }), 3200);
 
     window.addEventListener("resize", this.handleResize.bind(this));
+    this.setState({ siteLoaded: true });
     if (!this.state.mobileView) {
       this.enterAnimation();
     } else {
