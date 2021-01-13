@@ -25,7 +25,7 @@ const Main8 = () => {
       }
     `);
   
-    return <Image loading="eager" fluid={data.placeholderImage.childImageSharp.fluid} />;
+    return <Image alt="rustic film photography by caleb dudley" loading="eager" fluid={data.placeholderImage.childImageSharp.fluid} />;
   };
   
   export default Main8;

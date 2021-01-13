@@ -25,7 +25,7 @@ const Main3 = () => {
       }
     `);
   
-    return <Image loading="eager" fluid={data.placeholderImage.childImageSharp.fluid} />;
+    return <Image alt="photo studio streetwear shoot by caleb dudley in new york city" loading="eager" fluid={data.placeholderImage.childImageSharp.fluid} />;
   };
   
   export default Main3;

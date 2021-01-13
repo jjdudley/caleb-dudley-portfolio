@@ -100,6 +100,7 @@ export default class Lightbox extends Component {
               {selectedImage.node.frontmatter.caption}
             </div>
             <button
+              aria-label="Close"
               style={{ zIndex: this.state.showLightbox ? "9000" : "0" }}
               className="close-dialog-button"
               className={this.props.closeDialogButton}

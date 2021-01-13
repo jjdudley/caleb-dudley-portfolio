@@ -25,7 +25,7 @@ const Main17 = () => {
       }
     `);
   
-    return <Image loading="eager" fluid={data.placeholderImage.childImageSharp.fluid} />;
+    return <Image alt="carhartt wip new york city model streetwear photography by caleb dudley" loading="eager" fluid={data.placeholderImage.childImageSharp.fluid} />;
   };
   
   export default Main17;

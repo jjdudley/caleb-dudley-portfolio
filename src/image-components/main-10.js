@@ -25,7 +25,7 @@ const Main10 = () => {
       }
     `);
   
-    return <Image loading="eager" fluid={data.placeholderImage.childImageSharp.fluid} />;
+    return <Image alt="street photography collage by new york city photographer caleb dudley" loading="eager" fluid={data.placeholderImage.childImageSharp.fluid} />;
   };
   
   export default Main10;

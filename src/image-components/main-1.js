@@ -25,7 +25,7 @@ const Main1 = () => {
       }
     `);
   
-    return <Image loading="eager" fluid={data.placeholderImage.childImageSharp.fluid} />;
+    return <Image alt="fashion photography by caleb dudley for new york city sustainable clothing brand Entireworld" loading="eager" fluid={data.placeholderImage.childImageSharp.fluid} />;
   };
   
   export default Main1;
