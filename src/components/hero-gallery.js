@@ -46,11 +46,10 @@ class HeroGallery extends Component {
         { main17Displayed: false }
       ]
     };
+    
   }
 
   addToStack = async () => {
-    console.log("stackCount:")
-    console.log(this.state.stackCount);
     let currentStackCount = this.state.stackCount;
     let newCurrentStackCount;
     if (currentStackCount === 16 ) {
@@ -70,30 +69,27 @@ class HeroGallery extends Component {
       if (this.state.items.indexOf(item) === currentStackCount) {
         
         let newStateObj = { [newItem]: true };
-        console.log("the old item:")
-        console.log(item)
-        console.log("will be replaced with:");
-        console.log(newStateObj);
         newState.items.push(newStateObj);
       } else {
         
         let newStateObj = { [newItem]: false };
-        console.log("the old item:")
-        console.log(item)
-        console.log("will be replaced with:");
-        console.log(newStateObj);
         newState.items.push(newStateObj);
       }
     });
 
     this.setState(newState);
-    console.log(this.state);
+  
   };
 
   componentDidMount = () => {
-   setInterval(this.addToStack, 2000)
+   let intervalId = setInterval(this.addToStack, 2000)
+
+   this.setState({intervalId: intervalId})
   }
 
+  componentWillUnmount = () => {
+     clearInterval(this.state.intervalId)
+  }
   
   render() {
     let HeroImageContainer = styled.div``;

@@ -284,7 +284,7 @@ export default class Home extends Component {
   };
 
   async componentDidMount() {
-    console.log("index mounting");
+    
 
     await this.handleResize();
     // setTimeout(()=> this.setState({opacityMaskEnterVisible: false}), 1100)
@@ -301,7 +301,7 @@ export default class Home extends Component {
 
   componentWillUnmount() {
     window.removeEventListener("resize", this.handleResize.bind(this));
-    console.log("index unmounting");
+    
   }
 
   enterAnimation = () => {
@@ -436,7 +436,7 @@ export default class Home extends Component {
     );
 
     let testImage = document.querySelector(".hero-gallery-container");
-    console.log(testImage);
+   
 
     anime.timeline().add({
       targets: ".animation-header .letter",
@@ -489,7 +489,7 @@ export default class Home extends Component {
     this.setState({
       opacityMaskExitDisplayed: true
     });
-    console.log(selectAnimationHeader);
+    
     selectAnimationHeader.innerHTML = selectAnimationHeader.textContent.replace(
       /\S/g,
       "<span class='letter'>$&</span>"
@@ -497,7 +497,7 @@ export default class Home extends Component {
     let testCharacters = document.querySelectorAll(".letter");
 
     let testImage = document.querySelector(".hero-gallery-container");
-    console.log(testImage);
+   
 
     anime.timeline().add({
       targets: ".landing-animation-header .letter",
@@ -537,8 +537,8 @@ export default class Home extends Component {
 
     anime.timeline().add({
       targets: ".hero-opacity-wrapper-mobile",
-      duration: 800,
-      easing: "linear",
+      duration: 1600,
+      easing: "easeOutExpo",
       opacity: 0,
       delay: 0
     });
@@ -722,11 +722,11 @@ export default class Home extends Component {
                         exit={{
                           length: 1.8,
                           trigger: ({ exit, node }) => {
-                            console.log("first log below");
+                            
                             let animationHeader = node.querySelector(
                               ".animation-header"
                             );
-                            console.log(animationHeader);
+                           
                             // let exitImage = node.querySelector(".hero-image-container")
                             let exitImage = document.querySelector(
                               ".hero-gallery-container"
@@ -749,11 +749,11 @@ export default class Home extends Component {
                         exit={{
                           length: 1.8,
                           trigger: ({ exit, node }) => {
-                            console.log("first log below");
+                           
                             let animationHeader = node.querySelector(
                               ".animation-header"
                             );
-                            console.log(animationHeader);
+                        
                             // let exitImage = node.querySelector(".hero-image-container")
                             let exitImage = document.querySelector(
                               ".hero-gallery-container"

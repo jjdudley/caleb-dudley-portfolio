@@ -1,8 +1,6 @@
 import React, { Component } from "react";
-import { Link } from "gatsby";
 import "../components/styles.css";
 import styled from "styled-components";
-// import ArchiveMenu from "../components/archive-menu";
 import AboutContent from "../components/about-content";
 import anime from "animejs/lib/anime.es.js";
 import TransitionLink from "gatsby-plugin-transition-link";
@@ -248,7 +246,7 @@ export default class About extends Component {
 
   componentWillUnmount() {
     window.removeEventListener("resize", this.handleResize.bind(this));
-    console.log("archive unmounting");
+    
   }
 
   enterAnimation = () => {

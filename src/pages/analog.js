@@ -1,10 +1,7 @@
 import React, { Component } from "react";
-import { Link } from "gatsby";
 import "../components/styles.css";
 import styled from "styled-components";
-// import Layout from "../components/layout"
 import AnalogPhotos from "../components/analog-photos";
-// import MobileNav from "../components/mobile-nav"
 import anime from "animejs/lib/anime.es.js";
 import TransitionLink from "gatsby-plugin-transition-link";
 import { Helmet } from "react-helmet";
@@ -14,17 +11,6 @@ const AnalogContainer = styled.div`
   margin: 0;
   width: 100%;
   justify-content: flex-start;
-`;
-
-const AnalogHeader = styled.div`
-  font-family: orpheuspro, serif;
-  font-weight: 400;
-  font-style: regular;
-  font-size: 4.4rem;
-  text-transform: uppercase;
-  height: 80px;
-  display: flex;
-  align-items: center;
 `;
 
 const GalleryRight = styled.div`
@@ -81,15 +67,7 @@ let HeaderRight = styled.div`
   flex-direction: column;
 `;
 
-let LinkContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  transition: color 0.3s ease-out;
-  &:hover {
-    cursor: pointer;
-    transition: color 0.2s ease-out;
-  }
-`;
+
 let FooterContainer = styled.div`
   display: flex;
 
@@ -124,17 +102,6 @@ let MobileNavHeaderContainer = styled.div`
   padding: 10px;
   z-index: 7000 !important;
 `;
-
-//     let MobileNavHeaderContainer = styled.div`
-//   display: flex;
-//   margin: 0;
-//   width: 100%;
-//   justify-content: space-between;
-//   padding: 0 10px;
-//   margin-top: 10px;
-//   z-index: 9000;
-//   border: 1px solid blue !important;
-// `;
 
 let MobileNavHeaderLeft = styled.div`
   display: flex;
@@ -192,12 +159,7 @@ let MobileNavFooterCenter = styled.div`
   align-items: center;
   background: transparent;
 `;
-// let MobileNavFooterCenter = styled.div`
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   color: rgb(19, 19, 18);
-// `
+
 
 let MobileNavFooterRight = styled.div`
   display: flex;
@@ -225,7 +187,7 @@ const OpacityMaskEnter = styled.div`
   left: 50%;
   opacity: 0;
   transition: opacity 0.5s ease;
-  z-index: 8500;
+  z-index: 2000 !important;
 `;
 const OpacityMaskExit = styled.div`
   position: absolute;
@@ -284,11 +246,11 @@ export default class Analog extends Component {
 
   componentWillUnmount() {
     window.removeEventListener("resize", this.handleResize.bind(this));
-    console.log("analog unmounting");
+ 
   }
 
   enterAnimation = () => {
-    console.log("enter normal");
+   
     let animationHeader = document.querySelector(".animation-header");
 
     animationHeader.innerHTML = animationHeader.textContent.replace(
@@ -332,7 +294,7 @@ export default class Analog extends Component {
   // }
 
   mobileEnterAnimation = () => {
-    console.log("enter mobile");
+    
     let animationHeader = document.querySelector(".mobile-animation-header");
 
     animationHeader.innerHTML = animationHeader.textContent.replace(
@@ -362,14 +324,14 @@ export default class Analog extends Component {
     setTimeout(() => this.setState({ opacityMaskEnterDisplayed: false }), 3200);
 
     let selectAnimationHeader = document.querySelector(".animation-header");
-    console.log(selectAnimationHeader);
+  
     selectAnimationHeader.innerHTML = selectAnimationHeader.textContent.replace(
       /\S/g,
       "<span class='letter'>$&</span>"
     );
 
     let selectAnimationHeaderLetters = document.querySelectorAll(".letter");
-    console.log(selectAnimationHeaderLetters);
+
 
     anime.timeline().add({
       targets: ".opacity-mask-exit",
@@ -628,7 +590,7 @@ export default class Analog extends Component {
                           length: 1.8,
                           delay: 0,
                           trigger: () => {
-                            console.log("trigger running");
+                          
                             this.exitAnimation();
                           }
                         }}
@@ -670,7 +632,7 @@ export default class Analog extends Component {
                               ".animation-header"
                             );
 
-                            console.log(animationHeader);
+                          
                             this.exitAnimation(exit, animationHeader);
                           }
                         }}

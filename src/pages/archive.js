@@ -1,8 +1,6 @@
 import React, { Component } from "react";
-import { Link } from "gatsby";
 import "../components/styles.css";
 import styled from "styled-components";
-// import ArchiveMenu from "../components/archive-menu";
 import anime from "animejs/lib/anime.es.js";
 import TransitionLink from "gatsby-plugin-transition-link";
 import { Helmet } from "react-helmet";
@@ -270,7 +268,7 @@ export default class Archive extends Component {
 
   componentWillUnmount() {
     window.removeEventListener("resize", this.handleResize.bind(this));
-    console.log("archive unmounting");
+    
   }
 
   enterAnimation = () => {
@@ -841,9 +839,55 @@ export default class Archive extends Component {
                     About
                   </TransitionLink>
 
-                  <Link className="hero-link-mobile" to="/cv">
+                  <TransitionLink
+                    className="hero-link-mobile"
+                    to="/cv"
+                    exit={{
+                      length: 1.8,
+                      trigger: ({ exit, node }) => {
+                        let archiveMenuDigital = node.querySelector(
+                          "#archive-digital-link"
+                        );
+                        let archiveMenuAnalog = node.querySelector(
+                          "#archive-analog-link"
+                        );
+                        let archiveMenuVideo = node.querySelector(
+                          "#archive-video-link"
+                        );
+                        if (this.state.mobileView) {
+                          let animationHeader = node.querySelector(
+                            ".mobile-animation-header"
+                          );
+
+                          this.mobileExitAnimation(
+                            exit,
+                            animationHeader,
+                            archiveMenuDigital,
+                            archiveMenuAnalog,
+                            archiveMenuVideo
+                          );
+                        } else {
+                          let animationHeader = node.querySelector(
+                            ".animation-header"
+                          );
+
+                          this.exitAnimation(
+                            exit,
+                            animationHeader,
+                            archiveMenuDigital,
+                            archiveMenuAnalog,
+                            archiveMenuVideo
+                          );
+                        }
+                      }
+                    }}
+                    entry={{
+                      delay: 1,
+                      length: 0
+                    }}
+                  >
                     C.V.
-                  </Link>
+                  </TransitionLink>
                 </MobileNavFooterRight>
               </MobileNavFooterContainer>
             </LayoutContainer>
@@ -990,9 +1034,41 @@ export default class Archive extends Component {
                       >
                         About
                       </TransitionLink>
-                      <Link className="hero-link" to="/cv">
+                      <TransitionLink
+                        className="hero-link"
+                        to="/cv"
+                        exit={{
+                          length: 1.8,
+                          trigger: ({ exit, node }) => {
+                            let animationHeader = node.querySelector(
+                              ".animation-header"
+                            );
+
+                            let archiveMenuDigital = node.querySelector(
+                              "#archive-digital-link"
+                            );
+                            let archiveMenuAnalog = node.querySelector(
+                              "#archive-analog-link"
+                            );
+                            let archiveMenuVideo = node.querySelector(
+                              "#archive-video-link"
+                            );
+                            this.exitAnimation(
+                              exit,
+                              animationHeader,
+                              archiveMenuDigital,
+                              archiveMenuAnalog,
+                              archiveMenuVideo
+                            );
+                          }
+                        }}
+                        entry={{
+                          delay: 1,
+                          length: 0
+                        }}
+                      >
                         C.V.
-                      </Link>
+                      </TransitionLink>
                     </FooterRight>
                   </FooterContainer>
                 </HeroLeftContainer>
@@ -1056,7 +1132,7 @@ export default class Archive extends Component {
                   <ArchiveMenuItem>
                     <TransitionLink
                       id="archive-analog-link"
-                      className="mobile-archive-menu-link"
+                      className="archive-menu-link"
                       to="/analog"
                       exit={{
                         length: 1.4,

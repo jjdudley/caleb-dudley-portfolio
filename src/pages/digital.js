@@ -1,10 +1,7 @@
 import React, { Component } from "react";
-import { Link } from "gatsby";
 import "../components/styles.css";
 import styled from "styled-components";
-
 import DigitalPhotos from "../components/digital-photos";
-
 import anime from "animejs/lib/anime.es.js";
 import TransitionLink from "gatsby-plugin-transition-link";
 import { Helmet } from "react-helmet";
@@ -227,8 +224,7 @@ const OpacityMaskEnter = styled.div`
   left: 50%;
   opacity: 0;
   transition: opacity 0.5s ease;
-  
-  z-index: 8500 !important;
+  z-index: 2000 !important;
 `;
 const OpacityMaskExit = styled.div`
   position: absolute;
@@ -288,7 +284,7 @@ export default class Digital extends Component {
 
   componentWillUnmount() {
     window.removeEventListener("resize", this.handleResize.bind(this));
-    console.log("digital unmounting");
+
   }
 
 
@@ -300,7 +296,7 @@ export default class Digital extends Component {
 
 
   enterAnimation = () => {
-    console.log("enter normal");
+  
     let animationHeader = document.querySelector(".animation-header");
 
     animationHeader.innerHTML = animationHeader.textContent.replace(
@@ -344,7 +340,7 @@ export default class Digital extends Component {
   // }
 
   mobileEnterAnimation = () => {
-    console.log("enter mobile");
+   
     let animationHeader = document.querySelector(".mobile-animation-header");
 
     animationHeader.innerHTML = animationHeader.textContent.replace(
@@ -382,14 +378,14 @@ export default class Digital extends Component {
     // setTimeout(() => this.setState({opacityMaskDisplayed: false}), 3200)
 
     let selectAnimationHeader = document.querySelector(".animation-header");
-    console.log(selectAnimationHeader);
+   
     selectAnimationHeader.innerHTML = selectAnimationHeader.textContent.replace(
       /\S/g,
       "<span class='letter'>$&</span>"
     );
 
     let selectAnimationHeaderLetters = document.querySelectorAll(".letter");
-    console.log(selectAnimationHeaderLetters);
+    
 
     // anime.timeline().add({
     //   targets: ".opacity-mask-exit",
@@ -649,7 +645,7 @@ export default class Digital extends Component {
                           length: 1.8,
                           delay: 0,
                           trigger: () => {
-                            console.log("trigger running");
+                           
                             this.exitAnimation();
                           }
                         }}
@@ -691,7 +687,7 @@ export default class Digital extends Component {
                               ".animation-header"
                             );
 
-                            console.log(animationHeader);
+                            
                             this.exitAnimation(exit, animationHeader);
                           }
                         }}

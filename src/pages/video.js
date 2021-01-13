@@ -287,11 +287,11 @@ export default class Video extends Component {
 
   componentWillUnmount() {
     window.removeEventListener("resize", this.handleResize.bind(this));
-    console.log("analog unmounting");
+    
   }
 
   enterAnimation = () => {
-    console.log("enter normal");
+  
     let animationHeader = document.querySelector(".animation-header");
 
     animationHeader.innerHTML = animationHeader.textContent.replace(
@@ -335,7 +335,7 @@ export default class Video extends Component {
   // }
 
   mobileEnterAnimation = () => {
-    console.log("enter mobile");
+  
     let animationHeader = document.querySelector(".mobile-animation-header");
 
     animationHeader.innerHTML = animationHeader.textContent.replace(
@@ -365,14 +365,14 @@ export default class Video extends Component {
     // setTimeout(() => this.setState({opacityMaskDisplayed: false}), 3200)
 
     let selectAnimationHeader = document.querySelector(".animation-header");
-    console.log(selectAnimationHeader);
+   
     selectAnimationHeader.innerHTML = selectAnimationHeader.textContent.replace(
       /\S/g,
       "<span class='letter'>$&</span>"
     );
 
     let selectAnimationHeaderLetters = document.querySelectorAll(".letter");
-    console.log(selectAnimationHeaderLetters);
+
 
     anime.timeline().add({
       targets: ".opacity-mask-exit",
@@ -663,7 +663,7 @@ export default class Video extends Component {
                           length: 1.8,
                           delay: 0,
                           trigger: () => {
-                            console.log("trigger running");
+                            
                             this.exitAnimation();
                           }
                         }}
@@ -705,7 +705,7 @@ export default class Video extends Component {
                               ".animation-header"
                             );
 
-                            console.log(animationHeader);
+                      
                             this.exitAnimation(exit, animationHeader);
                           }
                         }}
