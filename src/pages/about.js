@@ -363,12 +363,14 @@ export default class About extends Component {
       return (
       
         <>
-          <Helmet>
+          <Helmet htmlAttributes={{ lang: 'en' }}>
             <title>About</title>
             <meta
               http-equiv="ScreenOrientation"
               content="autoRotate:disabled"
             ></meta>
+            <meta charset="utf-8"></meta>
+            <meta name="description" content="Caleb Dudley is a photographer + videographer based in Brooklyn, New York. He has expertise in digital + analog processes as well as experimental media, and is a graduate of the Fashion Institute of Technology where he studied alongside some of the world's most passsionate collegiate artists."></meta>
           </Helmet>
   
   

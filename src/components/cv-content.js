@@ -92,7 +92,7 @@ export default class CvContent extends Component {
             <br></br>
             Nisolo
             <br></br>
-            ArayaWorld
+            Araya
           </p>
         </ContactContentCaption>
 

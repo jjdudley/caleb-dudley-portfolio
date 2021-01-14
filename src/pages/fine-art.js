@@ -381,12 +381,14 @@ export default class FineArt extends Component {
     if (this.state.siteLoaded) {
       return (
         <>
-          <Helmet>
+          <Helmet htmlAttributes={{ lang: 'en' }}>
             <title>Fine Art Photography</title>
             <meta
               http-equiv="ScreenOrientation"
               content="autoRotate:disabled"
             ></meta>
+            <meta charset="utf-8"></meta>
+            <meta name="description" content="Fine art photography archive."></meta>
           </Helmet>
 
           {this.state.mobileView ? (

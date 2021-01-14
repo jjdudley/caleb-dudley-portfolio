@@ -362,12 +362,14 @@ export default class Cv extends Component {
     if (this.state.siteLoaded) {
       return (
         <>
-          <Helmet>
+          <Helmet htmlAttributes={{ lang: 'en' }}>
             <title>C.V.</title>
             <meta
               http-equiv="ScreenOrientation"
               content="autoRotate:disabled"
             ></meta>
+            <meta charset="utf-8"></meta>
+            <meta name="description" content="Features: Paper Magazine 2021, Early Rising 2021, 9 To 5 Magazine 2019, Reuben NYC 2019, Pingayao Photography Festival 2019. Clientele: Entire World, Toast, Sézane, Nisolo, Araya."></meta>
           </Helmet>
   
   
