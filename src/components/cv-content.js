@@ -70,9 +70,9 @@ export default class CvContent extends Component {
             FEATURES
             <br></br>
             <br></br>
-            Paper Magazine 2020 
+            Paper Magazine 2021 
             <br></br>
-            Early Rising 2020 
+            Early Rising 2021 
             <br></br>
             9 To 5 Magazine 2019 
             <br></br>

@@ -71,6 +71,19 @@ module.exports = {
     },
     "gatsby-source-instance-name-for-remark",
     {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `gatsby-starter-default`,
+        short_name: `starter`,
+        start_url: `/`,
+        background_color: `#663399`,
+        theme_color: `#663399`,
+        display: `minimal-ui`,
+        icon: `src/images/caleb-dudley-favicon.png`, 
+      },
+      
+    },
+    {
       resolve: 'gatsby-plugin-netlify',
       options: {
         headers: {
