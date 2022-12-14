@@ -15,7 +15,7 @@ const Image = styled(Img)`
 const Main5 = () => {
     const data = useStaticQuery(graphql`
       query {
-        placeholderImage: file(relativePath: { eq: "main/Main05.png" }) {
+        placeholderImage: file(relativePath: { eq: "main/Main05.jpg" }) {
           childImageSharp {
             fluid(maxWidth: 2000) {
               ...GatsbyImageSharpFluid
@@ -24,8 +24,8 @@ const Main5 = () => {
         }
       }
     `);
-  
+
     return <Image alt="photography collage by new york city photographer caleb dudley" loading="eager" fluid={data.placeholderImage.childImageSharp.fluid} />;
   };
-  
+
   export default Main5;

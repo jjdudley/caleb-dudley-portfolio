@@ -37,7 +37,7 @@ line-height: 120%;
 
 z-index: 2000;
 
-  
+
 `
 
 const AboutPhotoContainer = styled.div`
@@ -49,7 +49,7 @@ const AboutPhotoContainer = styled.div`
   z-index: 1000;
 `
 
-const AboutPhotoLightbox = styled.div` 
+const AboutPhotoLightbox = styled.div`
   position: absolute;
   display: flex;
   justify-content: center;
@@ -58,7 +58,7 @@ const AboutPhotoLightbox = styled.div`
   width: 100%;
   height: 100%;
   background-color: rgb(241, 241, 239);
-  
+
 `
 
 class AboutContent extends Component {
@@ -72,27 +72,27 @@ class AboutContent extends Component {
   render() {
     return (
       <AboutContentContainer>
-        
-        <AboutPhotoLightbox className={this.props.aboutPhotoLightbox} onClick={()=> this.setState({ aboutPhotoLightbox: false })} style={{display: this.state.aboutPhotoLightbox ? "" : "none"}}>
+
+        {/* <AboutPhotoLightbox className={this.props.aboutPhotoLightbox} onClick={()=> this.setState({ aboutPhotoLightbox: false })} style={{display: this.state.aboutPhotoLightbox ? "" : "none"}}>
           <AboutPhoto />
         </AboutPhotoLightbox>
-      <AboutPhotoContainer onClick={()=> this.setState({ aboutPhotoLightbox: true })}>
-        <AboutPhoto />
-        </AboutPhotoContainer>
+        <AboutPhotoContainer onClick={()=> this.setState({ aboutPhotoLightbox: true })}>
+          <AboutPhoto />
+        </AboutPhotoContainer> */}
         <AboutContentCaption>
-         
-           <p>Caleb Dudley is a photographer + videographer based in Brooklyn, New York. He has expertise in digital + analog processes as well as experimental media, and is a graduate of the Fashion Institute of Technology where he studied alongside some of the world's most passsionate collegiate artists.
+
+           <p>Caleb Dudley is a photographer and mixed-media artist based in New York City. He has expertise in digital + analog methods as well as experimental media.
              <br></br>
              <br></br>
              <br></br>
-             For all inquiries and collaborations:
+             Slow art, open to commisions.
              <br></br>
              www.calebjdudley@gmail.com
              </p>
-          
+
         </AboutContentCaption>
-        
-        
+
+
       </AboutContentContainer>
     )
   }

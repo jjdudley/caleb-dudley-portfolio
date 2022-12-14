@@ -248,7 +248,7 @@ export default class Cv extends Component {
 
   componentWillUnmount() {
     window.removeEventListener("resize", this.handleResize.bind(this));
-   
+
   }
 
   enterAnimation = () => {
@@ -371,13 +371,13 @@ export default class Cv extends Component {
             <meta charset="utf-8"></meta>
             <meta name="description" content="Features: Paper Magazine 2021, Early Rising 2021, 9 To 5 Magazine 2019, Reuben NYC 2019, Pingayao Photography Festival 2019. Clientele: Entire World, Toast, Sézane, Nisolo, Araya."></meta>
           </Helmet>
-  
-  
-          {this.state.mobileView ? 
+
+
+          {this.state.mobileView ?
             <LayoutContainer
             className="archive-layout-container-mobile">
             <MobileNavHeaderContainer
-              
+
             >
               <MobileNavHeaderLeft>
                 <TransitionLink
@@ -389,7 +389,7 @@ export default class Cv extends Component {
                       let animationHeader = node.querySelector(
                         ".mobile-animation-header"
                       );
-  
+
                       this.mobileExitAnimation(exit, animationHeader);
                     }
                   }}
@@ -405,7 +405,7 @@ export default class Cv extends Component {
                 C.V.
               </MobileNavHeaderCenter>
               <MobileNavHeaderRight>
-                <TransitionLink
+                {/* <TransitionLink
                   className="hero-link-mobile"
                   to="/archive"
                   exit={{
@@ -414,7 +414,7 @@ export default class Cv extends Component {
                       let animationHeader = node.querySelector(
                         ".mobile-animation-header"
                       );
-  
+
                       this.mobileExitAnimation(exit, animationHeader);
                     }
                   }}
@@ -424,18 +424,18 @@ export default class Cv extends Component {
                   }}
                 >
                   Archive
-                </TransitionLink>
-  
+                </TransitionLink> */}
+
                 <TransitionLink
                   className="hero-link-mobile"
-                  to="/fine-art"
+                  to="/salt-prints"
                   exit={{
                     length: 1.8,
                     trigger: ({ exit, node }) => {
                       let animationHeader = node.querySelector(
                         ".mobile-animation-header"
                       );
-  
+
                       this.mobileExitAnimation(exit, animationHeader);
                     }
                   }}
@@ -444,15 +444,15 @@ export default class Cv extends Component {
                     length: 0
                   }}
                 >
-                  Fine Art
+                  Salt Prints
                 </TransitionLink>
               </MobileNavHeaderRight>
             </MobileNavHeaderContainer>
-  
+
             <CvContainer
-              className="archive-mobile-container" 
+              className="archive-mobile-container"
             >
-  
+
               <div
                 className="hero-opacity-wrapper-desktop"
                 style={{ width: "100%"  }}
@@ -460,7 +460,7 @@ export default class Cv extends Component {
                 <CvContent />
               </div>
             </CvContainer>
-  
+
             <MobileNavFooterContainer>
               <MobileNavFooterLeft>
                 {" "}
@@ -493,13 +493,13 @@ export default class Cv extends Component {
                         let animationHeader = node.querySelector(
                           ".mobile-animation-header"
                         );
-  
+
                         this.mobileExitAnimation(exit, animationHeader);
                       } else {
                         let animationHeader = node.querySelector(
                           ".animation-header"
                         );
-  
+
                         this.exitAnimation(exit, animationHeader);
                       }
                     }
@@ -511,25 +511,25 @@ export default class Cv extends Component {
                 >
                   About
                 </TransitionLink>
-  
+
                 <div className="hero-link-mobile">C.V.</div>
               </MobileNavFooterRight>
             </MobileNavFooterContainer>
           </LayoutContainer>
-  
-  
-  
-            :  
-            
+
+
+
+            :
+
             <LayoutContainer>
-            
-  
+
+
             <CvContainer
-              
+
             >
-              
+
                 <HeroLeftContainer
-                 
+
                 >
                   <HeaderContainer>
                     <HeaderLeft>
@@ -542,7 +542,7 @@ export default class Cv extends Component {
                             let animationHeader = node.querySelector(
                               ".animation-header"
                             );
-  
+
                             this.exitAnimation(exit, animationHeader);
                           }
                         }}
@@ -555,7 +555,7 @@ export default class Cv extends Component {
                       </TransitionLink>
                     </HeaderLeft>
                     <HeaderRight>
-                      <TransitionLink
+                      {/* <TransitionLink
                         className="hero-link"
                         to="/archive"
                         exit={{
@@ -564,7 +564,7 @@ export default class Cv extends Component {
                             let animationHeader = node.querySelector(
                               ".animation-header"
                             );
-  
+
                             this.exitAnimation(exit, animationHeader);
                           }
                         }}
@@ -574,18 +574,18 @@ export default class Cv extends Component {
                         }}
                       >
                         Archive
-                      </TransitionLink>
-  
+                      </TransitionLink> */}
+
                       <TransitionLink
                         className="hero-link"
-                        to="/fine-art"
+                        to="/salt-prints"
                         exit={{
                           length: 1.8,
                           trigger: ({ exit, node }) => {
                             let animationHeader = node.querySelector(
                               ".animation-header"
                             );
-  
+
                             this.exitAnimation(exit, animationHeader);
                           }
                         }}
@@ -594,11 +594,11 @@ export default class Cv extends Component {
                           length: 0
                         }}
                       >
-                        Fine Art
+                        Salt Prints
                       </TransitionLink>
                     </HeaderRight>
                   </HeaderContainer>
-  
+
                   <HeroCenter>
                     <HeroHeader>
                       <div className="animation-header">C.V.</div>
@@ -613,7 +613,7 @@ export default class Cv extends Component {
                       >
                         Instagram
                       </a>
-  
+
                       <a
                         className="hero-link"
                         target="_blank"
@@ -633,7 +633,7 @@ export default class Cv extends Component {
                             let animationHeader = node.querySelector(
                               ".animation-header"
                             );
-  
+
                             this.exitAnimation(exit, animationHeader);
                           }
                         }}
@@ -648,7 +648,7 @@ export default class Cv extends Component {
                     </FooterRight>
                   </FooterContainer>
                 </HeroLeftContainer>
-  
+
               <div
                 className="hero-opacity-wrapper-desktop"
                 style={{ width: "50%" }}
@@ -658,12 +658,12 @@ export default class Cv extends Component {
             </CvContainer>
           </LayoutContainer>
             }
-          
+
         </>
       );
     } else {
       return null
     }
-    
+
   }
 }

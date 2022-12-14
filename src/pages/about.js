@@ -248,7 +248,7 @@ export default class About extends Component {
 
   componentWillUnmount() {
     window.removeEventListener("resize", this.handleResize.bind(this));
-    
+
   }
 
   enterAnimation = () => {
@@ -361,7 +361,7 @@ export default class About extends Component {
     if (this.state.siteLoaded) {
 
       return (
-      
+
         <>
           <Helmet htmlAttributes={{ lang: 'en' }}>
             <title>About</title>
@@ -372,15 +372,15 @@ export default class About extends Component {
             <meta charset="utf-8"></meta>
             <meta name="description" content="Caleb Dudley is a photographer + videographer based in Brooklyn, New York. He has expertise in digital + analog processes as well as experimental media, and is a graduate of the Fashion Institute of Technology where he studied alongside some of the world's most passsionate collegiate artists."></meta>
           </Helmet>
-  
-  
-  
-          {this.state.mobileView ? 
-          
+
+
+
+          {this.state.mobileView ?
+
             <LayoutContainer
             className="archive-layout-container-mobile">
             <MobileNavHeaderContainer
-             
+
             >
               <MobileNavHeaderLeft>
                 <TransitionLink
@@ -392,7 +392,7 @@ export default class About extends Component {
                       let animationHeader = node.querySelector(
                         ".mobile-animation-header"
                       );
-  
+
                       this.mobileExitAnimation(exit, animationHeader);
                     }
                   }}
@@ -408,7 +408,7 @@ export default class About extends Component {
                 ABOUT
               </MobileNavHeaderCenter>
               <MobileNavHeaderRight>
-                <TransitionLink
+                {/* <TransitionLink
                   className="hero-link-mobile"
                   to="/archive"
                   exit={{
@@ -426,18 +426,18 @@ export default class About extends Component {
                   }}
                 >
                   Archive
-                </TransitionLink>
-  
+                </TransitionLink> */}
+
                 <TransitionLink
                   className="hero-link-mobile"
-                  to="/fine-art"
+                  to="/salt-prints"
                   exit={{
                     length: 1.8,
                     trigger: ({ exit, node }) => {
                       let animationHeader = node.querySelector(
                         ".mobile-animation-header"
                       );
-  
+
                       this.mobileExitAnimation(exit, animationHeader);
                     }
                   }}
@@ -450,11 +450,11 @@ export default class About extends Component {
                 </TransitionLink>
               </MobileNavHeaderRight>
             </MobileNavHeaderContainer>
-  
+
             <AboutContainer
               className="archive-mobile-container"
             >
-  
+
               <div
                 className="hero-opacity-wrapper-desktop"
                 style={{ width: "100%" }}
@@ -462,12 +462,12 @@ export default class About extends Component {
                 <AboutContent aboutPhotoLightbox="about-photo-lightbox-mobile"/>
               </div>
             </AboutContainer>
-  
+
             <MobileNavFooterContainer
-              
+
             >
               <MobileNavFooterLeft>
-             
+
                 <a
                   href="https://www.instagram.com/caleb_dudley/"
                   target="_blank"
@@ -497,13 +497,13 @@ export default class About extends Component {
                         let animationHeader = node.querySelector(
                           ".mobile-animation-header"
                         );
-  
+
                         this.mobileExitAnimation(exit, animationHeader);
                       } else {
                         let animationHeader = node.querySelector(
                           ".animation-header"
                         );
-  
+
                         this.exitAnimation(exit, animationHeader);
                       }
                     }
@@ -525,13 +525,13 @@ export default class About extends Component {
                         let animationHeader = node.querySelector(
                           ".mobile-animation-header"
                         );
-  
+
                         this.mobileExitAnimation(exit, animationHeader);
                       } else {
                         let animationHeader = node.querySelector(
                           ".animation-header"
                         );
-  
+
                         this.exitAnimation(exit, animationHeader);
                       }
                     }
@@ -546,17 +546,17 @@ export default class About extends Component {
               </MobileNavFooterRight>
             </MobileNavFooterContainer>
           </LayoutContainer>
-  
-            : 
-            
-  
-  
+
+            :
+
+
+
             <LayoutContainer>
-           
+
             <AboutContainer>
-              
+
                 <HeroLeftContainer
-                  
+
                 >
                   <HeaderContainer>
                     <HeaderLeft>
@@ -569,7 +569,7 @@ export default class About extends Component {
                             let animationHeader = node.querySelector(
                               ".animation-header"
                             );
-  
+
                             this.exitAnimation(exit, animationHeader);
                           }
                         }}
@@ -582,7 +582,7 @@ export default class About extends Component {
                       </TransitionLink>
                     </HeaderLeft>
                     <HeaderRight>
-                      <TransitionLink
+                      {/* <TransitionLink
                         className="hero-link"
                         to="/archive"
                         exit={{
@@ -600,18 +600,18 @@ export default class About extends Component {
                         }}
                       >
                         Archive
-                      </TransitionLink>
-  
+                      </TransitionLink> */}
+
                       <TransitionLink
                         className="hero-link"
-                        to="/fine-art"
+                        to="/salt-prints"
                         exit={{
                           length: 1.8,
                           trigger: ({ exit, node }) => {
                             let animationHeader = node.querySelector(
                               ".animation-header"
                             );
-  
+
                             this.exitAnimation(exit, animationHeader);
                           }
                         }}
@@ -624,7 +624,7 @@ export default class About extends Component {
                       </TransitionLink>
                     </HeaderRight>
                   </HeaderContainer>
-  
+
                   <HeroCenter>
                     <HeroHeader>
                       <div className="animation-header">ABOUT</div>
@@ -639,7 +639,7 @@ export default class About extends Component {
                       >
                         Instagram
                       </a>
-  
+
                       <a
                         className="hero-link"
                         target="_blank"
@@ -660,7 +660,7 @@ export default class About extends Component {
                             let animationHeader = node.querySelector(
                               ".animation-header"
                             );
-  
+
                             this.exitAnimation(exit, animationHeader);
                           }
                         }}
@@ -674,8 +674,8 @@ export default class About extends Component {
                     </FooterRight>
                   </FooterContainer>
                 </HeroLeftContainer>
-            
-  
+
+
               <div
                 className="hero-opacity-wrapper-desktop"
                 style={{ width: "50%" }}
@@ -684,16 +684,16 @@ export default class About extends Component {
               </div>
             </AboutContainer>
           </LayoutContainer>
-  
-  
-  
+
+
+
             }
-         
+
         </>
       );
     } else {
       return null
     }
-   
+
   }
 }

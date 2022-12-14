@@ -12,7 +12,7 @@ font-size: 100%;
 width: 100%;
 height: 100%;
 background-color: rgb(241, 241, 239);
- 
+
 `;
 const ContactContentCaption = styled.div`
 display: flex;
@@ -48,12 +48,12 @@ const OpacityFilter = styled.div`
   width: 100%;
   height: 100%;
 
- 
+
   margin-bottom: 10%;
   z-index: 1100;
   opacity: 0.7;
   background-color: rgb(241, 241, 239);
- 
+
 `;
 export default class CvContent extends Component {
   constructor(props) {
@@ -65,34 +65,25 @@ export default class CvContent extends Component {
     return (
       <ContactContentContainer>
         <ContactContentCaption>
-          
+
           <p>
             FEATURES
             <br></br>
             <br></br>
-            Paper Magazine 2021 
+            Hypebeast 2022
             <br></br>
-            Early Rising 2021 
+            Highsnobiety 2022
             <br></br>
-            9 To 5 Magazine 2019 
+            Paper Magazine 2021
             <br></br>
-            Reuben NYC 2019 
+            Early Rising 2021
+            <br></br>
+            9 To 5 Magazine 2019
+            <br></br>
+            Reuben NYC 2019
             <br></br>
             Pingayao Photography Festival 2019
-            <br></br>
-            <br></br>
-            CLIENTELE
-            <br></br>
-            <br></br>
-            Entire World
-            <br></br>
-            Toast
-            <br></br>
-            Sézane
-            <br></br>
-            Nisolo
-            <br></br>
-            Araya
+
           </p>
         </ContactContentCaption>
 

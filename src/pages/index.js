@@ -284,7 +284,7 @@ export default class Home extends Component {
   };
 
   async componentDidMount() {
-    
+
 
     await this.handleResize();
     // setTimeout(()=> this.setState({opacityMaskEnterVisible: false}), 1100)
@@ -301,7 +301,7 @@ export default class Home extends Component {
 
   componentWillUnmount() {
     window.removeEventListener("resize", this.handleResize.bind(this));
-    
+
   }
 
   enterAnimation = () => {
@@ -436,7 +436,7 @@ export default class Home extends Component {
     );
 
     let testImage = document.querySelector(".hero-gallery-container");
-   
+
 
     anime.timeline().add({
       targets: ".animation-header .letter",
@@ -489,7 +489,7 @@ export default class Home extends Component {
     this.setState({
       opacityMaskExitDisplayed: true
     });
-    
+
     selectAnimationHeader.innerHTML = selectAnimationHeader.textContent.replace(
       /\S/g,
       "<span class='letter'>$&</span>"
@@ -497,7 +497,7 @@ export default class Home extends Component {
     let testCharacters = document.querySelectorAll(".letter");
 
     let testImage = document.querySelector(".hero-gallery-container");
-   
+
 
     anime.timeline().add({
       targets: ".landing-animation-header .letter",
@@ -591,7 +591,7 @@ export default class Home extends Component {
                   </MobileHeroSubcaption>
                 </MobileNavHeaderCenter>
                 <MobileNavHeaderRight>
-                  <TransitionLink
+                  {/* <TransitionLink
                     className="hero-link-mobile"
                     to="/archive"
                     exit={{
@@ -609,10 +609,10 @@ export default class Home extends Component {
                     }}
                   >
                     Archive
-                  </TransitionLink>
+                  </TransitionLink> */}
                   <TransitionLink
                     className="hero-link-mobile"
-                    to="/fine-art"
+                    to="/salt-prints"
                     exit={{
                       length: 1.8,
                       trigger: ({ exit, node }) => {
@@ -627,7 +627,7 @@ export default class Home extends Component {
                       length: 0
                     }}
                   >
-                    Fine Art
+                    Salt Prints
                   </TransitionLink>
                 </MobileNavHeaderRight>
               </MobileNavHeaderContainer>
@@ -718,17 +718,17 @@ export default class Home extends Component {
                       <div className="hero-link">Home</div>
                     </HeaderLeft>
                     <HeaderRight>
-                      <TransitionLink
+                      {/* <TransitionLink
                         className="hero-link"
                         to="/archive"
                         exit={{
                           length: 1.8,
                           trigger: ({ exit, node }) => {
-                            
+
                             let animationHeader = node.querySelector(
                               ".animation-header"
                             );
-                           
+
                             // let exitImage = node.querySelector(".hero-image-container")
                             let exitImage = document.querySelector(
                               ".hero-gallery-container"
@@ -743,19 +743,19 @@ export default class Home extends Component {
                         }}
                       >
                         Archive
-                      </TransitionLink>
+                      </TransitionLink> */}
 
                       <TransitionLink
                         className="hero-link"
-                        to="/fine-art"
+                        to="/salt-prints"
                         exit={{
                           length: 1.8,
                           trigger: ({ exit, node }) => {
-                           
+
                             let animationHeader = node.querySelector(
                               ".animation-header"
                             );
-                        
+
                             // let exitImage = node.querySelector(".hero-image-container")
                             let exitImage = document.querySelector(
                               ".hero-gallery-container"
@@ -769,7 +769,7 @@ export default class Home extends Component {
                           length: 0
                         }}
                       >
-                        Fine Art
+                        Salt Prints
                       </TransitionLink>
                     </HeaderRight>
                   </HeaderContainer>
