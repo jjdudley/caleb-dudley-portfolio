@@ -446,7 +446,7 @@ export default class About extends Component {
                     length: 0
                   }}
                 >
-                  Fine Art
+                  Salt Prints
                 </TransitionLink>
               </MobileNavHeaderRight>
             </MobileNavHeaderContainer>
@@ -620,7 +620,7 @@ export default class About extends Component {
                           length: 0
                         }}
                       >
-                        Fine Art
+                        Salt Prints
                       </TransitionLink>
                     </HeaderRight>
                   </HeaderContainer>
